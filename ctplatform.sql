@@ -10,10 +10,27 @@ Target Server Type    : MYSQL
 Target Server Version : 50524
 File Encoding         : 65001
 
-Date: 2013-12-16 17:37:44
+Date: 2013-12-18 17:59:36
 */
 
 SET FOREIGN_KEY_CHECKS=0;
+
+-- ----------------------------
+-- Table structure for `pf_access`
+-- ----------------------------
+DROP TABLE IF EXISTS `pf_access`;
+CREATE TABLE `pf_access` (
+  `role_id` smallint(6) unsigned NOT NULL,
+  `node_id` smallint(6) unsigned NOT NULL,
+  `level` tinyint(1) NOT NULL,
+  `module` varchar(50) DEFAULT NULL,
+  KEY `groupId` (`role_id`),
+  KEY `nodeId` (`node_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of pf_access
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for `pf_member`
@@ -39,6 +56,122 @@ CREATE TABLE `pf_member` (
 -- ----------------------------
 
 -- ----------------------------
+-- Table structure for `pf_news`
+-- ----------------------------
+DROP TABLE IF EXISTS `pf_news`;
+CREATE TABLE `pf_news` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `ctg_id` int(10) unsigned NOT NULL COMMENT '所属分类ID',
+  `title` varchar(255) NOT NULL COMMENT '新闻标题',
+  `content` text COMMENT '新闻内容',
+  `editor` varchar(255) DEFAULT NULL,
+  `is_recom` tinyint(4) NOT NULL DEFAULT '0' COMMENT '是否推荐 0-不推荐 1-推荐',
+  `is_display` tinyint(4) NOT NULL DEFAULT '0' COMMENT '0-不显示 1-显示',
+  `status` tinyint(4) NOT NULL DEFAULT '0' COMMENT '0-删除 1-正常',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of pf_news
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for `pf_news_category`
+-- ----------------------------
+DROP TABLE IF EXISTS `pf_news_category`;
+CREATE TABLE `pf_news_category` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `parent_id` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '所属分类ID',
+  `name` varchar(255) NOT NULL DEFAULT '' COMMENT '分类名称',
+  `type` tinyint(4) NOT NULL DEFAULT '1' COMMENT '栏目类型 1-列表 2-单页',
+  `rank` smallint(6) NOT NULL DEFAULT '100' COMMENT '排序',
+  `is_display` tinyint(4) NOT NULL DEFAULT '0' COMMENT '是否显示 0-不显示 1-显示',
+  `is_index` tinyint(4) NOT NULL DEFAULT '0' COMMENT '是否首页显示 0-不显示 1-显示',
+  `status` tinyint(4) NOT NULL DEFAULT '0' COMMENT '0-删除 1-正常',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of pf_news_category
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for `pf_news_comment`
+-- ----------------------------
+DROP TABLE IF EXISTS `pf_news_comment`;
+CREATE TABLE `pf_news_comment` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `member_id` int(10) unsigned NOT NULL COMMENT '评论用户ID',
+  `title` varchar(255) NOT NULL COMMENT '评论标题',
+  `content` text COMMENT '评论内容',
+  `create_time` varchar(255) NOT NULL DEFAULT '0' COMMENT '评论时间',
+  `status` tinyint(4) NOT NULL DEFAULT '0' COMMENT '0-删除 1-未审核 2-已审核',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of pf_news_comment
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for `pf_node`
+-- ----------------------------
+DROP TABLE IF EXISTS `pf_node`;
+CREATE TABLE `pf_node` (
+  `id` smallint(6) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(20) NOT NULL,
+  `title` varchar(50) DEFAULT NULL,
+  `status` tinyint(1) DEFAULT '0',
+  `remark` varchar(255) DEFAULT NULL,
+  `sort` smallint(6) unsigned DEFAULT NULL,
+  `pid` smallint(6) unsigned NOT NULL,
+  `level` tinyint(1) unsigned NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `level` (`level`),
+  KEY `pid` (`pid`),
+  KEY `status` (`status`),
+  KEY `name` (`name`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of pf_node
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for `pf_role`
+-- ----------------------------
+DROP TABLE IF EXISTS `pf_role`;
+CREATE TABLE `pf_role` (
+  `id` smallint(6) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(20) NOT NULL,
+  `pid` smallint(6) DEFAULT NULL,
+  `status` tinyint(1) unsigned DEFAULT NULL,
+  `remark` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `pid` (`pid`),
+  KEY `status` (`status`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of pf_role
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for `pf_role_user`
+-- ----------------------------
+DROP TABLE IF EXISTS `pf_role_user`;
+CREATE TABLE `pf_role_user` (
+  `role_id` mediumint(9) unsigned DEFAULT NULL,
+  `user_id` char(32) DEFAULT NULL,
+  KEY `group_id` (`role_id`),
+  KEY `user_id` (`user_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of pf_role_user
+-- ----------------------------
+
+-- ----------------------------
 -- Table structure for `pf_suggest`
 -- ----------------------------
 DROP TABLE IF EXISTS `pf_suggest`;
@@ -52,8 +185,41 @@ CREATE TABLE `pf_suggest` (
   `remark` varchar(255) DEFAULT NULL COMMENT '其他说明',
   `status` tinyint(1) unsigned NOT NULL DEFAULT '0' COMMENT '信息状态 0-删除 1-待处理 2-已处理',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of pf_suggest
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for `pf_sugreply`
+-- ----------------------------
+DROP TABLE IF EXISTS `pf_sugreply`;
+CREATE TABLE `pf_sugreply` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `sug_id` int(10) unsigned NOT NULL COMMENT '所属建议ID',
+  `user_id` int(10) unsigned NOT NULL COMMENT '回复人ID',
+  `reply_time` varchar(255) NOT NULL DEFAULT '0' COMMENT '回复时间',
+  `reply_content` varchar(255) DEFAULT NULL COMMENT '回复内容',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of pf_sugreply
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for `pf_user`
+-- ----------------------------
+DROP TABLE IF EXISTS `pf_user`;
+CREATE TABLE `pf_user` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `account` varchar(255) NOT NULL COMMENT '帐号',
+  `password` char(32) NOT NULL COMMENT '密码',
+  `status` tinyint(4) NOT NULL DEFAULT '0' COMMENT '0-删除 1-正常',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of pf_user
 -- ----------------------------
