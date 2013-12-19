@@ -1,14 +1,16 @@
 <?php
-//新闻分类
-class NewsCategoryAction extends CommonAction {
+//管理员
+class UserAction extends CommonAction {
     /**
-     * 分类列表
+     * 列表
+     * 根据传递参数, 进行列表筛选
+     * 要分页, 排序
      */
 	public function index() {
     	
 		$this->display();
     }
-
+    
     /**
      * 新增页面
      */
@@ -24,12 +26,12 @@ class NewsCategoryAction extends CommonAction {
     }
     
     /**
-     * 编辑查看
+     * 编辑查看页面
      */
     public function read() {
     	$this->display();
     }
-
+    
     /**
      * 更新修改接口
      * 必须传递主键ID
@@ -37,4 +39,5 @@ class NewsCategoryAction extends CommonAction {
     public function update() {
     	
     }
+    
 }

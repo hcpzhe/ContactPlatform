@@ -2,7 +2,7 @@
 //新闻
 class NewsAction extends CommonAction {
     /**
-     * 新闻列表
+     * 列表
      * 根据传递参数, 进行列表筛选
      * 要分页, 排序
      */
@@ -12,40 +12,31 @@ class NewsAction extends CommonAction {
     }
     
     /**
-     * 新增新闻页面
+     * 新增页面
      */
     public function add() {
     	$this->display();
     }
     
     /**
-     * 新增新闻接口
+     * 新增接口
      */
     public function insert() {
     	
     }
     
     /**
-     * 新闻查看
-     * 编辑页面
+     * 编辑查看页面
      */
     public function read() {
-    	
+    	$this->display();
     }
     
     /**
      * 更新修改接口
-     * 必须传递新闻主键ID
+     * 必须传递主键ID
      */
     public function update() {
-    	
-    }
-    
-    /**
-     * 删除接口
-     * 修改status即可
-     */
-    public function delete() {
     	
     }
     
