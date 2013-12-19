@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50524
 File Encoding         : 65001
 
-Date: 2013-12-18 17:59:36
+Date: 2013-12-19 17:39:13
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -38,15 +38,21 @@ CREATE TABLE `pf_access` (
 DROP TABLE IF EXISTS `pf_member`;
 CREATE TABLE `pf_member` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `account` varchar(64) NOT NULL,
-  `nickname` varchar(50) DEFAULT NULL,
+  `account` varchar(64) NOT NULL COMMENT '用户名',
+  `nickname` varchar(50) NOT NULL COMMENT '真实姓名',
   `password` char(32) NOT NULL,
+  `type` tinyint(1) NOT NULL DEFAULT '1' COMMENT '类别 1-人大代表 2-政协委员',
+  `paper_number` varchar(255) NOT NULL COMMENT '委员证号',
+  `company` varchar(255) NOT NULL COMMENT '工作单位',
+  `mobile` varchar(11) NOT NULL COMMENT '手机',
+  `email` varchar(255) DEFAULT NULL,
   `last_login_time` varchar(20) DEFAULT '0' COMMENT 'unix时间戳',
   `last_login_ip` varchar(40) DEFAULT NULL,
   `login_count` mediumint(8) unsigned DEFAULT '0',
   `remark` varchar(255) DEFAULT NULL,
   `create_time` int(11) unsigned NOT NULL,
   `update_time` int(11) unsigned NOT NULL,
+  `status` tinyint(1) NOT NULL COMMENT '0-删除  1-已审核  2-待审核',
   PRIMARY KEY (`id`),
   UNIQUE KEY `account` (`account`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
@@ -105,7 +111,7 @@ CREATE TABLE `pf_news_comment` (
   `title` varchar(255) NOT NULL COMMENT '评论标题',
   `content` text COMMENT '评论内容',
   `create_time` varchar(255) NOT NULL DEFAULT '0' COMMENT '评论时间',
-  `status` tinyint(4) NOT NULL DEFAULT '0' COMMENT '0-删除 1-未审核 2-已审核',
+  `status` tinyint(4) NOT NULL DEFAULT '0' COMMENT '0-删除 1-已审核 2-未审核',
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
@@ -183,7 +189,7 @@ CREATE TABLE `pf_suggest` (
   `reply_type` varchar(255) NOT NULL COMMENT '希望回复方式  1-短信 2-邮件 3-电话 4-信函',
   `content` text COMMENT '信息内容',
   `remark` varchar(255) DEFAULT NULL COMMENT '其他说明',
-  `status` tinyint(1) unsigned NOT NULL DEFAULT '0' COMMENT '信息状态 0-删除 1-待处理 2-已处理',
+  `status` tinyint(1) unsigned NOT NULL DEFAULT '0' COMMENT '信息状态 0-删除 1-已处理 2-待处理',
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
@@ -201,6 +207,7 @@ CREATE TABLE `pf_sugreply` (
   `user_id` int(10) unsigned NOT NULL COMMENT '回复人ID',
   `reply_time` varchar(255) NOT NULL DEFAULT '0' COMMENT '回复时间',
   `reply_content` varchar(255) DEFAULT NULL COMMENT '回复内容',
+  `status` tinyint(1) NOT NULL DEFAULT '0' COMMENT '0-删除 1-正常',
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
@@ -214,8 +221,15 @@ CREATE TABLE `pf_sugreply` (
 DROP TABLE IF EXISTS `pf_user`;
 CREATE TABLE `pf_user` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `account` varchar(255) NOT NULL COMMENT '帐号',
+  `account` varchar(64) NOT NULL COMMENT '帐号',
   `password` char(32) NOT NULL COMMENT '密码',
+  `nickname` varchar(50) DEFAULT NULL COMMENT '昵称,姓名',
+  `last_login_time` varchar(20) DEFAULT '0' COMMENT 'unix时间戳',
+  `last_login_ip` varchar(40) DEFAULT NULL,
+  `login_count` mediumint(9) unsigned DEFAULT '0',
+  `email` varchar(255) DEFAULT NULL,
+  `create_time` varchar(20) DEFAULT '0' COMMENT 'unix时间戳',
+  `update_time` varchar(20) DEFAULT '0' COMMENT 'unix时间戳',
   `status` tinyint(4) NOT NULL DEFAULT '0' COMMENT '0-删除 1-正常',
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
