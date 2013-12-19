@@ -3,8 +3,33 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+
+		<style>
+			form {
+				margin: 0;
+			}
+			textarea {
+				display: block;
+			}
+		</style>
+		<link rel="stylesheet" href="__PUBLIC__/kindeditor-4.1.10//themes/default/default.css" />
+		<script charset="utf-8" src="__PUBLIC__/kindeditor-4.1.10/kindeditor-min.js"></script>
+		<script charset="utf-8" src="__PUBLIC__/kindeditor-4.1.10/lang/zh_CN.js"></script>
+		<script>
+			KindEditor.ready(function(K) {
+				K.create('textarea[name="content"]', {
+					autoHeightMode : true,
+					afterCreate : function() {
+						this.loadPlugin('autoheight');
+					}
+				});
+			});
+		</script>
 </head>
 <body>
-home/index/index
+		<h3>自动调整高度</h3>
+		<form action="__URL__/">
+			<textarea name="content" style="width:800px;height:200px;"></textarea>
+		</form>
 </body>
 </html>
