@@ -2,15 +2,15 @@
 Navicat MySQL Data Transfer
 
 Source Server         : 127.0.0.1
-Source Server Version : 50524
-Source Host           : 127.0.0.1:3306
+Source Server Version : 50516
+Source Host           : localhost:3306
 Source Database       : ctplatform
 
 Target Server Type    : MYSQL
-Target Server Version : 50524
+Target Server Version : 50516
 File Encoding         : 65001
 
-Date: 2013-12-19 17:39:13
+Date: 2013-12-20 04:09:39
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -107,6 +107,7 @@ CREATE TABLE `pf_news_category` (
 DROP TABLE IF EXISTS `pf_news_comment`;
 CREATE TABLE `pf_news_comment` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `news_id` int(10) unsigned NOT NULL COMMENT '所属新闻ID',
   `member_id` int(10) unsigned NOT NULL COMMENT '评论用户ID',
   `title` varchar(255) NOT NULL COMMENT '评论标题',
   `content` text COMMENT '评论内容',
