@@ -1,6 +1,8 @@
 <?php
 return array(
     'URL_MODEL'                 =>  2, // 1:PATHINFO  2:rewrite 如果你的环境不支持PATHINFO 请设置为3
+    'APP_GROUP_LIST'            =>  'Home,Admin',
+    'DEFAULT_GROUP'             =>  'Home',
 //    'SHOW_PAGE_TRACE'           =>  1,//显示调试信息
     
     'DB_TYPE'                   =>  'mysql',
@@ -10,7 +12,7 @@ return array(
     'DB_PWD'                    =>  'ctpf',
     'DB_PORT'                   =>  '3306',
     'DB_PREFIX'                 =>  'pf_',
-
+/* RBAC 在每个单独分组中设置
 	'USER_AUTH_ON'				=>	true,		// 开启登录验证
 	'USER_AUTH_TYPE'			=>	1,			// 默认认证类型 1 登录认证 2 实时认证
 	'USER_AUTH_KEY'				=>	'authId',	// 用户认证SESSION标记
@@ -22,5 +24,5 @@ return array(
 //	'TOKEN_ON'					=>	TRUE,
 //	'TOKEN_NAME'				=>	'__hash__',
 
-
+*/
 );
