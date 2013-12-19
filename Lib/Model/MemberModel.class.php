@@ -9,12 +9,21 @@ class MemberModel extends CommonModel {
         array('repassword','password','确认密码不一致',self::EXISTS_VALIDATE,'confirm'),
         array('account','','帐号已经存在',self::EXISTS_VALIDATE,'unique'),
         array('email','email','邮箱格式不正确'),
+        array('paper_number','require','委员证号必填'),
+        array('company','require','工作单位必填'),
+        array('mobile','require','手机号必填'),
+        array('mobile','/^1\d{10}$/','手机号格式不正确'),
+
         );
 
     public $_auto		=	array(
         array('password','pwdHash',self::MODEL_BOTH,'callback'),
+        array('last_login_time','time',self::MODEL_BOTH,'function'),
+        array('last_login_ip','get_client_ip',self::MODEL_BOTH,'function'),
+        array('login_count','login_count',self::MODEL_UPDATE,'callback'),
         array('create_time','time',self::MODEL_INSERT,'function'),
         array('update_time','time',self::MODEL_BOTH,'function'),
+        array('status','2',self::MODEL_INSERT),
         );
 
 	/**
@@ -26,6 +35,16 @@ class MemberModel extends CommonModel {
         }else{
             return false;
         }
+    }
+    /**
+     * 计算登录次数
+     *
+     */
+    protected function login_count(){
+    	
+    	$count=$this->where("account='".$this->account."'")->field('login_count')->find();
+        
+    	return $count['login_count']+1;
     }
     
 //    /**
