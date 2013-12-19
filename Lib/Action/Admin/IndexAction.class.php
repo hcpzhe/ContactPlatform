@@ -8,5 +8,6 @@ class IndexAction extends CommonAction {
 		//总用户数
 		//总信息数
 		//总建议数
+		$this->display();
     }
 }
