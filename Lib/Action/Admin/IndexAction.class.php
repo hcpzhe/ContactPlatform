@@ -24,7 +24,7 @@ class IndexAction extends CommonAction {
 		//总信息数
 		$news_M = M('news');
 		$news_num = $news_M->where('status>0')->count();
-		$this->ajaxReturn('news_num',$news_num);
+		$this->assign('news_num',$news_num);
 		
 		//总建议数
 		$suggest_total = $suggest_M->where('status>0')->count();
