@@ -1,10 +1,149 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>
+	后台管理
+</title>
+<link type="text/css" rel="stylesheet" href="__PUBLIC__/css/base.css">
+<link type="text/css" rel="stylesheet" href="__PUBLIC__/css/global.css">
+    <script type="text/javascript" src="__PUBLIC__/js/jquery.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/js/main.js"></script>
+    <script type="text/javascript">
+
+        function SetCwinHeight() {
+            var iframeid = document.getElementById("main"); //iframe id
+            if (document.getElementById) {
+                if (iframeid && !window.opera) {
+                    if (iframeid.contentDocument && iframeid.contentDocument.body.offsetHeight) {
+                        iframeid.height = iframeid.contentDocument.body.offsetHeight;
+                    } else if (iframeid.Document && iframeid.Document.body.scrollHeight) {
+                        iframeid.height = iframeid.Document.body.scrollHeight;
+                    }
+                }
+            }
+        }
+    </script>
+    <script type="text/javascript">
+        function reinitIframe() {
+            var iframe = document.getElementById("main");
+            try {
+                var bHeight = iframe.contentWindow.document.body.scrollHeight;
+                var dHeight = iframe.contentWindow.document.documentElement.scrollHeight;
+                var height = Math.max(bHeight, dHeight);
+                if (iframe.height != height) {
+                    iframe.height = height;
+                }
+            } catch (ex) { }
+        }
+        window.setInterval("reinitIframe()", 100);
+    </script>
 </head>
-<body>
-admin/index/index
-</body>
-</html>
+<body class="bg-gray">
+    <form name="form1" method="post" action="" id="form1">
+    
+<div class="head2">
+    <div class="w995">
+        <h1 class="fl">
+            <img src="__PUBLIC__/images/logo2.png" alt="" height="118" width="554"></h1>
+        <div class="top-links fr">
+            <a href="#" target="_blank">登录入口</a>|<a href="#" target="_blank">会员注册</a>|<a href="#">安全退出</a>
+        </div>
+        <div class="cl">
+        </div>
+    </div>
+    <div class="cl">
+    </div>
+</div>
+<div class="vice-nav2">
+    <div class="w1003">
+        <p class="v1">
+            </p>
+    </div>
+</div>
+
+    <div class="w1003" style="background: url(__PUBLIC__/images/w172_bg.png) repeat-y;">
+        <div class="w172">
+            <div class="admin2">
+                <div class="info-center2">
+                    <h2>
+                        用户信息</h2>
+                    <div class="bd">
+                        <div class="pic">
+                            <img src="__PUBLIC__/images/p37_43.jpg" alt="" height="43" width="37"></div>
+                        <div class="text">
+                            <p>
+                                用户：admin</p>
+                            <p>
+                                用户信息</p>
+                        </div>
+                        <div class="cl">
+                        </div>
+                        <div class="mt10">
+                            <input name="Button1" value="系统首页" id="Button1" class="btn6" type="submit">
+                            <input name="btn" value="退出" id="btn" class="btn6" type="submit">
+                        </div>
+                    </div>
+                </div>
+                <dl class="left-menu2">
+                    
+                    <dt>建议管理</dt>
+                    <dd class="dn">
+                        <ul>
+                            <li><a href="#" target="main">建议管理</a></li>
+                            <li><a href="#" target="main">待处理建议</a></li>
+                            <li><a href="#" target="main">已处理建议</a></li>
+                        </ul>
+                    </dd>
+                    
+                    <dt>信息管理</dt>
+                    <dd class="dn">
+                        <ul>
+                            <li><a href="#" target="main">添加信息</a></li>
+                            <li><a href="#" target="main">信息管理</a></li>
+                            <li><a href="#" target="main">添加栏目</a></li>
+                            <li><a href="#" target="main">栏目管理</a></li>
+                            <li><a href="#" target="main">评论管理</a></li>
+                        </ul>
+                    </dd>
+                    
+                    <dt>系统管理</dt>
+                    <dd class="dn">
+                        <ul>
+                            <li><a href="#" target="main">用户添加</a></li>
+                            <li><a href="#" target="main">用户管理</a></li>
+                            <li><a href="#" target="main">管理员添加</a></li>
+                            <li><a href="#" target="main">管理员管理</a></li>
+                            <li><a href="#" target="main">基本信息</a></li>
+                        </ul>
+                    </dd>
+                    
+                    <dt>个人管理</dt>
+                    <dd class="dn">
+                        <ul>
+                            <li><a href="#" target="main">修改密码</a></li>
+                        </ul>
+                    </dd>
+                </dl>
+            </div>
+        </div>
+        <div class="w831">
+            <div class="main-content">
+                <iframe id="main" onload="Javascript:SetCwinHeight()" name="main" src="__GROUP__/Index/info" border="0" height="624" scrolling="no" width="100%"></iframe>
+            </div>
+        </div>
+        <div class="cl">
+        </div>
+    </div>
+    
+<div class="footer4">
+  <div class="w995">
+     版权所有：宜阳县人民检察院　技术支持：恒凯科技　豫ICP备09038846号<br>
+建议使用：IE6.0以上版本 1024*768分辨率
+  </div>
+
+</div>
+    </form>
+
+
+</body></html>

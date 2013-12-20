@@ -1,7 +1,12 @@
 <?php
 
 class IndexAction extends CommonAction {
-    public function index() {
+	
+	public function index() {
+		$this->display();
+	}
+	
+    public function info() {
 		//待审核用户
 		$member_M = D('Member');
 		$nums = $member_M->where('status=2')->count();

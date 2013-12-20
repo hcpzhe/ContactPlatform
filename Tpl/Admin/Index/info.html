@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head id="Head1">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<link type="text/css" rel="stylesheet" href="__PUBLIC__/css/base.css">
+<link type="text/css" rel="stylesheet" href="__PUBLIC__/css/global.css">
+    <script type="text/javascript" src="__PUBLIC__/js/jquery.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/js/main.js"></script>
+<title>
+
+</title></head>
+<body>
+    <form name="form1" method="post" action="main.aspx" id="form1">
+    <div class="main-content">
+        <div class="w760">
+            <h3 class="common-tit">
+                <span>当前位置：</span><em>系统信息</em></h3>
+            <div class="col-tb">
+                <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                    <tbody><tr>
+                        <th scope="row" width="20%">
+                            <span class="red">*</span>待审核用户：
+                        </th>
+                        <td width="80%">
+                            {$member_num}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row" width="20%">
+                            <span class="red">*</span>待审核评论：
+                        </th>
+                        <td width="80%">
+                           {$comment_num}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row" width="20%">
+                            <span class="red">*</span>待回复建议：
+                        </th>
+                        <td width="80%">
+                            {$suggest_num}
+                        </td>
+                    </tr>
+                     <tr>
+                        <th scope="row" width="20%">
+                            总用户数：
+                        </th>
+                        <td width="80%">
+                            {$member_total}
+                        </td>
+                    </tr>
+                     <tr>
+                        <th scope="row" width="20%">
+                            总信息数：
+                        </th>
+                        <td width="80%">
+                            {$news_num}
+                        </td>
+                    </tr>
+                     <tr>
+                        <th scope="row" width="20%">
+                           总建议数：
+                        </th>
+                        <td width="80%">
+                            {$suggest_total}
+                        </td>
+                    </tr>
+                </tbody></table>
+            </div>
+        </div>
+    </div>
+    </form>
+
+
+</body></html>
