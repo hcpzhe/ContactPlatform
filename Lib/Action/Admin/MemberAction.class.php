@@ -61,5 +61,49 @@ class MemberAction extends CommonAction {
   /*  public function update() {
     	
     }*/
+    /*
+     * 通过审核
+     * 可以批量操作，必选传递主键
+     */
+    public function toStatus1(){
+    	$member_M = M('Member');
+        if (!empty($member_M)) {
+            $pk = $member_M->getPk();
+            $id = $_REQUEST [$pk];
+            if (isset($id)) {
+                $condition = array($pk => array('in', explode(',', $id)));
+                $list = $member_M->where($condition)->setField('status', 1);
+                if ($list !== false) {
+                    $this->success('批操作成功！');
+                } else {
+                    $this->error('批操作失败！');
+                }
+            } else {
+                $this->error('非法操作');
+            }
+        }
+    }
+    /*
+     * 取消对其审核
+     * 可以批量操作，必须传递主键
+     */
+    public function toStatus2(){
+    	$member_M = M('Member');
+        if (!empty($member_M)) {
+            $pk = $member_M->getPk();
+            $id = $_REQUEST [$pk];
+            if (isset($id)) {
+                $condition = array($pk => array('in', explode(',', $id)));
+                $list = $member_M->where($condition)->setField('status', 2);
+                if ($list !== false) {
+                    $this->success('批操作成功！');
+                } else {
+                    $this->error('批操作失败！');
+                }
+            } else {
+                $this->error('非法操作');
+            }
+        }
+    }
     
 }

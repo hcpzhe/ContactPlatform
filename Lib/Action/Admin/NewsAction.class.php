@@ -68,5 +68,94 @@ class NewsAction extends CommonAction {
         
     	
     }
+    /*
+     * 取消显示
+     * 可以批量操作，必须传递主键ID
+     */
+    public function off_display(){
+      	$news_M = M('News');
+        if (!empty($news_M)) {
+            $pk = $news_M->getPk();
+            $id = $_REQUEST [$pk];
+            if (isset($id)) {
+                $condition = array($pk => array('in', explode(',', $id)));
+                $list = $news_M->where($condition)->setField('is_display', 0);
+                if ($list !== false) {
+                    $this->success('批操作成功！');
+                } else {
+                    $this->error('批操作失败！');
+                }
+            } else {
+                $this->error('非法操作');
+            }
+        }
+    }
+    /*
+     * 显示信息
+     * 可批量操作，必须传递主键ID
+     */
+    public function no_display(){
+        $news_M = M('News');
+        if (!empty($news_M)) {
+            $pk = $news_M->getPk();
+            $id = $_REQUEST [$pk];
+            if (isset($id)) {
+                $condition = array($pk => array('in', explode(',', $id)));
+                $list = $news_M->where($condition)->setField('is_display', 1);
+                if ($list !== false) {
+                    $this->success('批操作成功！');
+                } else {
+                    $this->error('批操作失败！');
+                }
+            } else {
+                $this->error('非法操作');
+            }
+        }
+    }
+    /*
+     * 设置推荐
+     * 可批量操作
+     */
+    public function no_recom(){
+    	$news_M = M('News');
+        if (!empty($news_M)) {
+            $pk = $news_M->getPk();
+            $id = $_REQUEST [$pk];
+            if (isset($id)) {
+                $condition = array($pk => array('in', explode(',', $id)));
+                $list = $news_M->where($condition)->setField('is_recom', 1);
+                if ($list !== false) {
+                    $this->success('批操作成功！');
+                } else {
+                    $this->error('批操作失败！');
+                }
+            } else {
+                $this->error('非法操作');
+            }
+        }
+    
+    }
+    /*
+     * 取消推荐
+     * 可以批量操作
+     */
+    public function off_recom(){
+   		$news_M = M('News');
+        if (!empty($news_M)) {
+            $pk = $news_M->getPk();
+            $id = $_REQUEST [$pk];
+            if (isset($id)) {
+                $condition = array($pk => array('in', explode(',', $id)));
+                $list = $news_M->where($condition)->setField('is_recom', 0);
+                if ($list !== false) {
+                    $this->success('批操作成功！');
+                } else {
+                    $this->error('批操作失败！');
+                }
+            } else {
+                $this->error('非法操作');
+            }
+        }
+    }
     
 }
