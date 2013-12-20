@@ -17,9 +17,7 @@ class  NewsModel extends CommonModel{
      * 获取添加新闻用户名
      * */
     public function getEditor(){
-    	session_start();
     	return $_SESSION['nickname'];
-    
     }
 
 

@@ -20,7 +20,7 @@ class NewsCategoryAction extends CommonAction {
     	}else {
     		if ($news_category_M->add()){
     			//添加成功
-    			$this->success('栏目添加成功','/Admin/NewsCategory/index');
+    			$this->success('栏目添加成功',__GROUP__.'/NewsCategory/index');
     		}else{
     			//添加失败
     			$this->error('栏目添加失败');
@@ -53,7 +53,7 @@ class NewsCategoryAction extends CommonAction {
         $list = $News_category_M->save();
         if (false !== $list) {
             //成功提示
-            $this->success('编辑成功!','/Admin/NewsCategory/index');
+            $this->success('编辑成功!',__GROUP__.'/NewsCategory/index');
         } else {
             //错误提示
             $this->error('编辑失败!');
