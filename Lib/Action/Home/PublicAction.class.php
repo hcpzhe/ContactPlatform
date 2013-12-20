@@ -1,5 +1,5 @@
 <?php
-class MemberAction extends Action{
+class PublicAction extends Action{
 	
 	/*
 	 * 个人中心首页
@@ -13,7 +13,7 @@ class MemberAction extends Action{
 			$this->display();
 		}else {
 
-		$this->error('请先登录！','/Home/Member/login');
+		$this->error('请先登录！','/Home/Public/login');
 		}
 	
 	}

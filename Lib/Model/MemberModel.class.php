@@ -20,7 +20,7 @@ class MemberModel extends CommonModel {
         array('password','pwdHash',self::MODEL_BOTH,'callback'),
         array('last_login_time','time',self::MODEL_BOTH,'function'),
         array('last_login_ip','get_client_ip',self::MODEL_BOTH,'function'),
-        array('login_count','login_count',self::MODEL_UPDATE,'callback'),
+        array('login_count','0',self::MODEL_INSERT),//注册时登录次数为零
         array('create_time','time',self::MODEL_INSERT,'function'),
         array('update_time','time',self::MODEL_BOTH,'function'),
         array('status','2',self::MODEL_INSERT),
@@ -42,12 +42,12 @@ class MemberModel extends CommonModel {
      * 计算登录次数
      *
      */
-    protected function login_count(){
-    	
-    	$count=$this->where("account='".$this->account."'")->field('login_count')->find();
-        
-    	return $count['login_count']+1;
-    }
+//    protected function login_count(){
+//    	
+//    	$count=$this->where("account='".$this->account."'")->field('login_count')->find();
+//        
+//    	return $count['login_count']+1;
+//    }
     
 //    /**
 //     * 是否存在此用户
