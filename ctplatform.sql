@@ -2,15 +2,15 @@
 Navicat MySQL Data Transfer
 
 Source Server         : 127.0.0.1
-Source Server Version : 50516
-Source Host           : localhost:3306
+Source Server Version : 50524
+Source Host           : 127.0.0.1:3306
 Source Database       : ctplatform
 
 Target Server Type    : MYSQL
-Target Server Version : 50516
+Target Server Version : 50524
 File Encoding         : 65001
 
-Date: 2013-12-20 04:09:39
+Date: 2013-12-20 17:40:00
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -55,11 +55,16 @@ CREATE TABLE `pf_member` (
   `status` tinyint(1) NOT NULL COMMENT '0-删除  1-已审核  2-待审核',
   PRIMARY KEY (`id`),
   UNIQUE KEY `account` (`account`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of pf_member
 -- ----------------------------
+INSERT INTO `pf_member` VALUES ('1', 'test', '测试', '15c9dfa38cfaf2635d54b1f94ffaed6c', '1', '123456', '123456', '15236660754', null, '1387524530', '127.0.0.1', '0', null, '1387524530', '1387524530', '2');
+INSERT INTO `pf_member` VALUES ('2', 'test2', 'test2', 'b67508a1f2983c7365b37946a59ad5b1', '1', 'test2', 'test2', '15236660754', null, '1387524634', '127.0.0.1', '0', null, '1387524634', '1387524634', '2');
+INSERT INTO `pf_member` VALUES ('3', 'test3', 'test3', '5f85eb5b813593a29037e93fedc5af34', '1', 'test3', 'test3', '15236660754', null, '1387525844', '127.0.0.1', '0', null, '1387525844', '1387525844', '2');
+INSERT INTO `pf_member` VALUES ('4', 'test4', 'test4', 'e5fc178b0bc754b47e09f19c3f5eef7e', '1', 'test4', 'test4', '15236660754', null, '1387525888', '127.0.0.1', '0', null, '1387525888', '1387525888', '2');
+INSERT INTO `pf_member` VALUES ('5', 'test5', 'test5', '7a957cf67b7ce665286ab651f36f86a0', '1', 'test5', 'test5', '15236660754', null, '1387526308', '127.0.0.1', '0', null, '1387526308', '1387526308', '2');
 
 -- ----------------------------
 -- Table structure for `pf_news`
@@ -233,8 +238,9 @@ CREATE TABLE `pf_user` (
   `update_time` varchar(20) DEFAULT '0' COMMENT 'unix时间戳',
   `status` tinyint(4) NOT NULL DEFAULT '0' COMMENT '0-删除 1-正常',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of pf_user
 -- ----------------------------
+INSERT INTO `pf_user` VALUES ('1', 'admin', '3d06188d51e8024d76f1013b1563afcf', '超级管理员', '1387531188', '127.0.0.1', '3', null, '0', '0', '1');
