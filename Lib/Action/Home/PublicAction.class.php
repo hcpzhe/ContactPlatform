@@ -6,14 +6,7 @@ class PublicAction extends Action{
 	 * 
 	 * */
 	public function index(){
-		if (isset($_SESSION['account'])&& !empty($_SESSION['account'])){
-		
-			
-			$this->display();
-		}else {
-
-		$this->error('请先登录！','/Home/Public/login');
-		}
+		$this->redirect(__GROUP__.'/Index/index');
 	
 	}
 	
@@ -31,7 +24,7 @@ class PublicAction extends Action{
 				//添加用户
 				$status=$member_M->add();
 				if ($status!==false){
-					$this->success('注册成功！请等待审核！','/Home/Index/index');
+					$this->success('注册成功！请等待审核！',__GROUP__.'/Index/index');
 				}else {
 					$this->error('注册失败！');
 				}	
@@ -89,7 +82,7 @@ class PublicAction extends Action{
 	            RBAC::saveAccessList();
 	
 	            // 跳转到个人中心
-	            $this->success('登录成功！','/Home/Member/index');
+	            $this->success('登录成功！',__GROUP__.'/Member/index');
 	
 	       	}
 			$this->display();

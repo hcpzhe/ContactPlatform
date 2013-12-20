@@ -26,6 +26,22 @@ class NewsCommentAction extends CommonAction {
      * 必须传递主键ID , 可批量
      */
     public function verify() {
+        $new_comment_M = M('News_comment');
+        if (!empty($new_comment_M)) {
+            $pk = $new_comment_M->getPk();
+            $id = $_REQUEST [$pk];
+            if (isset($id)) {
+                $condition = array($pk => array('in', explode(',', $id)));
+                $list = $new_comment_M->where($condition)->setField('status', 1);
+                if ($list !== false) {
+                    $this->success('审核成功！');
+                } else {
+                    $this->error('审核失败！');
+                }
+            } else {
+                $this->error('非法操作');
+            }
+        }
     	
     }
     
@@ -58,8 +74,5 @@ class NewsCommentAction extends CommonAction {
             //错误提示
             $this->error('评论更新失败!');
         }
-    	
-    	
-    	
     }
 }

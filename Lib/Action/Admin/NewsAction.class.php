@@ -25,7 +25,7 @@ class NewsAction extends CommonAction {
     	if (false !== $news_M->create()){
     		
     		if ($news_M->add()){
-    			$this->success('新闻添加成功！','/Admin/News/index');
+    			$this->success('新闻添加成功！',__GROUP__.'/News/index');
     		}else {
     			$this->error('新闻添加失败，请重新添加！');
     		}
@@ -60,7 +60,7 @@ class NewsAction extends CommonAction {
         $list = $news_M->save();
         if (false !== $list) {
             //成功提示
-            $this->success('编辑成功!','/Admin/News/index');
+            $this->success('编辑成功!',__GROUP__.'/News/index');
         } else {
             //错误提示
             $this->error('编辑失败!');

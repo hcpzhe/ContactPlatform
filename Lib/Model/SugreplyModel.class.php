@@ -2,6 +2,8 @@
 // 建议回复模型
 class SugreplyModel extends CommonModel {
     public $_validate	=	array(
+    		array('sug_id','require','非法提交'),
+    		array('reply_content','require','回复内容不能为空'),
     		
         );
 

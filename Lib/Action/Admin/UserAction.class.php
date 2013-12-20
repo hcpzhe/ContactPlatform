@@ -1,14 +1,19 @@
 <?php
 //管理员
 class UserAction extends CommonAction {
-    /**
-     * 列表
-     * 根据传递参数, 进行列表筛选
-     * 要分页, 排序
-     */
-	public function index() {
-    	
-		$this->display();
+//    /**
+//     * 列表
+//     * 根据传递参数, 进行列表筛选
+//     * 要分页, 排序
+//     */
+//	public function index() {
+//    	
+//		$this->display();
+//    }
+    public  function  _filter(){
+   		if (!empty($_POST['txtsearch'])){
+    		$map['account'] = array('like',"%".$_POST['txtsearch']."%");
+    	}
     }
     
     /**
@@ -21,23 +26,23 @@ class UserAction extends CommonAction {
     /**
      * 新增接口
      */
-    public function insert() {
-    	
-    }
+//    public function insert() {
+//    	
+//    }
     
     /**
      * 编辑查看页面
      */
-    public function read() {
-    	$this->display();
-    }
+//    public function read() {
+//    	$this->display();
+//    }
     
     /**
      * 更新修改接口
      * 必须传递主键ID
      */
-    public function update() {
-    	
-    }
-    
+//    public function update() {
+//    	
+//    }
+//    
 }
