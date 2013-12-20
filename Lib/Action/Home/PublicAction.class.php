@@ -1,38 +1,33 @@
 <?php
 class PublicAction extends Action{
-	
-	/*
-	 * 个人中心首页
-	 * 
-	 * */
-	public function index(){
-		$this->redirect(__GROUP__.'/Index/index');
-	
+
+	public function _empty() {
+		$this->redirect('Index/index');
 	}
 	
 	
+	public function register() {
+		$this->display();
+	}
+	
 	/**
 	 *用户注册处理 
-	 *
 	 */
-	public  function register(){
+	public  function reg(){
 		
-		if (isset($_POST)){
-			$member_M = D('Member');
-			
-			if ($member_M->create()){
-				//添加用户
-				$status=$member_M->add();
-				if ($status!==false){
-					$this->success('注册成功！请等待审核！',__GROUP__.'/Index/index');
-				}else {
-					$this->error('注册失败！');
-				}	
+		$member_M = D('Member');
+		
+		if ($member_M->create()){
+			//添加用户
+			$status=$member_M->add();
+			if ($status!==false){
+				$this->success('注册成功！管理员会尽快为您审核！' , __GROUP__.'/Index/index');
 			}else {
-				$this->error($member_M->getError());			
+				$this->error('注册失败！');
 			}
+		}else {
+			$this->error($member_M->getError());		
 		}
-		$this->display();
 	}
 	
 	/*
@@ -40,7 +35,7 @@ class PublicAction extends Action{
 	 */
 	public function login(){
 		
-		if (isset($_POST)){//处理登录信息
+		if (IS_POST){//处理登录信息
 		   if(empty($_POST['account'])) {
 	            $this->error('帐号错误！');
 	        }elseif (empty($_POST['password'])){
@@ -83,10 +78,9 @@ class PublicAction extends Action{
 	
 	            // 跳转到个人中心
 	            $this->success('登录成功！',__GROUP__.'/Member/index');
-	
-	       	}
-			$this->display();
-		}	
+			}
+		}
+		$this->display();
 	}
 
 }
