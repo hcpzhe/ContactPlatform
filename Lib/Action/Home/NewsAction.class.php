@@ -11,7 +11,7 @@ class  NewsAction extends CommonAction{
 		
 		$news_M = M('News');       
         $ctg_id = $_REQUEST ['ctg_id'];
-        import('ORG.Util.Page');
+        import('@.ORG.Util.Page');
         $count = $news_M->where("ctg_id=%d",$ctg_id)->count();
         $p = new Page($count,15);
 	    $list = $news_M->where("ctg_id=%d",$ctg_id)->limit($p->firstRow . ',' . $p->listRows)->select();

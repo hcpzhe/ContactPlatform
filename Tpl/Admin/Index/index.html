@@ -82,7 +82,7 @@
                         </div>
                         <div class="mt10">
                             <input name="Button1" value="系统首页" id="Button1" class="btn6" type="submit">
-                            <input name="btn" value="退出" id="btn" class="btn6" type="submit">
+                            <input name="btn" value="退出" id="btn" class="btn6" type="button" onclick="if(confirm('您确认要退出吗？')){$(this).RSsubmit({url:'__GROUP__/Public/logout'});}return false;">
                         </div>
                     </div>
                 </div>
@@ -92,8 +92,8 @@
                     <dd class="dn">
                         <ul>
                             <li><a href="__GROUP__/Suggest" target="main">建议管理</a></li>
-                            <li><a href="#" target="main">待处理建议</a></li>
-                            <li><a href="#" target="main">已处理建议</a></li>
+                            <li><a href="__GROUP__/Suggest/daicl" target="main">待处理建议</a></li>
+                            <li><a href="__GROUP__/Suggest/yicl" target="main">已处理建议</a></li>
                         </ul>
                     </dd>
                     

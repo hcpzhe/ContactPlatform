@@ -38,7 +38,7 @@ class SuggestAction extends CommonAction {
         $this->_filter($map);
         $map['status']=2;
         $count = $suggest_M->where($map)->count('id');
-        import('ORG.Util.Page');
+        import('@.ORG.Util.Page');
         $p = new Page($count,15);
         
         $volist = $suggest_M->where($map)->limit($p->firstRow.','.$p->listRows)->select(); 
@@ -64,7 +64,7 @@ class SuggestAction extends CommonAction {
         $this->_filter($map);
         $map['status']=1;
         $count = $suggest_M->where($map)->count('id');
-        import('ORG.Util.Page');
+        import('@.ORG.Util.Page');
         $p = new Page($count,15);
         
         $volist = $suggest_M->where($map)->limit($p->firstRow.','.$p->listRows)->select(); 
