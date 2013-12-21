@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50524
 File Encoding         : 65001
 
-Date: 2013-12-20 17:40:00
+Date: 2013-12-21 18:09:54
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -43,6 +43,7 @@ CREATE TABLE `pf_member` (
   `password` char(32) NOT NULL,
   `type` tinyint(1) NOT NULL DEFAULT '1' COMMENT '类别 1-人大代表 2-政协委员',
   `paper_number` varchar(255) NOT NULL COMMENT '委员证号',
+  `photo` varchar(255) DEFAULT NULL COMMENT '头像URL',
   `company` varchar(255) NOT NULL COMMENT '工作单位',
   `mobile` varchar(11) NOT NULL COMMENT '手机',
   `email` varchar(255) DEFAULT NULL,
@@ -53,18 +54,20 @@ CREATE TABLE `pf_member` (
   `create_time` int(11) unsigned NOT NULL,
   `update_time` int(11) unsigned NOT NULL,
   `status` tinyint(1) NOT NULL COMMENT '0-删除  1-已审核  2-待审核',
+  `is_recom` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否推荐  0-不推荐  1-推荐',
   PRIMARY KEY (`id`),
   UNIQUE KEY `account` (`account`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of pf_member
 -- ----------------------------
-INSERT INTO `pf_member` VALUES ('1', 'test', '测试', '15c9dfa38cfaf2635d54b1f94ffaed6c', '1', '123456', '123456', '15236660754', null, '1387524530', '127.0.0.1', '0', null, '1387524530', '1387524530', '2');
-INSERT INTO `pf_member` VALUES ('2', 'test2', 'test2', 'b67508a1f2983c7365b37946a59ad5b1', '1', 'test2', 'test2', '15236660754', null, '1387524634', '127.0.0.1', '0', null, '1387524634', '1387524634', '2');
-INSERT INTO `pf_member` VALUES ('3', 'test3', 'test3', '5f85eb5b813593a29037e93fedc5af34', '1', 'test3', 'test3', '15236660754', null, '1387525844', '127.0.0.1', '0', null, '1387525844', '1387525844', '2');
-INSERT INTO `pf_member` VALUES ('4', 'test4', 'test4', 'e5fc178b0bc754b47e09f19c3f5eef7e', '1', 'test4', 'test4', '15236660754', null, '1387525888', '127.0.0.1', '0', null, '1387525888', '1387525888', '2');
-INSERT INTO `pf_member` VALUES ('5', 'test5', 'test5', '7a957cf67b7ce665286ab651f36f86a0', '1', 'test5', 'test5', '15236660754', null, '1387526308', '127.0.0.1', '0', null, '1387526308', '1387526308', '2');
+INSERT INTO `pf_member` VALUES ('1', 'test', '测试', '15c9dfa38cfaf2635d54b1f94ffaed6c', '1', '123456', null, '123456', '15236660754', null, '1387524530', '127.0.0.1', '0', null, '1387524530', '1387524530', '2', '0');
+INSERT INTO `pf_member` VALUES ('2', 'test2', 'test2', 'b67508a1f2983c7365b37946a59ad5b1', '1', 'test2', null, 'test2', '15236660754', null, '1387524634', '127.0.0.1', '0', null, '1387524634', '1387524634', '2', '0');
+INSERT INTO `pf_member` VALUES ('3', 'test3', 'test3', '5f85eb5b813593a29037e93fedc5af34', '1', 'test3', null, 'test3', '15236660754', null, '1387525844', '127.0.0.1', '0', null, '1387525844', '1387525844', '2', '0');
+INSERT INTO `pf_member` VALUES ('4', 'test4', 'test4', 'e5fc178b0bc754b47e09f19c3f5eef7e', '1', 'test4', null, 'test4', '15236660754', null, '1387525888', '127.0.0.1', '0', null, '1387525888', '1387525888', '2', '0');
+INSERT INTO `pf_member` VALUES ('5', 'test5', 'test5', '7a957cf67b7ce665286ab651f36f86a0', '1', 'test5', null, 'test5', '15236660754', null, '1387526308', '127.0.0.1', '0', null, '1387526308', '1387526308', '2', '0');
+INSERT INTO `pf_member` VALUES ('6', 'a1111', '11111', 'b4b3aced3193c18c653bdeff2dd5c141', '1', '11111', null, '11111', '11111111111', null, '1387616424', '127.0.0.1', '0', null, '1387616424', '1387616424', '1', '0');
 
 -- ----------------------------
 -- Table structure for `pf_news`
@@ -195,13 +198,15 @@ CREATE TABLE `pf_suggest` (
   `reply_type` varchar(255) NOT NULL COMMENT '希望回复方式  1-短信 2-邮件 3-电话 4-信函',
   `content` text COMMENT '信息内容',
   `remark` varchar(255) DEFAULT NULL COMMENT '其他说明',
+  `create_time` varchar(20) NOT NULL DEFAULT '0' COMMENT '建议提交时间 unix时间戳',
   `status` tinyint(1) unsigned NOT NULL DEFAULT '0' COMMENT '信息状态 0-删除 1-已处理 2-待处理',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of pf_suggest
 -- ----------------------------
+INSERT INTO `pf_suggest` VALUES ('1', '1', '1', 'biaoti', '', 'neirong', null, '0', '1');
 
 -- ----------------------------
 -- Table structure for `pf_sugreply`
@@ -243,4 +248,4 @@ CREATE TABLE `pf_user` (
 -- ----------------------------
 -- Records of pf_user
 -- ----------------------------
-INSERT INTO `pf_user` VALUES ('1', 'admin', '3d06188d51e8024d76f1013b1563afcf', '超级管理员', '1387531188', '127.0.0.1', '3', null, '0', '0', '1');
+INSERT INTO `pf_user` VALUES ('1', 'admin', '3d06188d51e8024d76f1013b1563afcf', '超级管理员', '1387615678', '127.0.0.1', '26', null, '0', '0', '1');
