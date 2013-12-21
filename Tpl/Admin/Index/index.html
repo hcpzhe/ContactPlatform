@@ -9,6 +9,7 @@
 <link type="text/css" rel="stylesheet" href="__PUBLIC__/css/global.css">
     <script type="text/javascript" src="__PUBLIC__/js/jquery.js"></script>
     <script type="text/javascript" src="__PUBLIC__/js/main.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/js/RSsubmit.js"></script>
     <script type="text/javascript">
 
         function SetCwinHeight() {
@@ -47,7 +48,7 @@
         <h1 class="fl">
             <img src="__PUBLIC__/images/logo2.png" alt="" height="118" width="554"></h1>
         <div class="top-links fr">
-            <a href="#" target="_blank">登录入口</a>|<a href="#" target="_blank">会员注册</a>|<a href="#">安全退出</a>
+            <a href="#" target="_blank">登录入口</a>|<a href="#" target="_blank">会员注册</a>|<a href="__GROUP__/Public/logout" onclick="$(this).RSsubmit();return false;">安全退出</a>
         </div>
         <div class="cl">
         </div>
@@ -90,7 +91,7 @@
                     <dt>建议管理</dt>
                     <dd class="dn">
                         <ul>
-                            <li><a href="#" target="main">建议管理</a></li>
+                            <li><a href="__GROUP__/Suggest" target="main">建议管理</a></li>
                             <li><a href="#" target="main">待处理建议</a></li>
                             <li><a href="#" target="main">已处理建议</a></li>
                         </ul>

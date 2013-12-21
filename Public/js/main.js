@@ -15,18 +15,18 @@ $(function () {
             }
         }
         else {
-            return false
+            return false;
         }
-    })
+    });
 
     $(".nav li").click(function () {
         $(this).addClass("selected")
 	        .siblings("li").removeClass("selected");
 
-    })
+    });
 
 
-    /*×ó²àÀ¸Ä¿µ¼º½2*/
+    /*å·¦ä¾§æ ç›®å¯¼èˆª2*/
     $(".left-menu2 dt").click(function () {
         if ($(this).next().is("dd")) {
 
@@ -41,19 +41,19 @@ $(function () {
             }
         }
         else {
-            return false
+            return false;
         }
 
-    })
+    });
 
     $(".left-menu2 li").hover(function () {
         $(this).addClass("hover");
     }, function () {
         $(this).removeClass("hover");
-    })
+    });
 
 
-})
+});
 
 function selAll() {
     $("#newslist tr td input:checkbox").attr("checked", true);
@@ -76,11 +76,11 @@ function mycheckbox() {
             falg = 1;
             return false;
         }
-    })
+    });
     if (falg > 0)
         return true;
     else
-        alert("±ØĞëÑ¡Ôñ²Ù×÷Ïî!");
+        alert("å¿…é¡»é€‰æ‹©æ“ä½œé¡¹!");
     return false;
 }
 
