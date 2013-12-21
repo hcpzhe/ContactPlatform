@@ -27,5 +27,57 @@ class SuggestAction extends CommonAction {
         }
         $this->display();  	
     }
+    /*
+     * 待处理建议
+     */
+    public function daicl(){
+    	$map=array();
+    	$suggest_M = M('Suggest');
+        $this->_filter($map);
+        $map['status']=2;
+        $count = $suggest_M->where($map)->count('id');
+        import('ORG.Util.Page');
+        $p = new Page($count,15);
+        
+        $volist = $suggest_M->where($map)->limit($p->firstRow.','.$p->listRows)->select(); 
+    	foreach ($map as $key => $val) {
+                if (!is_array($val)) {
+                    $p->parameter .= "$key=" . urlencode($val) . "&";
+                }
+        }
+        $page = $p->show();
+        $this -> assign('volist',$volist);
+        $this -> assign('page',$page);
+        
+        $this->display();
+    }
+    
+    
+    /*
+     * 已处理建议列表
+     */
+    public function yicl(){
+    	$map=array();
+    	$suggest_M = M('Suggest');
+        $this->_filter($map);
+        $map['status']=1;
+        $count = $suggest_M->where($map)->count('id');
+        import('ORG.Util.Page');
+        $p = new Page($count,15);
+        
+        $volist = $suggest_M->where($map)->limit($p->firstRow.','.$p->listRows)->select(); 
+    	foreach ($map as $key => $val) {
+                if (!is_array($val)) {
+                    $p->parameter .= "$key=" . urlencode($val) . "&";
+                }
+        }
+        $page = $p->show();
+        $this -> assign('volist',$volist);
+        $this -> assign('page',$page);
+        
+        $this->display();
+    
+    
+    }
     
 }

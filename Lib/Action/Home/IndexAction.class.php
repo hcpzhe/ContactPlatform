@@ -22,6 +22,22 @@ class IndexAction extends CommonAction {
     	
     	$this->display();
     }
+    /*
+     * 获取委员详细信息，在前台展示
+     * 
+     * 接收参数为member表的主键
+     */
+    public function member(){
+    	//获取导航信息
+    	$this -> getNav();
+    	
+    	$member_M = M('Member');
+    	$id = $_REQUEST[$member_M->getPk()];
+    	$member_info = $member_M-> where("id=$id")->find();//获取指定委员信息
+    	$this->assign('member_info',$member_info);
+    	$this -> display();
+    
+    }
     
     public function test(){
     	

@@ -9,6 +9,7 @@ class SuggestModel extends CommonModel {
 
     public $_auto		=	array(
     		array('member_id','getMemberId',Model:: MODEL_INSERT,'callback'),
+    		array('create_time','time',Model:: MODEL_INSERT,'function'),
     		array('status','2',Model:: MODEL_INSERT),
         );
 

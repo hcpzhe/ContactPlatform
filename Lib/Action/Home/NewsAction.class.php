@@ -13,7 +13,7 @@ class  NewsAction extends CommonAction{
         $ctg_id = $_REQUEST ['ctg_id'];
         import('ORG.Util.Page');
         $count = $news_M->where("ctg_id=%d",$ctg_id)->count();
-        $p = new Page($count,20);
+        $p = new Page($count,15);
 	    $list = $news_M->where("ctg_id=%d",$ctg_id)->limit($p->firstRow . ',' . $p->listRows)->select();
 	    $page = $p -> show();
 	    $this->assign('list',$list);

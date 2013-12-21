@@ -105,5 +105,67 @@ class MemberAction extends CommonAction {
             }
         }
     }
+    /*
+     * 首页推荐
+     * 可以批量，必须传递主键
+     */
+    public function toRecom1(){
+    	$member_M = M('Member');
+    	if (!empty($member_M)){
+    		$pk = $member_M->getPk();
+    		$id = $_REQUEST[$pk];
+    		if(isset($id)){
+    			$condition = array($pk => array('in',explode(',',$id)));
+    			$list = $member_M->where($condition)->setField('is_recom',1);
+    			if ($list !== false){
+    				$this -> success('批操作成功！');
+    			}else {
+    				$this ->error('批操作失败！');
+    			}
+    		}else{
+    		
+    			$this -> error('非法操作');
+    		}
+    	}
+    }
+    /*
+     * 取消首页推荐
+     * 可以批量操作，必须传递主键
+     * 
+     */
+    public function toRecom0(){
+   		$member_M = M('Member');
+    	if (!empty($member_M)){
+    		$pk = $member_M->getPk();
+    		$id = $_REQUEST[$pk];
+    		if(isset($id)){
+    			$condition = array($pk => array('in',explode(',',$id)));
+    			$list = $member_M->where($condition)->setField('is_recom',0);
+    			if ($list !== false){
+    				$this -> success('批操作成功！');
+    			}else {
+    				$this ->error('批操作失败！');
+    			}
+    		}else{
+    		
+    			$this -> error('非法操作');
+    		}
+    	}
+    
+    
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
 }

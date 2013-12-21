@@ -5,6 +5,7 @@
 class UserModel extends CommonAction{
 	protected $_validate = array(
 		array('account','require','账号名称必须'),
+		array('account','/^[a-zA-Z]\w{3,15}$/i','帐号格式错误'),//字母开头 4-16位  \w等价于[A-Za-z0-9_]
 		array('account','','帐号已经存在',self::EXISTS_VALIDATE,'unique'),
 		array('password','require','密码不能为空'),
 		array('nickname','require','姓名不能为空'),

@@ -33,6 +33,48 @@ class MemberAction extends CommonAction{
             $this->success('密码修改成功！');
          }
     }
+    public function upload() {
+        if (!empty($_FILES)) {
+            //如果有文件上传 上传附件
+            $this->_upload();
+        }
+    }
+
+    // 文件上传
+    protected function _upload() {
+        import('ORG.Util.UploadFile');
+        //导入上传类
+        $upload = new UploadFile();
+        //设置上传文件大小
+        $upload->maxSize            = 3292200;
+        //设置上传文件类型
+        $upload->allowExts          = explode(',', 'jpg,gif,png,jpeg');
+        //设置附件上传目录
+        $upload->savePath           = './Uploads/';
+        //设置上传文件规则
+        $upload->saveRule           = 'uniqid';
+        //删除原图
+        $upload->thumbRemoveOrigin  = true;
+        if (!$upload->upload()) {
+            //捕获上传异常
+            $this->error($upload->getErrorMsg());
+        } else {
+            //取得成功上传的文件信息
+            $uploadList = $upload->getUploadFileInfo();
+            $_POST['photo'] = $uploadList[0]['savename'];
+        }
+        $member_M  = D('Member');
+        //保存当前数据对象
+        $data['photo']          = $_POST['photo'];
+        $data['id']    = $member_M->getMemberId();
+        $list   = $member_M->where("id={$data['id']}")->setField('photo',$data['photo']);
+        if ($list !== false) {
+            $this->success('上传头像成功！');
+        } else {
+            $this->error('上传头像失败!');
+        }
+    }
+    
    
    
 }

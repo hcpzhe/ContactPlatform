@@ -2,12 +2,18 @@
 class CommonAction extends Action{
 	/*
 	 * 获取导航条信息
+	 * 和取代表委员风采信息
 	 */
 	protected function getNav(){
+		//获取导航信息
 	    $news_category_M = M('News_category');
     	$category_list = $news_category_M->where("is_display>0 AND is_index>0 AND status>0")->order("rank")->select();
     	$this -> assign('category_list',$category_list); 
-	
+    	
+    	//获取代表委员信息
+    	$member_M = M('Member');
+    	$memer_list = $member_M->where("status=1")->limit('6')->select();
+		$this->assign('member_list',$memer_list);		
 	}
 	function read() {
         $this->edit();
