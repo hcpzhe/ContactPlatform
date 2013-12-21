@@ -7,7 +7,9 @@ class SuggestAction extends CommonAction {
         if(!empty($_POST['txtsearch'])) {
         $map['title'] = array('like',"%".$_POST['txtsearch']."%");
         }
+        $map['status'] = array('gt',0);
     }
+    
     
     /**
      * 编辑查看

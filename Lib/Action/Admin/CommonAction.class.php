@@ -104,7 +104,7 @@ class CommonAction extends Action {
         //取得满足条件的记录数
         $count = $model->where($map)->count('id');
         if ($count > 0) {
-            import("@.ORG.Util.Page");
+            import("ORG.Util.Page");
             //创建分页对象
             if (!empty($_REQUEST ['listRows'])) {
                 $listRows = $_REQUEST ['listRows'];
@@ -195,7 +195,7 @@ class CommonAction extends Action {
                 $condition = array($pk => array('in', explode(',', $id)));
                 $list = $model->where($condition)->setField('status', 0);
                 if ($list !== false) {
-                    $this->success('删除成功！');
+                    $this->success('删除成功！',cookie('_currentUrl_'));
                 } else {
                     $this->error('删除失败！');
                 }
@@ -216,7 +216,7 @@ class CommonAction extends Action {
             if (isset($id)) {
                 $condition = array($pk => array('in', explode(',', $id)));
                 if (false !== $model->where($condition)->delete()) {
-                    $this->success('删除成功！');
+                    $this->success('删除成功！',cookie('_currentUrl_'));
                 } else {
                     $this->error('删除失败！');
                 }
