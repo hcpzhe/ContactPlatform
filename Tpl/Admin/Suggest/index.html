@@ -18,12 +18,19 @@ var theForm = document.forms['form1'];
 if (!theForm) {
     theForm = document.form1;
 }
-function __doPostBack(eventTarget, eventArgument) {
-    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
-        theForm.__EVENTTARGET.value = eventTarget;
-        theForm.__EVENTARGUMENT.value = eventArgument;
-        theForm.submit();
-    }
+function batdelte(inputname) {
+	if(confirm('您确认要删除吗？')){
+		var ids = dot = '';
+		$("input[name='"+inputname+"'][checked=true]}").each(function(){
+			ids += dot + this.value;
+			dot = ',';
+		});
+		$(this).RSsubmit({
+			data : {id:ids},
+			url : "__GROUP__/Suggest/delete/"
+		});
+	}
+	return false;
 }
 //]]>
 </script>
@@ -64,8 +71,7 @@ function __doPostBack(eventTarget, eventArgument) {
                     <!-- <foreach name="list" item="row"> -->
                      <tr style="text-align: center;">
                          <td>
-                             <input name="rep1$ctl00$sug_Id" id="rep1_ctl00_sug_Id" value="6" type="hidden">
-                             <input name="rep1$ctl00$Checkbox1" id="rep1_ctl00_Checkbox1" type="checkbox">
+                             <input name="batDelChkbox" value="{$row['id']}" type="checkbox">
                          </td>
                          <td>
                      {$row['title']}
@@ -81,7 +87,7 @@ function __doPostBack(eventTarget, eventArgument) {
                      {$row['status']}
                          </td>
                          <td>
-                             <a href="__GROUP__/Suggest/delete/id/{$row['id']}" onclick="if(confirm('您确认要删除吗？')){$(this).RSsubmit();}return false;">删除</a>|
+                             <a href="__GROUP__/Suggest/delete/id/{$row['id']}" onclick="">删除</a>|
                              <a href="__GROUP__/Suggest/read/id/{$row['id']}">回复</a>
                          </td>
                      </tr>
@@ -89,7 +95,7 @@ function __doPostBack(eventTarget, eventArgument) {
                 </tbody></table>
             </div>
             <div class="paging3">
-                <input name="btdel" value="批量删除" id="btdel" class="btn7" type="button"></div>
+                <input name="btdel" value="批量删除" id="btdel" class="btn7" type="button" onclick="batdelte('batDelChkbox');"></div>
             <div class="paging3">
                 
 <div id="AspNetPager1" style="width:100%;text-align:center;font-size: 12px">
