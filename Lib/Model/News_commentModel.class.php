@@ -1,5 +1,5 @@
 <?php
-class  News_comment extends CommonModel{
+class  News_commentModel extends CommonModel{
 	protected $_validate = array(
 		array('news_id','require','新闻ID不存在'),
 		array('title','require','请先登录'),
