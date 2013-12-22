@@ -33,10 +33,14 @@ class CommonAction extends Action {
         if (method_exists($this, '_filter')) {
             $this->_filter($map);
         }
-        $name = $this->getActionName();
-        $model = D($name);
-        if (!empty($model)) {
-            $this->_list($model, $map);
+        if (method_exists($this, 'myIndex')){
+        	$this->myIndex($map);
+        }else {
+	        $name = $this->getActionName();
+	        $model = D($name);
+	        if (!empty($model)) {
+	            $this->_list($model, $map);
+       		}
         }
         $this->display();
         return;
@@ -104,7 +108,7 @@ class CommonAction extends Action {
         //取得满足条件的记录数
         $count = $model->where($map)->count('id');
         if ($count > 0) {
-            import("@.ORG.Util.Page");
+            import("ORG.Util.Page");
             //创建分页对象
             if (!empty($_REQUEST ['listRows'])) {
                 $listRows = $_REQUEST ['listRows'];

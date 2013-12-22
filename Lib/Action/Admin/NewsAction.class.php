@@ -6,13 +6,40 @@ class NewsAction extends CommonAction {
     public function _filter(){
     	if (!empty($_POST['txtsearch'])){
     		$map['title'] = array('like',"%".$_POST['txtsearch']."%");
+    		$map['status']=array('gt',0);
     	}
+    }
+    /*
+     * 列表显示
+     */
+    public function myIndex($map){
+    	$news_M = new Model('News');
+    	$tablepre = C('DB_PREFIX');
+    	$myjoin = $tablepre."news_category on ".$tablepre."news.ctg_id=".$tablepre."news_category.id";
+    	$field = $tablepre."news.*,".$tablepre."news_category.name";
+    	$count = $news_M->join($myjoin)->where($map)->count();
+    	import("ORG.Util.Page");
+    	$p = new Page($count,15);
+    	$list = $news_M->join($myjoin)->where($map)->order($tablepre."news.id")->limit($p->firstRow . ',' . $p->listRows)->field($field)->select();
+    	foreach ($map as $key => $val) {
+             if (!is_array($val)) {
+                 $p->parameter .= "$key=" . urlencode($val) . "&";
+             }
+        }
+        //echo $news_M->getLastSql();exit();
+    	$page = $p->show();
+    	$this->assign('list',$list);
+    	$this->assign('page',$page); 
+    
     }
     
     /**
      * 新增页面
      */
     public function add() {
+    	$news_category_M = M('News_category');
+    	$category_list = $news_category_M->where('status>0')->select();
+    	$this -> assign('category_list',$category_list);
     	$this->display();
     }
     

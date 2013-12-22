@@ -7,7 +7,26 @@ class SuggestAction extends CommonAction {
         if(!empty($_POST['txtsearch'])) {
         $map['title'] = array('like',"%".$_POST['txtsearch']."%");
         }
-        $map['status'] = array('gt',0);
+        $status = C('DB_PREFIX').'suggest.status';
+        $map[$status] = array('gt',0);
+    }
+    public function myIndex($map){
+    	$suggest_M = new Model('Suggest');
+    	$tablepre = C('DB_PREFIX');
+    	$myjoin = $tablepre."member on ".$tablepre."suggest.member_id=".$tablepre."member.id";
+    	$field = $tablepre."suggest.*,".$tablepre."member.account";
+    	$count = $suggest_M->join($myjoin)->where($map)->count();
+    	import("ORG.Util.Page");
+    	$p = new Page($count,15);
+    	$list = $suggest_M->join($myjoin)->where($map)->limit($p->firstRow . ',' . $p->listRows)->field($field)->select();
+    	foreach ($map as $key => $val) {
+             if (!is_array($val)) {
+                 $p->parameter .= "$key=" . urlencode($val) . "&";
+             }
+        }
+    	$page = $p->show();
+    	$this->assign('list',$list);
+    	$this->assign('page',$page); 
     }
     
     
@@ -20,12 +39,27 @@ class SuggestAction extends CommonAction {
         $suggest_M = M('Suggest');
         $id = $_REQUEST [$suggest_M->getPk()];
         $vo = $suggest_M->getById($id);
-        $this->assign('vo', $vo);
+        $member_M = M('Member');
+        $member_info = $member_M->getById($vo['member_id']);
+
+        
+        $this->assign('vo', $vo);//建议信息
+        $this->assign('member_info',$member_info);//建议用户信息
         if($vo['status']==1){
         	//取回复的数据
-        	$sugreply_M =　M('Sugreply');
-        	$sugreply_list = $sugreply_M -> where("sug_id={$vo['id']} AND status>0")->select();
-        	$this->assign('sugreplay_list',$sugreply_list);
+        	$sugreply_M = M('Sugreply');
+        	$tablepre = C('DB_PREFIX');
+    		$myjoin = $tablepre."user on ".$tablepre."sugreply.user_id=".$tablepre."user.id";
+    		$field = $tablepre."sugreply.*,".$tablepre."user.account";
+    		$condition = "sug_id={$vo['id']} AND ".$tablepre."sugreply.status>0";
+    		$count = $sugreply_list = $sugreply_M ->join($myjoin)-> where($condition)->count();
+    		import("ORG.Util.Page");
+    		$p = new Page($count,15);
+        	$sugreply_list = $sugreply_M ->join($myjoin)-> where($condition)->order($tablepre."sugreply.id")->limit($p->firstRow . ',' . $p->listRows)->field($field)->select();
+        	//echo $sugreply_M->getLastSql();exit();
+        	$page = $p->show();
+        	$this->assign('sugreplay_list',$sugreply_list);//回复列表
+        	$this->assign('page',$page);//分页导航
         }
         $this->display();  	
     }
@@ -35,20 +69,25 @@ class SuggestAction extends CommonAction {
     public function daicl(){
     	$map=array();
     	$suggest_M = M('Suggest');
+    	$this->_search($map);
         $this->_filter($map);
-        $map['status']=2;
-        $count = $suggest_M->where($map)->count('id');
-        import('@.ORG.Util.Page');
+        $status = C('DB_PREFIX').'suggest.status';
+        $map[$status] = array('eq',2);
+        $tablepre = C('DB_PREFIX');
+    	$myjoin = $tablepre."member on ".$tablepre."suggest.member_id=".$tablepre."member.id";
+    	$field = $tablepre."suggest.*,".$tablepre."member.account";
+    	$count = $suggest_M->join($myjoin)->where($map)->count();
+        import('ORG.Util.Page');
         $p = new Page($count,15);
         
-        $volist = $suggest_M->where($map)->limit($p->firstRow.','.$p->listRows)->select(); 
+        $volist = $suggest_M->join($myjoin)->where($map)->limit($p->firstRow . ',' . $p->listRows)->field($field)->select();
     	foreach ($map as $key => $val) {
                 if (!is_array($val)) {
                     $p->parameter .= "$key=" . urlencode($val) . "&";
                 }
         }
         $page = $p->show();
-        $this -> assign('volist',$volist);
+        $this -> assign('list',$volist);
         $this -> assign('page',$page);
         
         $this->display();
@@ -61,20 +100,25 @@ class SuggestAction extends CommonAction {
     public function yicl(){
     	$map=array();
     	$suggest_M = M('Suggest');
+    	$this->_search($map);
         $this->_filter($map);
-        $map['status']=1;
-        $count = $suggest_M->where($map)->count('id');
-        import('@.ORG.Util.Page');
+        $status = C('DB_PREFIX').'suggest.status';
+        $map[$status] = array('eq',1);
+        $tablepre = C('DB_PREFIX');
+    	$myjoin = $tablepre."member on ".$tablepre."suggest.member_id=".$tablepre."member.id";
+    	$field = $tablepre."suggest.*,".$tablepre."member.account";
+    	$count = $suggest_M->join($myjoin)->where($map)->count();
+        import('ORG.Util.Page');
         $p = new Page($count,15);
         
-        $volist = $suggest_M->where($map)->limit($p->firstRow.','.$p->listRows)->select(); 
+        $volist = $suggest_M->join($myjoin)->where($map)->limit($p->firstRow . ',' . $p->listRows)->field($field)->select();
     	foreach ($map as $key => $val) {
                 if (!is_array($val)) {
                     $p->parameter .= "$key=" . urlencode($val) . "&";
                 }
         }
         $page = $p->show();
-        $this -> assign('volist',$volist);
+        $this -> assign('list',$volist);
         $this -> assign('page',$page);
         
         $this->display();

@@ -6,6 +6,9 @@ class NewsCategoryAction extends CommonAction {
      * 新增页面
      */
     public function add() {
+    	$news_category_M = M('News_category');
+    	$category_list = $news_category_M->where('status>0')->select();
+    	$this -> assign('category_list',$category_list);
     	$this->display();
     }
     

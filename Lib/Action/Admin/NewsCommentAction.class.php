@@ -2,6 +2,14 @@
 //新闻评论
 //若为匿名评论, 则所属用户ID member_id 为0
 class NewsCommentAction extends CommonAction {
+    //过滤查询字段
+ 	public function _filter(&$map){
+        if(!empty($_POST['txtsearch'])) {
+        $map['title'] = array('like',"%".$_POST['txtsearch']."%");
+        }
+        $status = C('DB_PREFIX').'suggest.status';
+        $map[$status] = array('gt',0);
+    }
     /**
      * 新增接口
      * 必须传递所属新闻ID
@@ -19,6 +27,33 @@ class NewsCommentAction extends CommonAction {
             //失败提示
             $this->error('评论失败!');
         }
+    }
+    /*
+     * 评论列表显示
+     */
+    public function  myIndex($map){
+    	$news_comment_M = new Model('News_comment');
+    	$tablepre = C('DB_PREFIX');
+    	//$myjoin = " LEFT JOIN ".$tablepre."news on ".$tablepre."news_comment.news_id=".$tablepre."news.id";
+    	//$myjoin .= " LEFT JOIN ".$tablepre."member on ".$tablepre."news_comment.member_id=".$tablepre."member.id";
+    	$myjoin = $tablepre."member on ".$tablepre."news_comment.member_id=".$tablepre."member.id";
+    	$field = $tablepre."news_comment.*,".$tablepre."member.account";
+    	//$field = $tablepre."news_comment.*,".$tablepre."news.title newstitle";
+    	$count = $news_comment_M->join($myjoin)->where($map)->count();
+    	import("ORG.Util.Page");
+    	$p = new Page($count,15);
+    	$list = $news_comment_M->join($myjoin)->where($map)->limit($p->firstRow . ',' . $p->listRows)->field($field)->select();
+    	foreach ($map as $key => $val) {
+             if (!is_array($val)) {
+                 $p->parameter .= "$key=" . urlencode($val) . "&";
+             }
+        }
+        //echo $news_comment_M->getLastSql();exit();
+    	$page = $p->show();
+    	$this->assign('list',$list);
+    	$this->assign('page',$page); 
+    
+    
     }
     
     /**
