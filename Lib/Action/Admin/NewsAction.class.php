@@ -12,7 +12,7 @@ class NewsAction extends CommonAction {
     /*
      * 列表显示
      */
-    public function myIndex($map){
+    protected function myIndex($map){
     	$news_M = new Model('News');
     	$tablepre = C('DB_PREFIX');
     	$myjoin = $tablepre."news_category on ".$tablepre."news.ctg_id=".$tablepre."news_category.id";
@@ -48,7 +48,9 @@ class NewsAction extends CommonAction {
      */
     public function insert() {
     	$news_M = D('News');
-    	
+    	/**
+    	 * TODO 新闻增加了预览图片, 这里要做图片上传处理
+    	 */
     	if (false !== $news_M->create()){
     		
     		if ($news_M->add()){
