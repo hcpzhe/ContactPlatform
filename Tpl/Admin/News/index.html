@@ -18,7 +18,7 @@ $(function($) {
   $("#dolist").change(function(){
 	 switch(this.value) {
 	 	case "0" ://设为图片
-	 		baturl = '';
+	 		baturl = '__GROUP__/News/no_pic';
 	 	break;
 	 	case "1" ://设为推荐
 	 		baturl = '__GROUP__/News/no_recom';
@@ -27,7 +27,7 @@ $(function($) {
 	 		baturl = '__GROUP__/News/no_display';
 	 	break;
 	 	case "3" ://取消图片
-	 		baturl = '';
+	 		baturl = '__GROUP__/News/off_pic';
 	 	break;
 	 	case "4" ://取消推荐
 	 		baturl = '__GROUP__/News/off_recom';
@@ -117,30 +117,41 @@ function bathandle(inputname) {
                     <!-- <foreach name="list" item="row"> -->
                      <tr style="text-align: center;">
                          <td>
-                             <input name="rep1$ctl00$news_Id" id="rep1_ctl00_news_Id" value="76" type="hidden">
-                             <input name="rep1$ctl00$Checkbox1" id="rep1_ctl00_Checkbox1" type="checkbox">
+                             <input name="batHdlChkbox" value="{$row['id']}" type="checkbox">
                          </td>
                          <td>
-                            <a href="#" title="宜阳县人民检察院技侦用房建设工程施工招标公告" target="_blank">宜阳县人民检察院技侦用房建设工程施工招标</a>  
+                            <a href="__APP__/Home/News/show/id/{$row['id']}" title="{$row['title']}" target="_blank">{$row['title']}</a>  
                          </td>
                          <td>
-                             检查工作动态
+                            {$row['ctg_id']}
                          </td>
                          <td>
-                             2011-12-26 15:32:38
+                             {:date('Y-m-d H:i:s',$row['create_time'])}
                          </td>
                          <td>
-                             <a id="rep1_ctl00_LinkButton1" href="javascript:__doPostBack('rep1$ctl00$LinkButton1','')">×</a>
+                         	<!-- <if condition="$row['is_pic'] gt 0"> -->
+                         	<a href="__URL__/off_pic/id/{$row['id']}">√</a>
+                         	<!-- <else /> -->
+                            <a href="__URL__/on_pic/id/{$row['id']}">×</a>
+                            <!-- </if> -->
                          </td>
                          <td>
-                             <a id="rep1_ctl00_LinkButton2" href="javascript:__doPostBack('rep1$ctl00$LinkButton2','')">√</a>
+                         	<!-- <if condition="$row['is_recom'] gt 0"> -->
+                         	<a href="__URL__/off_recom/id/{$row['id']}">√</a>
+                         	<!-- <else /> -->
+                            <a href="__URL__/no_recom/id/{$row['id']}">×</a>
+                            <!-- </if> -->
                          </td>
                          <td>
-                             <a id="rep1_ctl00_LinkButton3" href="javascript:__doPostBack('rep1$ctl00$LinkButton3','')">√</a>
+                         	<!-- <if condition="$row['is_display'] gt 0"> -->
+                         	<a href="__URL__/off_display/id/{$row['id']}">√</a>
+                         	<!-- <else /> -->
+                            <a href="__URL__/on_display/id/{$row['id']}">×</a>
+                            <!-- </if> -->
                          </td>
                          <td>
-                             <a onclick="return confirm('您确认要删除吗？');" id="rep1_ctl00_lbtnDel" href="javascript:__doPostBack('rep1$ctl00$lbtnDel','')">删除</a>|
-                             <a href="#">修改</a>
+                             <a href="__URL/delete/id/{$row['id']}" onclick="if(confirm('您确认要删除吗？')){$(this).RSsubmit()};return false;">删除</a>|
+                             <a href="__URL/read/id/{$row['id']}">修改</a>
                          </td>
                      </tr>
                  	 <!-- </foreach> -->
@@ -159,7 +170,7 @@ function bathandle(inputname) {
 
 </select>
                 &nbsp;&nbsp;&nbsp;&nbsp;
-                <input name="btdel" value="批量操作" id="btdel" class="btn7" type="button" onclick="bathandle('batDelChkbox');"></div>
+                <input name="btdel" value="批量操作" id="btdel" class="btn7" type="button" onclick="bathandle('batHdlChkbox');"></div>
             <div class="paging3">
                 {$page}
                 <div class="cl">

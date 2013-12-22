@@ -79,7 +79,7 @@ function batdelte(inputname) {
                      {$row['status']}
                          </td>
                          <td>
-                             <a href="__GROUP__/Suggest/delete/id/{$row['id']}" onclick="">删除</a>|
+                             <a href="__GROUP__/Suggest/delete/id/{$row['id']}" onclick="if(confirm('您确认要删除吗？')){$(this).RSsubmit()};return false;">删除</a>|
                              <a href="__GROUP__/Suggest/read/id/{$row['id']}">回复</a>
                          </td>
                      </tr>
