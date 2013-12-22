@@ -40,7 +40,7 @@ class NewsCommentAction extends CommonAction {
     	$field = $tablepre."news_comment.*,".$tablepre."member.account";
     	//$field = $tablepre."news_comment.*,".$tablepre."news.title newstitle";
     	$count = $news_comment_M->join($myjoin)->where($map)->count();
-    	import("ORG.Util.Page");
+    	import("@.ORG.Util.Page");
     	$p = new Page($count,15);
     	$list = $news_comment_M->join($myjoin)->where($map)->limit($p->firstRow . ',' . $p->listRows)->field($field)->select();
     	foreach ($map as $key => $val) {

@@ -16,7 +16,7 @@ class SuggestAction extends CommonAction {
     	$myjoin = $tablepre."member on ".$tablepre."suggest.member_id=".$tablepre."member.id";
     	$field = $tablepre."suggest.*,".$tablepre."member.account";
     	$count = $suggest_M->join($myjoin)->where($map)->count();
-    	import("ORG.Util.Page");
+    	import("@.ORG.Util.Page");
     	$p = new Page($count,15);
     	$list = $suggest_M->join($myjoin)->where($map)->limit($p->firstRow . ',' . $p->listRows)->field($field)->select();
     	foreach ($map as $key => $val) {
@@ -53,7 +53,7 @@ class SuggestAction extends CommonAction {
     		$field = $tablepre."sugreply.*,".$tablepre."user.account";
     		$condition = "sug_id={$vo['id']} AND ".$tablepre."sugreply.status>0";
     		$count = $sugreply_list = $sugreply_M ->join($myjoin)-> where($condition)->count();
-    		import("ORG.Util.Page");
+    		import("@.ORG.Util.Page");
     		$p = new Page($count,15);
         	$sugreply_list = $sugreply_M ->join($myjoin)-> where($condition)->order($tablepre."sugreply.id")->limit($p->firstRow . ',' . $p->listRows)->field($field)->select();
         	//echo $sugreply_M->getLastSql();exit();
@@ -77,7 +77,7 @@ class SuggestAction extends CommonAction {
     	$myjoin = $tablepre."member on ".$tablepre."suggest.member_id=".$tablepre."member.id";
     	$field = $tablepre."suggest.*,".$tablepre."member.account";
     	$count = $suggest_M->join($myjoin)->where($map)->count();
-        import('ORG.Util.Page');
+        import("@.ORG.Util.Page");
         $p = new Page($count,15);
         
         $volist = $suggest_M->join($myjoin)->where($map)->limit($p->firstRow . ',' . $p->listRows)->field($field)->select();
@@ -108,7 +108,7 @@ class SuggestAction extends CommonAction {
     	$myjoin = $tablepre."member on ".$tablepre."suggest.member_id=".$tablepre."member.id";
     	$field = $tablepre."suggest.*,".$tablepre."member.account";
     	$count = $suggest_M->join($myjoin)->where($map)->count();
-        import('ORG.Util.Page');
+        import("@.ORG.Util.Page");
         $p = new Page($count,15);
         
         $volist = $suggest_M->join($myjoin)->where($map)->limit($p->firstRow . ',' . $p->listRows)->field($field)->select();
