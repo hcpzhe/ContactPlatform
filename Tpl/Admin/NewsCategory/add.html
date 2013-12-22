@@ -1,0 +1,100 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<link type="text/css" rel="stylesheet" href="__PUBLIC__/css/base.css">
+<link type="text/css" rel="stylesheet" href="__PUBLIC__/css/global.css">
+    <script type="text/javascript" src="__PUBLIC__/js/jquery.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/js/main.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/js/RSsubmit.js"></script>
+    <style type="text/css">
+        .style1
+        {
+            height: 38px;
+        }
+    </style>
+<title>
+
+</title></head>
+<body>
+    <form name="form1" method="post" action="__URL__/insert" id="form1" onsubmit="$(this).RSsubmit({success_alert:true});return false;">
+    <div class="main-content">
+        <div class="w760">
+            <h3 class="common-tit">
+               <span>当前位置：</span>信息管理 &gt; <em>添加栏目</em> </h3>
+            <div class="col-tb">
+                <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                    <tbody><tr>
+                        <th scope="row" width="19%">
+                            所属栏目：
+                        </th>
+                        <td width="81%">
+                            <select name="parent_id" id="Colm1">
+	<option selected="selected" value="0">无(做为一级栏目)</option>
+	<!-- <foreach name="category_list" item="ctgrow"> -->
+	<option value="{$ctgrow['id']}">{$ctgrow['name']}</option>
+	<!-- </foreach> -->
+
+</select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">
+                            <span class="red">*</span>栏目名称：
+                        </th>
+                        <td>
+                            <input name="name" id="txtclass_Name" class="txt-w326" type="text">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">
+                            栏目类型：
+                        </th>
+                        <td>
+                            <select name="type" id="ColmType">
+	<option selected="selected" value="1">列表</option>
+	<option value="2">单页</option>
+
+</select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">
+                            栏目排序：
+                        </th>
+                        <td>
+                            <input name="rank" maxlength="4" id="txtorder" class="txt-w326" type="text">(必须输入0-4000之间的数字)
+                        </td>
+                    </tr>
+                     <tr>
+                        <th scope="row">
+                            栏目显示：
+                        </th>
+                        <td>
+                            <input id="txtShow" name="is_display" checked="checked" type="checkbox"><label for="txtShow">显示</label>
+                        </td>
+                    </tr>
+                      <tr>
+                        <th scope="row">
+                            首页显示：
+                        </th>
+                        <td>
+                            <input id="topShow" name="is_index" type="checkbox"><label for="topShow">显示</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">&nbsp;
+                            
+                        </th>
+                        <td>
+                            <input name="btnSave" value="添加" id="btnSave" class="btn7" type="submit">
+                        </td>
+                    </tr>
+                </tbody></table>
+            </div>
+        </div>
+    </div>
+    </form>
+
+
+</body></html>
