@@ -1,9 +1,11 @@
 <?php
 //新闻
 class NewsAction extends CommonAction {
-
+	// TODO  缺少批量 设为图片,取消图片 字段: is_pic
+	
     //过滤查询条件
     public function _filter(){
+    	// TODO  缺少分类检索
     	if (!empty($_POST['txtsearch'])){
     		$map['title'] = array('like',"%".$_POST['txtsearch']."%");
     		$map['status']=array('gt',0);
