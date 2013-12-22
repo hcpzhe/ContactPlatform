@@ -18,7 +18,7 @@ class NewsAction extends CommonAction {
     	$myjoin = $tablepre."news_category on ".$tablepre."news.ctg_id=".$tablepre."news_category.id";
     	$field = $tablepre."news.*,".$tablepre."news_category.name";
     	$count = $news_M->join($myjoin)->where($map)->count();
-    	import("ORG.Util.Page");
+    	import("@.ORG.Util.Page");
     	$p = new Page($count,15);
     	$list = $news_M->join($myjoin)->where($map)->order($tablepre."news.id")->limit($p->firstRow . ',' . $p->listRows)->field($field)->select();
     	foreach ($map as $key => $val) {
