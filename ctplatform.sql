@@ -2,15 +2,15 @@
 Navicat MySQL Data Transfer
 
 Source Server         : 127.0.0.1
-Source Server Version : 50524
-Source Host           : 127.0.0.1:3306
+Source Server Version : 50516
+Source Host           : localhost:3306
 Source Database       : ctplatform
 
 Target Server Type    : MYSQL
-Target Server Version : 50524
+Target Server Version : 50516
 File Encoding         : 65001
 
-Date: 2013-12-21 18:09:54
+Date: 2013-12-23 00:45:05
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -78,10 +78,14 @@ CREATE TABLE `pf_news` (
   `ctg_id` int(10) unsigned NOT NULL COMMENT '所属分类ID',
   `title` varchar(255) NOT NULL COMMENT '新闻标题',
   `content` text COMMENT '新闻内容',
-  `editor` varchar(255) DEFAULT NULL,
-  `is_recom` tinyint(4) NOT NULL DEFAULT '0' COMMENT '是否推荐 0-不推荐 1-推荐',
-  `is_display` tinyint(4) NOT NULL DEFAULT '0' COMMENT '0-不显示 1-显示',
-  `status` tinyint(4) NOT NULL DEFAULT '0' COMMENT '0-删除 1-正常',
+  `editor` varchar(255) DEFAULT NULL COMMENT '信息编辑人',
+  `picture` varchar(255) DEFAULT NULL COMMENT '图片路径',
+  `is_pic` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否图片 0-否 1-是',
+  `is_recom` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否推荐 0-不推荐 1-推荐',
+  `is_display` tinyint(1) NOT NULL DEFAULT '0' COMMENT '0-不显示 1-显示',
+  `create_time` varchar(20) NOT NULL DEFAULT '0' COMMENT '发布时间 unix时间戳',
+  `update_time` varchar(20) NOT NULL DEFAULT '0' COMMENT '更新时间 unix时间戳',
+  `status` tinyint(1) NOT NULL DEFAULT '0' COMMENT '0-删除 1-正常',
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
@@ -97,17 +101,18 @@ CREATE TABLE `pf_news_category` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `parent_id` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '所属分类ID',
   `name` varchar(255) NOT NULL DEFAULT '' COMMENT '分类名称',
-  `type` tinyint(4) NOT NULL DEFAULT '1' COMMENT '栏目类型 1-列表 2-单页',
+  `type` tinyint(1) NOT NULL DEFAULT '1' COMMENT '栏目类型 1-列表 2-单页',
   `rank` smallint(6) NOT NULL DEFAULT '100' COMMENT '排序',
-  `is_display` tinyint(4) NOT NULL DEFAULT '0' COMMENT '是否显示 0-不显示 1-显示',
-  `is_index` tinyint(4) NOT NULL DEFAULT '0' COMMENT '是否首页显示 0-不显示 1-显示',
-  `status` tinyint(4) NOT NULL DEFAULT '0' COMMENT '0-删除 1-正常',
+  `is_display` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否显示 0-不显示 1-显示',
+  `is_index` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否首页显示 0-不显示 1-显示',
+  `status` tinyint(1) NOT NULL DEFAULT '0' COMMENT '0-删除 1-正常',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of pf_news_category
 -- ----------------------------
+INSERT INTO `pf_news_category` VALUES ('1', '0', 'hhhhh', '1', '100', '0', '0', '1');
 
 -- ----------------------------
 -- Table structure for `pf_news_comment`
@@ -201,12 +206,13 @@ CREATE TABLE `pf_suggest` (
   `create_time` varchar(20) NOT NULL DEFAULT '0' COMMENT '建议提交时间 unix时间戳',
   `status` tinyint(1) unsigned NOT NULL DEFAULT '0' COMMENT '信息状态 0-删除 1-已处理 2-待处理',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of pf_suggest
 -- ----------------------------
 INSERT INTO `pf_suggest` VALUES ('1', '1', '1', 'biaoti', '', 'neirong', null, '0', '1');
+INSERT INTO `pf_suggest` VALUES ('2', '1', '1', 'ceshi', '', 'neirong2', null, '0', '1');
 
 -- ----------------------------
 -- Table structure for `pf_sugreply`
@@ -248,4 +254,4 @@ CREATE TABLE `pf_user` (
 -- ----------------------------
 -- Records of pf_user
 -- ----------------------------
-INSERT INTO `pf_user` VALUES ('1', 'admin', '3d06188d51e8024d76f1013b1563afcf', '超级管理员', '1387615678', '127.0.0.1', '26', null, '0', '0', '1');
+INSERT INTO `pf_user` VALUES ('1', 'admin', '3d06188d51e8024d76f1013b1563afcf', '超级管理员', '1387724336', '127.0.0.1', '30', null, '0', '0', '1');
