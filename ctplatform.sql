@@ -2,15 +2,15 @@
 Navicat MySQL Data Transfer
 
 Source Server         : 127.0.0.1
-Source Server Version : 50516
-Source Host           : localhost:3306
+Source Server Version : 50524
+Source Host           : 127.0.0.1:3306
 Source Database       : ctplatform
 
 Target Server Type    : MYSQL
-Target Server Version : 50516
+Target Server Version : 50524
 File Encoding         : 65001
 
-Date: 2013-12-23 00:45:05
+Date: 2013-12-23 17:38:21
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -84,14 +84,36 @@ CREATE TABLE `pf_news` (
   `is_recom` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否推荐 0-不推荐 1-推荐',
   `is_display` tinyint(1) NOT NULL DEFAULT '0' COMMENT '0-不显示 1-显示',
   `create_time` varchar(20) NOT NULL DEFAULT '0' COMMENT '发布时间 unix时间戳',
-  `update_time` varchar(20) NOT NULL DEFAULT '0' COMMENT '更新时间 unix时间戳',
+  `update_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '更新时间 unix时间戳',
   `status` tinyint(1) NOT NULL DEFAULT '0' COMMENT '0-删除 1-正常',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=23 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of pf_news
 -- ----------------------------
+INSERT INTO `pf_news` VALUES ('1', '1', '1111', '1111', '超级管理员', null, '0', '0', '0', '0', '0', '0');
+INSERT INTO `pf_news` VALUES ('2', '2', '4444', '4444444', '超级管理员', null, '0', '0', '0', '0', '0', '0');
+INSERT INTO `pf_news` VALUES ('3', '1', '555', '5555', '超级管理员', null, '1', '1', '0', '0', '0', '0');
+INSERT INTO `pf_news` VALUES ('4', '1', '66666', '66666', '超级管理员', null, '1', '1', '0', '0', '0', '1');
+INSERT INTO `pf_news` VALUES ('5', '2', '345345', '463443453543', '4345634', null, '0', '1', '0', '0', '0', '1');
+INSERT INTO `pf_news` VALUES ('6', '1', '1111', '111111111', '超级管理员', null, '0', '0', '0', '0', '0', '1');
+INSERT INTO `pf_news` VALUES ('7', '1', '11111111111', '1111111111111111111111111111111', '11111', null, '0', '0', '0', '0', '0', '1');
+INSERT INTO `pf_news` VALUES ('8', '1', '11111111111', '1111111111111111111111111111111', '11111', null, '0', '0', '0', '0', '0', '1');
+INSERT INTO `pf_news` VALUES ('9', '1', '11111111111', '1111111111111111111111111111111', '11111', null, '0', '0', '0', '0', '0', '1');
+INSERT INTO `pf_news` VALUES ('10', '1', '11111111111', '1111111111111111111111111111111', '超级管理员', null, '0', '0', '0', '0', '0', '1');
+INSERT INTO `pf_news` VALUES ('11', '2', '11111111111', '1111111111111111111111111111111', '超级管理员', null, '0', '0', '0', '0', '0', '0');
+INSERT INTO `pf_news` VALUES ('12', '2', '11111111111', '1111111111111111111111111111111', '超级管理员', null, '0', '0', '0', '0', '0', '1');
+INSERT INTO `pf_news` VALUES ('13', '2', '11111111111', '1111111111111111111111111111111', '超级管理员', null, '0', '0', '0', '0', '0', '1');
+INSERT INTO `pf_news` VALUES ('14', '2', '11111111111', '1111111111111111111111111111111', '超级管理员', null, '0', '0', '0', '0', '0', '0');
+INSERT INTO `pf_news` VALUES ('15', '2', '11111111111', '1111111111111111111111111111111', '超级管理员', null, '0', '0', '0', '0', '0', '0');
+INSERT INTO `pf_news` VALUES ('16', '1', '444', '444444', '超级管理员', null, '0', '0', '0', '1387768476', '1387768476', '0');
+INSERT INTO `pf_news` VALUES ('17', '1', '1111111', '11111111111', '11111111', null, '0', '0', '0', '1387768541', '1387768541', '0');
+INSERT INTO `pf_news` VALUES ('18', '1', '11111111111111', '1111111111111111111', '1111111111', null, '0', '0', '0', '1387768602', '1387768602', '1');
+INSERT INTO `pf_news` VALUES ('19', '1', '55555', '55555555', '超级管理员', null, '1', '1', '1', '1387769032', '1387769032', '1');
+INSERT INTO `pf_news` VALUES ('20', '1', '123131', '651456123', '超级管理员', null, '0', '0', '0', '1387769157', '1387769157', '1');
+INSERT INTO `pf_news` VALUES ('21', '1', '22222222222', '22222222222222222', '超级管理员', null, '0', '1', '1', '1387769863', '1387769863', '1');
+INSERT INTO `pf_news` VALUES ('22', '1', '666666', '6666666666666', '超级管理员', null, '0', '0', '1', '1387770070', '1387770070', '1');
 
 -- ----------------------------
 -- Table structure for `pf_news_category`
@@ -107,12 +129,15 @@ CREATE TABLE `pf_news_category` (
   `is_index` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否首页显示 0-不显示 1-显示',
   `status` tinyint(1) NOT NULL DEFAULT '0' COMMENT '0-删除 1-正常',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of pf_news_category
 -- ----------------------------
 INSERT INTO `pf_news_category` VALUES ('1', '0', 'hhhhh', '1', '100', '0', '0', '1');
+INSERT INTO `pf_news_category` VALUES ('2', '0', 'aaaa', '1', '10', '0', '0', '1');
+INSERT INTO `pf_news_category` VALUES ('3', '0', '555', '1', '555', '1', '1', '1');
+INSERT INTO `pf_news_category` VALUES ('4', '0', '666', '1', '555', '1', '0', '0');
 
 -- ----------------------------
 -- Table structure for `pf_news_comment`
@@ -200,7 +225,7 @@ CREATE TABLE `pf_suggest` (
   `member_id` int(10) unsigned NOT NULL COMMENT '提交建议的用户ID',
   `user_id` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '处理建议的管理员ID',
   `title` varchar(255) NOT NULL COMMENT '建议标题',
-  `reply_type` varchar(255) NOT NULL COMMENT '希望回复方式  1-短信 2-邮件 3-电话 4-信函',
+  `reply_type` tinyint(1) NOT NULL DEFAULT '0' COMMENT '希望回复方式  1-短信 2-邮件 3-电话 4-信函',
   `content` text COMMENT '信息内容',
   `remark` varchar(255) DEFAULT NULL COMMENT '其他说明',
   `create_time` varchar(20) NOT NULL DEFAULT '0' COMMENT '建议提交时间 unix时间戳',
@@ -211,8 +236,8 @@ CREATE TABLE `pf_suggest` (
 -- ----------------------------
 -- Records of pf_suggest
 -- ----------------------------
-INSERT INTO `pf_suggest` VALUES ('1', '1', '1', 'biaoti', '', 'neirong', null, '0', '1');
-INSERT INTO `pf_suggest` VALUES ('2', '1', '1', 'ceshi', '', 'neirong2', null, '0', '1');
+INSERT INTO `pf_suggest` VALUES ('1', '1', '1', 'biaoti', '0', 'neirong', null, '0', '1');
+INSERT INTO `pf_suggest` VALUES ('2', '1', '1', 'ceshi', '0', 'neirong2', null, '0', '1');
 
 -- ----------------------------
 -- Table structure for `pf_sugreply`
@@ -226,11 +251,15 @@ CREATE TABLE `pf_sugreply` (
   `reply_content` varchar(255) DEFAULT NULL COMMENT '回复内容',
   `status` tinyint(1) NOT NULL DEFAULT '0' COMMENT '0-删除 1-正常',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of pf_sugreply
 -- ----------------------------
+INSERT INTO `pf_sugreply` VALUES ('1', '0', '1', '1387770784', null, '1');
+INSERT INTO `pf_sugreply` VALUES ('2', '1', '1', '1387771136', null, '1');
+INSERT INTO `pf_sugreply` VALUES ('3', '1', '1', '1387771165', '阿斯顿', '1');
+INSERT INTO `pf_sugreply` VALUES ('4', '1', '1', '1387780069', '1111', '1');
 
 -- ----------------------------
 -- Table structure for `pf_user`
@@ -249,9 +278,10 @@ CREATE TABLE `pf_user` (
   `update_time` varchar(20) DEFAULT '0' COMMENT 'unix时间戳',
   `status` tinyint(4) NOT NULL DEFAULT '0' COMMENT '0-删除 1-正常',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of pf_user
 -- ----------------------------
-INSERT INTO `pf_user` VALUES ('1', 'admin', '3d06188d51e8024d76f1013b1563afcf', '超级管理员', '1387724336', '127.0.0.1', '30', null, '0', '0', '1');
+INSERT INTO `pf_user` VALUES ('1', 'admin', '3d06188d51e8024d76f1013b1563afcf', '超级管理员', '1387789760', '127.0.0.1', '35', null, '0', '0', '1');
+INSERT INTO `pf_user` VALUES ('2', 'aaaaa', '3d06188d51e8024d76f1013b1563afcf', 'aaaaa', '1387789254', '127.0.0.1', '2', null, '0', '0', '1');
