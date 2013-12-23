@@ -8,6 +8,9 @@ class PublicAction extends Action {
 	function login() {
 		$this->display();
 	}
+	public function password(){
+		$this->display();
+	}
 	
 	/**
 	 * 登录提交验证

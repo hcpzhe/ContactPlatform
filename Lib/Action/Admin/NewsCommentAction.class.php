@@ -10,8 +10,8 @@ class NewsCommentAction extends CommonAction {
         }
         //审核条件
         $map['status'] = array('gt',0);
-        if (!empty($_POST['status'])){
-        	switch ($_POST['status']){
+        if (!empty($_POST['DropDownList1'])){
+        	switch ($_POST['DropDownList1']){
         		case 1: 
         			$map['status']=array('eq',1);
         			break;
@@ -22,9 +22,9 @@ class NewsCommentAction extends CommonAction {
         	}
         }
         //所属栏目的评论条件生成
-        if (!empty($_POST['typelist'])){
+        if (!empty($_POST['ctg_id'])){
         	$news_M = M('News');
-        	$news_id_list = $news_M -> where('ctg_id=%d',$_POST['tupelist'])->getField('id');
+        	$news_id_list = $news_M -> where('ctg_id=%d',$_POST['ctg_id'])->getField('id');
         	$map['news_id']=array('in',$news_id_list);
         }
     }
