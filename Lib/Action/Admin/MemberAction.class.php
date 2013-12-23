@@ -15,6 +15,7 @@ class MemberAction extends CommonAction {
         if(!empty($_POST['txtsearch'])) {
         $map['account'] = array('like',"%".$_POST['txtsearch']."%");
         }
+        $map['status']=array('gt',0);
     }
     /**
      * 新增页面

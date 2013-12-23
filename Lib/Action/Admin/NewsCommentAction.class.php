@@ -32,6 +32,12 @@ class NewsCommentAction extends CommonAction {
      * 评论列表显示
      */
     public function  myIndex($map){
+    	//信息分类
+    	$news_category_M = M('News_category');
+    	$category_list = $news_category_M->where("status>0")->select();
+    	$this->assign('category_list',$category_list);
+    	
+    	//评论列表
     	$news_comment_M = new Model('News_comment');
     	$tablepre = C('DB_PREFIX');
     	//$myjoin = " LEFT JOIN ".$tablepre."news on ".$tablepre."news_comment.news_id=".$tablepre."news.id";
