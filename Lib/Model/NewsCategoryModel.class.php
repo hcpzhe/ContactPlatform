@@ -1,5 +1,5 @@
 <?php
-class News_categoryModel extends CommonModel{
+class NewsCategoryModel extends CommonModel{
 	//自动验证
 	protected $_validate = array(
 		array('name','require','栏目名称必须'),

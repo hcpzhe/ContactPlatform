@@ -7,15 +7,32 @@ class NewsCommentAction extends CommonAction {
         if(!empty($_POST['txtsearch'])) {
         $map['title'] = array('like',"%".$_POST['txtsearch']."%");
         }
-        $status = C('DB_PREFIX').'suggest.status';
-        $map[$status] = array('gt',0);
+        //审核条件
+        $map['status'] = array('gt',0);
+        if (!empty($_POST['status'])){
+        	switch ($_POST['status']){
+        		case 1: 
+        			$map['status']=array('eq',1);
+        			break;
+				case 2:	
+					$map['status']=array('eq',2);
+					break;
+				default:;        	
+        	}
+        }
+        //所属栏目的评论条件生成
+        if (!empty($_POST['typelist'])){
+        	$news_M = M('News');
+        	$news_id_list = $news_M -> where('ctg_id=%d',$_POST['tupelist'])->getField('id');
+        	$map['news_id']=array('in',$news_id_list);
+        }
     }
     /**
      * 新增接口
      * 必须传递所属新闻ID
      */
     public function insert() {
-        $news_comment_M = D('News_comment');
+        $news_comment_M = D('NewsComment');
         if (false === $news_comment_M->create()) {
             $this->error($news_comment_M->getError());
         }
@@ -33,22 +50,36 @@ class NewsCommentAction extends CommonAction {
      */
     public function  myIndex($map){
     	//信息分类
-    	$news_category_M = M('News_category');
+    	$news_category_M = M('NewsCategory');
+    	$news_comment_M = M('NewsComment');
+    	$member_M = M('Member');
+    	$news_M = M('News');
     	$category_list = $news_category_M->where("status>0")->select();
     	$this->assign('category_list',$category_list);
     	
     	//评论列表
-    	$news_comment_M = new Model('News_comment');
-    	$tablepre = C('DB_PREFIX');
-    	//$myjoin = " LEFT JOIN ".$tablepre."news on ".$tablepre."news_comment.news_id=".$tablepre."news.id";
-    	//$myjoin .= " LEFT JOIN ".$tablepre."member on ".$tablepre."news_comment.member_id=".$tablepre."member.id";
-    	$myjoin = $tablepre."member on ".$tablepre."news_comment.member_id=".$tablepre."member.id";
-    	$field = $tablepre."news_comment.*,".$tablepre."member.account";
-    	//$field = $tablepre."news_comment.*,".$tablepre."news.title newstitle";
-    	$count = $news_comment_M->join($myjoin)->where($map)->count();
+//    	$tablepre = C('DB_PREFIX');
+//    	$myjoin = $tablepre."member on ".$tablepre."news_comment.member_id=".$tablepre."member.id";
+//    	$field = $tablepre."news_comment.*,".$tablepre."member.account";
+//    	$count = $news_comment_M->join($myjoin)->where($map)->count();
+		$count = $news_comment_M->where($map)->count();
     	import("@.ORG.Util.Page");
     	$p = new Page($count,15);
-    	$list = $news_comment_M->join($myjoin)->where($map)->limit($p->firstRow . ',' . $p->listRows)->field($field)->select();
+    	//用户ID列表
+    	$member_id_list = $news_comment_M->where($map)->limit($p->firstRow . ',' . $p->listRows)->getField('member_id');
+    	//用户信息列表
+    	$member_list = $member_M->where(array('id'=>array('in',$member_id_list)))->getField('id,account,nickname'); 
+    	//新闻ID列表
+    	$news_id_list = $news_comment_M->where($map)->limit($p->firstRow . ',' . $p->listRows)->getField('news_id');
+    	//新闻标题列表
+    	$news_list = $news_M -> where(array('id'=>array('in',$news_id_list)))->getField('id,title');
+
+    	
+    	//评论信息列表
+    	$list = $news_comment_M->where($map)->limit($p->firstRow . ',' . $p->listRows)->select();
+    	
+    	
+//    	$list = $news_comment_M->join($myjoin)->where($map)->limit($p->firstRow . ',' . $p->listRows)->field($field)->select();
     	foreach ($map as $key => $val) {
              if (!is_array($val)) {
                  $p->parameter .= "$key=" . urlencode($val) . "&";
@@ -58,6 +89,8 @@ class NewsCommentAction extends CommonAction {
     	$page = $p->show();
     	$this->assign('list',$list);
     	$this->assign('page',$page); 
+    	$this->assign('member_list',$member_list);
+    	$this->assign('news_list',$news_list);
     
     
     }
@@ -67,7 +100,7 @@ class NewsCommentAction extends CommonAction {
      * 必须传递主键ID , 可批量
      */
     public function verify() {
-        $new_comment_M = M('News_comment');
+        $new_comment_M = M('NewsComment');
         if (!empty($new_comment_M)) {
             $pk = $new_comment_M->getPk();
             $id = $_REQUEST [$pk];
@@ -90,7 +123,7 @@ class NewsCommentAction extends CommonAction {
      * 编辑查看
      */
     public function read() {
-        $news_comment_M = M('News_comment');
+        $news_comment_M = M('NewsComment');
         $id = $_REQUEST [$news_comment_M->getPk()];
         $vo = $news_comment_M->getById($id);
         $this->assign('vo', $vo);
@@ -102,7 +135,7 @@ class NewsCommentAction extends CommonAction {
      * 必须传递主键ID
      */
     public function update() {
-      	$news_comment_M = D('News_comment');
+      	$news_comment_M = D('NewsComment');
         if (false === $news_comment_M->create()) {
             $this->error($news_comment_M->getError());
         }
@@ -121,7 +154,7 @@ class NewsCommentAction extends CommonAction {
      * 可以批量操作，必选传递主键
      */
     public function toStatus1(){
-    	$news_comment_M = M('News_comment');
+    	$news_comment_M = M('NewsComment');
         if (!empty($news_comment_M)) {
             $pk = $news_comment_M->getPk();
             $id = $_REQUEST [$pk];
@@ -143,7 +176,7 @@ class NewsCommentAction extends CommonAction {
      * 可以批量操作，必选传递主键
      */
     public function toStatus2(){
-    	$news_comment_M = M('News_comment');
+    	$news_comment_M = M('NewsComment');
         if (!empty($news_comment_M)) {
             $pk = $news_comment_M->getPk();
             $id = $_REQUEST [$pk];

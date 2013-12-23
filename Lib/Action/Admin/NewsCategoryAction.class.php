@@ -9,7 +9,7 @@ class NewsCategoryAction extends CommonAction {
      * 新增页面
      */
     public function add() {
-    	$news_category_M = M('News_category');
+    	$news_category_M = M('NewsCategory');
     	$category_list = $news_category_M->where('status>0')->select();
     	$this -> assign('category_list',$category_list);
     	$this->display();
@@ -19,7 +19,7 @@ class NewsCategoryAction extends CommonAction {
      * 新增接口
      */
     public function insert() {
-    	$news_category_M = D('News_category');
+    	$news_category_M = D('NewsCategory');
     	if (false === $news_category_M->create()){
     		//自动验证不通过
     		$this->error($news_category_M->getError());
@@ -39,7 +39,7 @@ class NewsCategoryAction extends CommonAction {
      * 编辑查看
      */
     public function read() {
-    	$News_category_M = M('News_category');
+    	$News_category_M = M('NewsCategory');
         $id = $_REQUEST [$News_category_M->getPk()];
         $vo = $News_category_M->getById($id);
         $this->assign('vo', $vo);
@@ -51,7 +51,7 @@ class NewsCategoryAction extends CommonAction {
      * 必须传递主键ID
      */
     public function update() {
-    	$News_category_M = D('News_category');
+    	$News_category_M = D('NewsCategory');
    		 if (false === $News_category_M->create()) {
             $this->error($News_category_M->getError());
         }

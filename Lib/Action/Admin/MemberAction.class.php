@@ -12,10 +12,29 @@ class MemberAction extends CommonAction {
 //    }
 	//过滤查询字段
     function _filter(&$map){
+    	$map['status']=array('gt',0);
+    	if (!empty($_POST['newstype'])){
+    		switch ($_POST['newstype']){
+    			case 0://未审核 
+    				$map['status']=array('eq',1);
+    				break;
+    			case 1: //已审核
+    				$map['status']=array('eq',2);
+    				break;
+    			case 2: //未推荐
+    				$map['is_recom']=array('eq',0);
+    				break;
+    			case 3: //已推荐
+    				$map['is_recom']=array('eq',1);
+    				break;
+    			default:;
+    		}
+    	
+    	}
         if(!empty($_POST['txtsearch'])) {
         $map['account'] = array('like',"%".$_POST['txtsearch']."%");
         }
-        $map['status']=array('gt',0);
+        
     }
     /**
      * 新增页面
@@ -41,6 +60,39 @@ class MemberAction extends CommonAction {
             $this->error('用户新增失败!');
         }
     	
+    }
+	public function upload() {
+        if (!empty($_FILES)) {
+            //如果有文件上传 上传附件
+            $this->_upload();
+        }
+    }
+	/*
+	 * 图片上传处理
+	 */
+    protected function _upload() {
+        import('ORG.Util.UploadFile');
+        //导入上传类
+        $upload = new UploadFile();
+        //设置上传文件大小
+        $upload->maxSize            = 3292200;
+        //设置上传文件类型
+        $upload->allowExts          = explode(',', 'jpg,gif,png,jpeg');
+        //设置附件上传目录
+        $upload->savePath           = './Uploads/';
+        //设置上传文件规则
+        $upload->saveRule           = 'uniqid';
+        //删除原图
+        $upload->thumbRemoveOrigin  = true;
+        if (!$upload->upload()) {
+            //捕获上传异常
+            $this->error($upload->getErrorMsg());
+        } else {
+            //取得成功上传的文件信息
+            $uploadList = $upload->getUploadFileInfo();
+            $_POST['photo'] = $uploadList[0]['savename'];
+        }
+        //dump($uploadList);exit();
     }
     
     /**
