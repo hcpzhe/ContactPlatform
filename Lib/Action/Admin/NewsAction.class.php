@@ -1,7 +1,6 @@
 <?php
 //新闻
 class NewsAction extends CommonAction {
-	// TODO  缺少批量 设为图片,取消图片 字段: is_pic
 	/*
 	 * 设置图片操作
 	 * 可以批量操作，传主键
@@ -57,7 +56,7 @@ class NewsAction extends CommonAction {
 	
     //过滤查询条件
     public function _filter(&$map){
-    	// TODO  缺少分类检索
+    	//分类检索
     	if(isset($_POST['newstype'])){
     		switch ($_POST['newstype']){
     			case 0: //图片信息
@@ -98,7 +97,7 @@ class NewsAction extends CommonAction {
      */
     protected function myIndex($map){
     	//新闻分类
-    	$news_category_M = M('News_category');
+    	$news_category_M = M('NewsCategory');
     	$category_list = $news_category_M->where("status>0")->select();
     	$this->assign('category_list',$category_list);
     	
@@ -128,7 +127,7 @@ class NewsAction extends CommonAction {
      * 新增页面
      */
     public function add() {
-    	$news_category_M = M('News_category');
+    	$news_category_M = M('NewsCategory');
     	$category_list = $news_category_M->where('status>0')->select();
     	$this -> assign('category_list',$category_list);
     	$this->display();
@@ -142,7 +141,7 @@ class NewsAction extends CommonAction {
     	/**
     	 * TODO 新闻增加了预览图片, 这里要做图片上传处理
     	 */
-    	$this->upload();
+    	$this->upload();//上传图片处理
     	if (false !== $news_M->create()){
     		
     		if ($news_M->add()){
@@ -186,13 +185,17 @@ class NewsAction extends CommonAction {
             $uploadList = $upload->getUploadFileInfo();
             $_POST['picture'] = $uploadList[0]['savename'];
         }
-        dump($uploadList);exit();
+        //dump($uploadList);exit();
     }
     
     /**
      * 编辑查看页面
      */
     public function read() {
+    	//栏目列表
+    	$news_category_M = M('NewsCategory');
+    	$category_list = $news_category_M->where('status>0')->select();
+    	$this -> assign('category_list',$category_list);
     	
     	$news_M = M('News');
         $id = $_REQUEST [$news_M->getPk()];
