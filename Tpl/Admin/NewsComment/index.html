@@ -1,0 +1,157 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<link type="text/css" rel="stylesheet" href="__PUBLIC__/css/base.css">
+<link type="text/css" rel="stylesheet" href="__PUBLIC__/css/global.css">
+    <script type="text/javascript" src="__PUBLIC__/js/jquery.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/js/main.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/js/RSsubmit.js"></script>
+<title>
+
+</title></head>
+<body>
+
+<script type="text/javascript">
+var baturl = '';
+$(function($) {
+  $("#dolist").change(function(){
+	 switch(this.value) {
+	 	case "0" ://通过审核
+	 		baturl = '__GROUP__/NewsComment/toStatus1';
+	 	break;
+	 	case "1" ://取消审核
+	 		baturl = '__GROUP__/NewsComment/toStatus2';
+	 	break;
+	 	case "2" ://删除
+	 		baturl = '__GROUP__/NewsComment/delete';
+	 	break;
+	 	default :
+	 		baturl = '';
+	 	break;
+	 }
+  });
+  
+  $(".bat_a_handle").click(function(){
+		 $(this).RSsubmit({success_alert:true,reload:true});
+		 return false;
+	  });
+});
+function bathandle(inputname) {
+	if (baturl != '') {
+		if(confirm('您确认要删除吗？')){
+			var ids = dot = '';
+			$("input[name='"+inputname+"'][checked=true]}").each(function(){
+				ids += dot + this.value;
+				dot = ',';
+			});
+			$(this).RSsubmit({
+				data : {id:ids},
+				url : baturl
+			});
+		}
+	}
+	return false;
+}
+</script>
+    <form name="form1" method="post" action="__URL__/insert" id="form1">
+       <div class="main-content">
+        <div class="w760">
+            <h3 class="common-tit">
+                  <span>当前位置：</span>信息管理 &gt; <em>评论管理</em></h3>
+            <div class="paging3">
+                检索：信息分类：<select name="ctg_id" id="typelist">
+	<option selected="selected" value="0">请选择分类</option>
+	<!-- <foreach name="category_list" item="ctgrow"> -->
+	<option value="{$ctgrow['id']}">╋{$ctgrow['name']}</option>
+	<!-- </foreach> -->
+
+</select>
+                信息状态：<select name="DropDownList1" id="DropDownList1">
+	<option selected="selected" value="-1">请选择信息类型</option>
+	<option value="1">已审核</option>
+	<option value="2">未审核</option>
+
+</select>
+                信息标题：<input name="txtsearch" id="txtsearch" type="text">
+                <input name="Button1" value="检索" id="Button1" class="btn7" type="submit">
+            </div>
+            <div class="row-tb">
+                <table id="newslist" border="0" cellpadding="0" cellspacing="0" width="100%">
+                    <tbody><tr>
+                        <th scope="col">
+                            <input name="checkbox" id="checkbox" title="全选" onclick="blcheck(this)" type="checkbox">
+                        </th>
+                        <th scope="col">
+                            信息标题
+                        </th>
+                        <th scope="col" style="width:60px;">
+                            评论人
+                        </th>
+                        <th scope="col" style="width:120px;">
+                            评论时间
+                        </th>
+                        <th scope="col">
+                            评论内容
+                        </th>
+                       
+                        <th style="width: 60px;">
+                            审核
+                        </th>
+                        <th scope="col" style="width: 60px;">
+                            操作
+                        </th>
+                    </tr>
+                    <!-- <foreach name="list" item="row"> -->
+                    <tr style="text-align: center;">
+                                <td>
+                                    <input name="batHdlChkbox" type="checkbox" value="{$row['id']}">
+                                </td>
+                                <td>
+                                    {$news_list[$row['news_id']]}
+                                </td>
+                                <td>
+                                    {$member_list[$row['member_id']]}
+                                </td>
+                                <td>
+                                    {:date('Y-m-d H:i:s',$row['create_time'])}
+                                </td>
+                                <td>
+                                    {$row['content']}
+                                </td>
+                                <td>
+		                         	<!-- <if condition="$row['status'] eq 1"> -->
+		                         	<a class="bat_a_handle" href="__URL__/toStatus2/id/{$row['id']}">√</a>
+		                         	<!-- <else /> -->
+		                            <a class="bat_a_handle" href="__URL__/toStatus1/id/{$row['id']}">×</a>
+		                            <!-- </if> -->
+                                </td>
+                               
+                                <td>
+                                    <a href="__URL__/delete/id/{$row['id']}" onclick="if(confirm('您确认要删除吗？')){$(this).RSsubmit()};return false;">删除</a>|
+                                </td>
+                      </tr>
+                      <!-- </foreach> -->
+                </tbody></table>
+            </div>
+            <div class="paging3">
+                <select name="dolist" id="dolist">
+	<option selected="selected" value="-1">请选择操作类型</option>
+	<option value="0">通过审核</option>
+	<option value="1">取消审核</option>
+	<option value="2">删除</option>
+
+</select>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <input name="btdel" value="批量操作" id="btdel" class="btn7" type="button" onclick="bathandle('batHdlChkbox');"></div>
+            <div class="paging3">
+                {$page}
+                <div class="cl">
+                </div>
+            </div>
+        </div>
+    </div>
+    </form>
+
+
+</body></html>

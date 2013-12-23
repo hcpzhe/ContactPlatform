@@ -1,5 +1,5 @@
 /**
- * RSsubmit v1.0
+ * RSsubmit v1.1
  * Dependencies jQuery
  * Copyright RockSnap
  */
@@ -8,6 +8,7 @@
 	var RSsubmitSet = {
 		success_alert : false, //成功后是否 alert data.info
 		error_alert : true, //失败后alert
+		reload : false, //如果没有返回 data.url 是否刷新当前页面
 		type : '',
 		url : '',
 		data : ''
@@ -50,6 +51,7 @@
 				}
 				
 				if (dd.url) window.location.href = dd.url;
+				else if (myset.reload) window.location.reload();
 			}
 		});
 	};

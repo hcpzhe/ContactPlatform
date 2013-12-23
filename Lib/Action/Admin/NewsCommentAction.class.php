@@ -3,6 +3,7 @@
 //若为匿名评论, 则所属用户ID member_id 为0
 class NewsCommentAction extends CommonAction {
     //过滤查询字段
+    // TODO 缺少所属文章分类检索 ctg_id  , 评论状态检索 status
  	public function _filter(&$map){
         if(!empty($_POST['txtsearch'])) {
         $map['title'] = array('like',"%".$_POST['txtsearch']."%");
@@ -75,7 +76,7 @@ class NewsCommentAction extends CommonAction {
                 $condition = array($pk => array('in', explode(',', $id)));
                 $list = $new_comment_M->where($condition)->setField('status', 1);
                 if ($list !== false) {
-                    $this->success('审核成功！');
+                    $this->success('审核成功！',cookie('_currentUrl_'));
                 } else {
                     $this->error('审核失败！');
                 }
@@ -129,7 +130,7 @@ class NewsCommentAction extends CommonAction {
                 $condition = array($pk => array('in', explode(',', $id)));
                 $list = $news_comment_M->where($condition)->setField('status', 1);
                 if ($list !== false) {
-                    $this->success('批操作成功！');
+                    $this->success('批操作成功！',cookie('_currentUrl_'));
                 } else {
                     $this->error('批操作失败！');
                 }
@@ -151,7 +152,7 @@ class NewsCommentAction extends CommonAction {
                 $condition = array($pk => array('in', explode(',', $id)));
                 $list = $news_comment_M->where($condition)->setField('status', 2);
                 if ($list !== false) {
-                    $this->success('批操作成功！');
+                    $this->success('批操作成功！',cookie('_currentUrl_'));
                 } else {
                     $this->error('批操作失败！');
                 }

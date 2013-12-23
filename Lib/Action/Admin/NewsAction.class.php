@@ -250,7 +250,7 @@ class NewsAction extends CommonAction {
      * 显示信息
      * 可批量操作，必须传递主键ID
      */
-    public function no_display(){
+    public function on_display(){
         $news_M = M('News');
         if (!empty($news_M)) {
             $pk = $news_M->getPk();
@@ -272,7 +272,7 @@ class NewsAction extends CommonAction {
      * 设置推荐
      * 可批量操作
      */
-    public function no_recom(){
+    public function on_recom(){
     	$news_M = M('News');
         if (!empty($news_M)) {
             $pk = $news_M->getPk();

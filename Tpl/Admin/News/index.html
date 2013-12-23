@@ -18,13 +18,13 @@ $(function($) {
   $("#dolist").change(function(){
 	 switch(this.value) {
 	 	case "0" ://设为图片
-	 		baturl = '__GROUP__/News/no_pic';
+	 		baturl = '__GROUP__/News/on_pic';
 	 	break;
 	 	case "1" ://设为推荐
-	 		baturl = '__GROUP__/News/no_recom';
+	 		baturl = '__GROUP__/News/on_recom';
 	 	break;
 	 	case "2" ://信息显示
-	 		baturl = '__GROUP__/News/no_display';
+	 		baturl = '__GROUP__/News/on_display';
 	 	break;
 	 	case "3" ://取消图片
 	 		baturl = '__GROUP__/News/off_pic';
@@ -42,6 +42,11 @@ $(function($) {
 	 		baturl = '';
 	 	break;
 	 }
+  });
+  
+  $(".bat_a_handle").click(function(){
+	 $(this).RSsubmit({success_alert:true,reload:true});
+	 return false;
   });
 });
 function bathandle(inputname) {
@@ -130,23 +135,23 @@ function bathandle(inputname) {
                          </td>
                          <td>
                          	<!-- <if condition="$row['is_pic'] gt 0"> -->
-                         	<a href="__URL__/off_pic/id/{$row['id']}">√</a>
+                         	<a class="bat_a_handle" href="__URL__/off_pic/id/{$row['id']}">√</a>
                          	<!-- <else /> -->
-                            <a href="__URL__/on_pic/id/{$row['id']}">×</a>
+                            <a class="bat_a_handle" href="__URL__/on_pic/id/{$row['id']}">×</a>
                             <!-- </if> -->
                          </td>
                          <td>
                          	<!-- <if condition="$row['is_recom'] gt 0"> -->
-                         	<a href="__URL__/off_recom/id/{$row['id']}">√</a>
+                         	<a class="bat_a_handle" href="__URL__/off_recom/id/{$row['id']}">√</a>
                          	<!-- <else /> -->
-                            <a href="__URL__/no_recom/id/{$row['id']}">×</a>
+                            <a class="bat_a_handle" href="__URL__/on_recom/id/{$row['id']}">×</a>
                             <!-- </if> -->
                          </td>
                          <td>
                          	<!-- <if condition="$row['is_display'] gt 0"> -->
-                         	<a href="__URL__/off_display/id/{$row['id']}">√</a>
+                         	<a class="bat_a_handle" href="__URL__/off_display/id/{$row['id']}">√</a>
                          	<!-- <else /> -->
-                            <a href="__URL__/on_display/id/{$row['id']}">×</a>
+                            <a class="bat_a_handle" href="__URL__/on_display/id/{$row['id']}">×</a>
                             <!-- </if> -->
                          </td>
                          <td>
