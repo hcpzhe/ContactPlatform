@@ -1,41 +1,32 @@
 <?php
 //会员
 class MemberAction extends CommonAction {
-//	/**
-//	 * 列表
-//	 * 根据传递参数, 进行列表筛选
-//	 * 要分页, 排序
-//	 */
-//	public function index() {
-//		
-//		$this->display();
-//	}
+//	TODO 缺少重置密码
 	//过滤查询字段
 	function _filter(&$map){
 		$map['status']=array('gt',0);
-		if (!empty($_POST['newstype'])){
-			switch ($_POST['newstype']){
-				case 0://未审核 
+		if (!empty($_POST['member_type'])){
+			switch ($_POST['member_type']){
+				case '1'://未审核 
 					$map['status']=array('eq',1);
 					break;
-				case 1: //已审核
+				case '2': //已审核
 					$map['status']=array('eq',2);
 					break;
-				case 2: //未推荐
+				case '3': //未推荐
 					$map['is_recom']=array('eq',0);
 					break;
-				case 3: //已推荐
+				case '4': //已推荐
 					$map['is_recom']=array('eq',1);
 					break;
 				default:;
 			}
-		
 		}
 		if(!empty($_POST['txtsearch'])) {
 		$map['account'] = array('like',"%".$_POST['txtsearch']."%");
 		}
-		
 	}
+	
 	/**
 	 * 新增页面
 	 */
@@ -54,7 +45,7 @@ class MemberAction extends CommonAction {
 		//保存当前数据对象
 		$new_member_id = $member_M->add();
 		if ($new_member_id !== false) { //保存成功
-			// TODO 使用 $fileinfo = $this->_upload(ACTION_NAME.'/'.$new_member_id); 传递头像图片
+		//	TODO 使用 $fileinfo = $this->_upload(ACTION_NAME.'/'.$new_member_id); 传递头像图片
 			$this->success('用户新增成功!',cookie('_currentUrl_'));
 		} else {
 			//失败提示

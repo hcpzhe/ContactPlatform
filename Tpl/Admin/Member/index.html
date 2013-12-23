@@ -1,0 +1,164 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<link type="text/css" rel="stylesheet" href="__PUBLIC__/css/base.css">
+<link type="text/css" rel="stylesheet" href="__PUBLIC__/css/global.css">
+    <script type="text/javascript" src="__PUBLIC__/js/jquery.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/js/main.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/js/RSsubmit.js"></script>
+<title>
+
+</title></head>
+<body>
+<script type="text/javascript">
+var baturl = '';
+$(function($) {
+  $("#dolist").change(function(){
+	 switch(this.value) {
+	 	case "0" ://通过审核
+	 		baturl = '__GROUP__/Member/toStatus1';
+	 	break;
+	 	case "1" ://取消审核
+	 		baturl = '__GROUP__/Member/toStatus2';
+	 	break;
+	 	case "2" ://取消推荐
+	 		baturl = '__GROUP__/Member/toRecom0';
+	 	break;
+	 	case "3" ://推荐首页
+	 		baturl = '__GROUP__/Member/toRecom1';
+	 	break;
+	 	case "4" ://删除
+	 		baturl = '__GROUP__/Member/delete';
+	 	break;
+	 	default :
+	 		baturl = '';
+	 	break;
+	 }
+  });
+  
+  $(".bat_a_handle").click(function(){
+	 $(this).RSsubmit({success_alert:true,reload:true});
+	 return false;
+  });
+});
+function bathandle(inputname) {
+	if (baturl != '') {
+		if(confirm('您确认要删除吗？')){
+			var ids = dot = '';
+			$("input[name='"+inputname+"'][checked=true]}").each(function(){
+				ids += dot + this.value;
+				dot = ',';
+			});
+			$(this).RSsubmit({
+				data : {id:ids},
+				url : baturl
+			});
+		}
+	}
+	return false;
+}
+</script>
+    <form name="form1" method="post" action="__ACTION__" id="form1">
+    <div class="main-content">
+        <div class="w760">
+            <h3 class="common-tit">
+                <span>当前位置：</span>系统管理 &gt; <em>用户管理</em></h3>
+                  <div class="paging3">
+                检索：用户状态：<select name="member_type" id="member_type">
+	<option selected="selected" value="0">请选择用户状态</option>
+	<option value="1">未审核</option>
+	<option value="2">已审核</option>
+	<option value="3">未推荐</option>
+	<option value="4">已推荐</option>
+
+</select>
+                用户名称：<input name="txtsearch" id="txtsearch" class="txt-w134" type="text">
+                <input name="Button1" value="检索" id="Button1" class="btn7" type="submit">
+            </div>
+            <div class="row-tb">
+                <table id="newslist" border="0" cellpadding="0" cellspacing="0" width="100%">
+                    <tbody><tr>
+                        <th scope="col">
+                            <input name="checkbox" id="checkbox" title="全选" onclick="blcheck(this)" type="checkbox">
+                        </th>
+                        <th scope="col">
+                            用户名
+                        </th>
+                        <th scope="col">
+                            用户类别
+                        </th>
+                        <th scope="col">
+                            注册时间
+                        </th>
+                        <th scope="col">
+                            审核
+                        </th>
+                         <th scope="col">
+                            推荐首页
+                        </th>
+                        <th scope="col">
+                            操作
+                        </th>
+                    </tr>
+                    <!-- <foreach name="list" item="row"> -->
+                     <tr style="text-align: center;">
+                         <td>
+                             <input name="batHdlChkbox" value="{$row['id']}" type="checkbox">
+                         </td>
+                         <td>
+                             {$row['account']}
+                         </td>
+                         <td>
+                             {$row['type'] == 1 ? '人大代表' : '政协委员'}
+                         </td>
+                         <td style=" width:120px; ">
+                             {:date('Y-m-d H:i:s',$row['create_time'])}
+                         </td>
+                         <td>
+                         	<!-- <if condition="$row['status'] eq 1"> -->
+                         	<a class="bat_a_handle" href="__URL__/toStatus2/id/{$row['id']}">√</a>
+                         	<!-- <else /> -->
+                            <a class="bat_a_handle" href="__URL__/toStatus1/id/{$row['id']}">×</a>
+                            <!-- </if> -->
+                         </td>
+                          <td>
+                         	<!-- <if condition="$row['is_recom'] gt 0"> -->
+                         	<a class="bat_a_handle" href="__URL__/toRecom0/id/{$row['id']}">√</a>
+                         	<!-- <else /> -->
+                            <a class="bat_a_handle" href="__URL__/toRecom1/id/{$row['id']}">×</a>
+                            <!-- </if> -->
+                         </td>
+                         <td style=" width:250px; ">
+                             <a onclick="return confirm('您确认要重置密码吗？');" href="#">重置密码</a>|
+                                 <a href="__URL__/read/id/{$row['id']}" target="_blank">查看</a>|
+                                 <a href="__URL__/read/id/{$row['id']}">修改</a>|
+                                 <a href="__URL__/delete/id/{$row['id']}" onclick="if(confirm('您确认要删除吗？')){$(this).RSsubmit()};return false;">删除</a>
+                         </td>
+                     </tr>
+                     <!-- </foreach> -->
+                </tbody></table>
+            </div>
+                <div class="paging3">
+                <select name="dolist" id="dolist">
+	<option selected="selected" value="-1">请选择操作类型</option>
+	<option value="0">通过审核</option>
+	<option value="1">取消审核</option>
+	<option value="2">未推荐</option>
+	<option value="3">已推荐</option>
+	<option value="4">删除</option>
+
+</select>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <input name="btdel" value="批量操作" id="btdel" class="btn7" type="button" onclick="bathandle('batHdlChkbox');"></div>
+            <div class="paging3">
+                {$page}
+                <div class="cl">
+                </div>
+            </div>
+        </div>
+    </div>
+    </form>
+
+
+</body></html>
