@@ -1,6 +1,9 @@
 <?php
 //新闻分类
 class NewsCategoryAction extends CommonAction {
+	protected function _filter(&$map){
+		$map['status']=array('gt',0);
+	}
 
     /**
      * 新增页面

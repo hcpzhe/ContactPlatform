@@ -199,7 +199,7 @@ class CommonAction extends Action {
                 $condition = array($pk => array('in', explode(',', $id)));
                 $list = $model->where($condition)->setField('status', 0);
                 if ($list !== false) {
-                    $this->success('删除成功！',cookie('_currentUrl_'));
+                    $this->success('删除成功！',__URL__/*cookie('_currentUrl_')*/);
                 } else {
                     $this->error('删除失败！');
                 }
