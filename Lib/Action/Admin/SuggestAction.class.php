@@ -1,6 +1,14 @@
 <?php
 //建议
 class SuggestAction extends CommonAction {
+	
+	private $reply_type = array(
+			'0' => '回复',
+			'1' => '短信',
+			'2' => '邮件',
+			'3' => '电话',
+			'4' => '信函'
+		);
 
 	//过滤查询字段
     public function _filter(&$map){
@@ -29,6 +37,10 @@ class SuggestAction extends CommonAction {
     	$this->assign('page',$page); 
     }
     
+    
+    public function _before_read() {
+    	$this->assign('reply_type',$this->reply_type);
+    }
     
     /**
      * 编辑查看
@@ -61,6 +73,7 @@ class SuggestAction extends CommonAction {
         	$this->assign('sugreplay_list',$sugreply_list);//回复列表
         	$this->assign('page',$page);//分页导航
         }
+        cookie('_currentUrl_', __SELF__);
         $this->display();  	
     }
     /*

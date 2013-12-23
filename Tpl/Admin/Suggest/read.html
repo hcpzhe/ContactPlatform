@@ -1,10 +1,140 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<link type="text/css" rel="stylesheet" href="__PUBLIC__/css/base.css">
+<link type="text/css" rel="stylesheet" href="__PUBLIC__/css/global.css">
+    <script type="text/javascript" src="__PUBLIC__/js/jquery.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/js/main.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/js/RSsubmit.js"></script>
+    <style type="text/css">
+        .style1
+        {
+            height: 38px;
+        }
+    </style>
+<title>
 
-</body>
-</html>
+</title></head>
+<body>
+    <form name="form1" method="post" action="__GROUP__/Sugreply/save" id="form1" onsubmit="$(this).RSsubmit({success_alert:true});return false;">
+    <div class="main-content">
+        <div class="w760">
+            <h3 class="common-tit">
+                <span>当前位置：</span>建议管理 &gt; <em>
+                    回复建议</em></h3>
+            <div class="col-tb">
+                <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                    <tbody><tr>
+                        <th scope="row">
+                            建议标题：
+                        </th>
+                        <td>
+                            {$vo['title']}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">
+                            建议人帐号：
+                        </th>
+                        <td>
+                            {$member_info['nickname']}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">
+                            建议时间：
+                        </th>
+                        <td>
+                            {:date('Y-m-d H:i:s',$vo['create_time'])}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">
+                            建议属性：
+                        </th>
+                        <td>
+                            <span disabled="disabled"><input id="CkImg" name="CkImg" checked="checked" disabled="disabled" type="checkbox"><label for="CkImg">{$reply_type[$vo['reply_type']]}</label></span>&nbsp;&nbsp;&nbsp;
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">
+                            建议内容：
+                        </th>
+                        <td>
+                            {$vo['content']}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">
+                            建议说明：
+                        </th>
+                        <td>
+                            {$vo['remark']}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">
+                            <span class="red">*</span>回复内容：
+                        </th>
+                        <td>
+                            <textarea name="reply_content" rows="2" cols="20" id="txtRepaly" style="height:50px;width:500px;"></textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">
+                        </th>
+                        <td>
+                        	<input name="sug_id" value="{$vo['id']}" type="hidden" />
+                            <input name="btnSave" value="回复" class="btn7" type="submit">&nbsp;&nbsp;
+                            <input name="Button1" value="返回" class="btn7" type="button" onclick="window.history.back();">
+                        </td>
+                    </tr>
+                </tbody></table>
+            </div>
+            <h3 class="common-tit">
+                回复列表</h3>
+            <div class="col-tb">
+                <div class="row-tb">
+                    <table id="newslist" border="0" cellpadding="0" cellspacing="0" width="100%">
+                        <tbody><tr align="center">
+                            
+                            <th scope="col" style="width: 60px; text-align: center;">
+                                回复人
+                            </th>
+                            <th scope="col" style="width: 120px; text-align: center;">
+                                回复时间
+                            </th>
+                            
+                            <th scope="col" style="text-align: center;">
+                                回复内容
+                            </th>
+                        </tr>
+                        <!-- <foreach name="sugreplay_list" item="row"> -->
+                                <tr style="text-align: center;">
+                                    
+                                    <td>
+                                        {$row['user_id']}
+                                    </td>
+                                    <td>
+                                        {:date('Y-m-d H:i:s',$row['reply_time'])}
+                                    </td>
+                                    <td>
+                                        {$row['reply_content']}
+                                    </td>
+                                </tr>
+                 	 	<!-- </foreach> -->
+                    </tbody></table>
+                </div>
+            </div>
+            <div class="paging3">
+                {$page}
+                <div class="cl">
+                </div>
+            </div>
+        </div>
+    </div>
+    </form>
+
+
+</body></html>

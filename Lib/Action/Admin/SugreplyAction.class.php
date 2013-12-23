@@ -12,7 +12,7 @@ class SugreplyAction extends CommonAction {
     		$this->error($sugreply_M->getError());
     	}else{
     		if (false !== $sugreply_M->add()){
-				$this->success('回复成功');
+				$this->success('回复成功',cookie('_currentUrl_'));
 				$suggest_M = M('Suggest');
 				$info = $suggest_M->where("id={$sugreply_M->sug_id}")->find();
 				if ($info['status']==2){//更新建议审核状态
@@ -22,7 +22,7 @@ class SugreplyAction extends CommonAction {
     		}else{
     			$this->error('回复失败');
     		}
-    	} 
+    	}
     }
     
 }
