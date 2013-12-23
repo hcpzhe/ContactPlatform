@@ -230,5 +230,29 @@ class CommonAction extends Action {
         }
         $this->error('非法操作');
     }
-
+	
+    protected function _upload($path) {
+		import('@.ORG.Net.UploadFile');
+		//导入上传类
+		$upload = new UploadFile();
+		//设置上传文件大小
+		$upload->maxSize			= 3292200;
+		//设置上传文件类型
+		$upload->allowExts		  = explode(',', 'jpg,gif,png,jpeg');
+		//设置附件上传目录
+		$upload->savePath		   = APP_PATH.'Public/Uploads/'.$path;
+		//设置上传文件规则
+		$upload->saveRule		   = 'uniqid';
+		//删除原图
+		$upload->thumbRemoveOrigin  = true;
+		if (!$upload->upload()) {
+			//捕获上传异常
+			$this->error($upload->getErrorMsg());
+		} else {
+			//取得成功上传的文件信息
+			$uploadList = $upload->getUploadFileInfo();
+			//return $uploadList[0]['savename'];
+			return $uploadList[0];
+		}
+    }
 }
