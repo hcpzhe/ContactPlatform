@@ -120,6 +120,13 @@ class CommonAction extends Action {
 
             $voList = $model->where($map)->order("`" . $order . "` " . $sort)->limit($p->firstRow . ',' . $p->listRows)->select();
             //echo $model->getlastsql();
+            
+            $model= $model->where($map)->order("`" . $order . "` " . $sort)->limit($p->firstRow . ',' . $p->listRows);
+            //管理员用户显示页面新增处理
+            if (method_exists($this,'userIndex')){
+            	$this->userIndex($model);
+            }
+            
             //分页跳转的时候保证查询条件
             foreach ($map as $key => $val) {
                 if (!is_array($val)) {
