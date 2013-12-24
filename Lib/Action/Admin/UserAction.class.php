@@ -39,12 +39,12 @@ class UserAction extends CommonAction {
    		//角色信息
   		$role_list = M('Role')->getField("id,name",true);
   		
-  		$return = array();
+  		$user_role_list = array();
 		//组合数据
    		foreach ($role_user_list as $val){
-   			$return[$val['user_id']][$val['role_id']]=$role_list[$val['role_id']];
+   			$user_role_list[$val['user_id']][$val['role_id']]=$role_list[$val['role_id']];
    		}
-   		$this->assign('return',$return);
+   		$this->assign('return',$user_role_list);
     }
     /**
      * 新增接口

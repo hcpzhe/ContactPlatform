@@ -117,14 +117,14 @@ class CommonAction extends Action {
             }
             $p = new Page($count, $listRows);
             //分页查询数据
-
-            $voList = $model->where($map)->order("`" . $order . "` " . $sort)->limit($p->firstRow . ',' . $p->listRows)->select();
+			
+            $list_model= $model->where($map)->order("`" . $order . "` " . $sort)->limit($p->firstRow . ',' . $p->listRows);
+            $voList = $list_model->select();
             //echo $model->getlastsql();
             
-            $model= $model->where($map)->order("`" . $order . "` " . $sort)->limit($p->firstRow . ',' . $p->listRows);
             //管理员用户显示页面新增处理
             if (method_exists($this,'userIndex')){
-            	$this->userIndex($model);
+            	$this->userIndex($list_model);
             }
             
             //分页跳转的时候保证查询条件
