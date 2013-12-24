@@ -9,119 +9,66 @@
     <script type="text/javascript" src="__PUBLIC__/js/RSsubmit.js"></script>
 <title>
 
-</title>
-</head>
+</title></head>
 <body>
-<script type="text/javascript">
-</script>
-    <form name="form1" method="post" action="__URL__/insert" onsubmit="$(this).RSsubmit({success_alert:true});return false;" id="form1" enctype="multipart/form-data">
-        <div class="main-content">
-            <div class="w760">
-                <h3 class="common-tit">
-                    <span>当前位置：</span>系统管理 &gt; <em>用户添加</em></h3>
-                <div class="row-tb">
-                 
-                    <table border="0" cellpadding="0" cellspacing="0" width="760">
-                        <tbody><tr>
-                            <td style="text-align: right;">
-                                照片：
-                            </td>
-                            <td style="width: 610px; text-align: left;">                           
-                                <img id="UserImage" src="" style="width:120px;border-width:0px;"> 
-                                <input name="photo" id="photo" type="file">
-                            </td>
-                        </tr>
-                         <tr>
-                            <td style="text-align: right;">
-                                用户名：
-                            </td>
-                            <td style="text-align: left;">
-                                <input name="account" id="account" class="txt2" maxlength="30" type="text">
-                            </td>
-                        </tr>
-                         <tr>
-                            <td style="text-align: right;">
-                                类 别：
-                            </td>
-                            <td style="text-align: left;">
-                              <select name="type" id="type">
-	<option selected="selected" value="0">人大代表</option>
-	<option value="1">政协委员</option>
-
-</select>
-                              
-                            </td>
-                        </tr>
-                        <tr>
-                            <td style="text-align: right;">
-                                真实姓名：
-                            </td>
-                            <td style="text-align: left;">
-                              <input name="nickname" id="nickname" class="txt2" maxlength="10" type="text">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td style="text-align: right;">
-                                代表、委员证号：
-                            </td>
-                            <td style="width: 610px; text-align: left;">
-                                <input name="paper_number" id="paper_number" class="txt2" maxlength="50" type="text">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td style="text-align: right;">
-                                工作单位：
-                            </td>
-                            <td style="width: 610px; text-align: left;">
-                                <input name="company" id="company" class="txt2" maxlength="100" type="text">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td style="text-align: right;">
-                                手 机：
-                            </td>
-                            <td style="width: 610px; text-align: left;">
-                                <input name="mobile" id="mobile" class="txt2" maxlength="11" type="text">
-                            </td>
-                        </tr>
-                         <tr>
-                            <td style="text-align: right;">
-                                密 码：
-                            </td>
-                            <td style="text-align: left;">
-                                <input name="password" id="password" class="txt2" maxlength="32" type="password">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td style="text-align: right;">
-                                请再次输入密码：
-                            </td>
-                            <td style="text-align: left;">
-                                <input name="repassword" id="repassword" class="txt2" maxlength="32" type="password">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td style="text-align: right;">
-                                用户简介：
-                            </td>
-                            <td style="text-align: left;">
-                                <textarea name="remark" rows="2" cols="20" id="remark" style="height: 200px; width: 600px;"></textarea>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td style="text-align: right;">
-                            </td>
-                            <td style="text-align: left;">
-                                <input name="Button1" value="添加" id="Button1" class="btn4" type="submit">
-                            </td>
-                        </tr>
-                    </tbody></table>
-                </div>
+    <form name="form1" method="post" action="__URL__/insert" id="form1" onsubmit="$(this).RSsubmit({success_alert:true});return false;">
+    <div class="main-content">
+        <div class="w760">
+            <h3 class="common-tit">
+                <span>当前位置：</span>系统管理 &gt; <em>管理员添加</em></h3>
+            <div class="col-tb">
+                <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                    <tbody><tr>
+                        <th scope="row" width="19%">
+                            <span class="red">*</span>用户名：
+                        </th>
+                        <td width="81%">
+                            <input name="account" maxlength="20" id="txtadmin_Manage" class="txt-w326" type="text">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row" width="19%">
+                            <span class="red">*</span>用户密码：
+                        </th>
+                        <td width="81%">
+                            <input name="password" maxlength="20" id="txtadmin_Pwd" class="txt-w326" type="password">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row" width="19%">
+                            <span class="red">*</span>确认密码：
+                        </th>
+                        <td width="81%">
+                            <input name="repassword" id="txtadmin_Pwd1" class="txt-w326" type="password">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row" width="19%">
+                            <span class="red">*</span>权限：
+                        </th>
+                        <td width="81%">
+                            <table id="cklist" border="0">
+	<tbody><tr>
+		<!-- <foreach name="role_list" item="rolerow"> -->
+		<td><input name="roles[]" type="checkbox" value="{$rolerow['id']}"><label>{$rolerow['name']}</label></td>
+		<!-- </foreach> -->
+	</tr>
+</tbody></table>
+                        </td>
+                    </tr>
+                     <tr>
+                        <th scope="row" width="19%">
+                           
+                        </th>
+                        <td width="81%">
+                            <input name="btnSave" value="添加" id="btnSave" class="btn7" type="submit">
+                        </td>
+                    </tr>
+                </tbody></table>
             </div>
         </div>
-    
-
-</form>
+    </div>
+    </form>
 
 
 </body></html>

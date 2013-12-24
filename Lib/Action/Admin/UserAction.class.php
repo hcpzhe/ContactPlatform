@@ -1,15 +1,17 @@
 <?php
 //管理员
 class UserAction extends CommonAction {
-//    /**
-//     * 列表
-//     * 根据传递参数, 进行列表筛选
-//     * 要分页, 排序
-//     */
-//	public function index() {
-//    	
-//		$this->display();
-//    }
+	public function _before_add() {
+		$role_A = A('Admin/Role');
+		$list = $role_A->_getRoleList();
+		$this->assign("role_list", $list);
+	}
+	public function _before_read() {
+		$role_A = A('Admin/Role');
+		$list = $role_A->_getRoleList();
+		$this->assign("role_list", $list);
+	}
+	
     public  function  _filter(){
    		if (!empty($_POST['txtsearch'])){
     		$map['account'] = array('like',"%".$_POST['txtsearch']."%");

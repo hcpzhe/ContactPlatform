@@ -245,7 +245,7 @@ body{scrollbar-base-color:#5794CE;scrollbar-face-color:#DCE4F9;scrollbar-arrow-c
 .paging3 a:hover{ color:#f60;}
 
 /*footer4*/
-.footer4{ padding-top:13px; height:30px; color:#fff; background:url(../images/footer3_bg.png) repeat-x;}
+.footer4{ padding-top:13px; height:30px; color:#fff; background:url(../images/footer3_bg.png) repeat-x; width: 100%;overflow: hidden;}
 .footer4 a{ color:#fff!important;}
 
 /*txt-w585*/

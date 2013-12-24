@@ -11,7 +11,7 @@ body,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,p,th,td,form,fieldset,legend,input,butt
 textarea{line-height:18px;padding:1px 0 0 1px;}
 
 /*----------Reset CSS for Website----------*/
-body{color:#333; background:#fff; text-align:left; line-height:20px;}
+body{color:#333; background:#fff; text-align:left; line-height:30px;}
 a:link{color:#333; text-decoration:none;}
 a:visited{color:#333; text-decoration:none;}
 a:hover{color:#f60; text-decoration:none;}
