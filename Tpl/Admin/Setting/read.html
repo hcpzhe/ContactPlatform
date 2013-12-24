@@ -1,0 +1,101 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<link type="text/css" rel="stylesheet" href="__PUBLIC__/css/base.css">
+<link type="text/css" rel="stylesheet" href="__PUBLIC__/css/global.css">
+    <script type="text/javascript" src="__PUBLIC__/js/jquery.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/js/RSsubmit.js"></script>
+    
+	<link rel="stylesheet" href="__PUBLIC__/kindeditor-4.1.10//themes/default/default.css" />
+	<script charset="utf-8" src="__PUBLIC__/kindeditor-4.1.10/kindeditor-min.js"></script>
+	<script charset="utf-8" src="__PUBLIC__/kindeditor-4.1.10/lang/zh_CN.js"></script>
+<title>
+</title></head>
+<body>
+<script type="text/javascript">
+KindEditor.ready(function(K) {
+	K.create('textarea[name="content"]', {
+		allowFileManager : true,
+		autoHeightMode : true,
+		afterCreate : function() {
+			this.loadPlugin('autoheight');
+		},
+		afterUpload : function(url) {
+			var firstimageoption = '<option value="' + url + '">' + url + '</option>';
+			var selectoption = '<option value="' + url + '" selected="selected">' + url + '</option>';
+			$("#firstimage").append(firstimageoption);
+			$("#images").append(selectoption);
+		}
+	});
+});
+</script>
+    <form name="form1" method="post" action="__URL__/update" onsubmit="$(this).RSsubmit({success_alert:true});return false;" id="form1">
+        <div class="main-content">
+        <div class="w760">
+            <h3 class="common-tit">
+                <span>当前位置：</span>系统管理 &gt; <em>基本信息</em></h3>
+            <div class="col-tb">
+                <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                   
+                    <tbody><tr>
+                        <th scope="row">
+                            <span class="red">*</span>网站名称：
+                        </th>
+                        <td>
+                            <input name="web_name" value="{$vo['web_name']}" maxlength="30" id="web_name" class="txt-w326" type="text">
+                        </td>
+                    </tr>
+                    <tr style=" display:none;">
+                        <th scope="row" class="style1">
+                            网站网址：
+                        </th>
+                        <td class="style1">
+                             <input name="txturl" id="txturl" class="txt-w326" type="text">
+                        </td>
+                    </tr>
+                     <tr style=" display:none;">
+                        <th scope="row" class="style1">
+                            网站关键词：
+                        </th>
+                        <td class="style1">
+                             <input name="txtkey" id="txtkey" class="txt-w326" type="text">
+                        </td>
+                    </tr>
+                     <tr style=" display:none;">
+                        <th scope="row" class="style1">
+                            网站描述：
+                        </th>
+                        <td class="style1">
+                             <textarea name="txtdes" rows="2" cols="20" id="txtdes" class="txt-w326" style="height:50px;width:600px;"></textarea>
+                        </td>
+                    </tr>
+                   
+            
+                    <tr>
+                        <th scope="row">
+                            <span class="red">*</span>版权内容：
+                        </th>
+                        <td>
+                            <textarea name="content" rows="2" cols="20" id="copyright" style="height: 200px; width: 600px;">
+                            	{$vo['copyright']}
+                            </textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">
+                        </th>
+                        <td>
+                            <input name="btnSave" value="保存" id="btnSave" class="btn7" type="submit">
+                        </td>
+                    </tr>
+                </tbody></table>
+            </div>
+        </div>
+    </div>
+    
+
+</form>
+
+
+</body></html>

@@ -20,15 +20,10 @@
 <title>
 
 </title></head>
-<body onpageshow='event.persisted &amp;&amp; (function(){var allInstances = CKEDITOR.instances, editor, doc;for ( var i in allInstances ){	editor = allInstances[ i ];	doc = editor.document;	if ( doc )	{		doc.$.designMode = "off";		doc.$.designMode = "on";	}}})();'>
+<body>
     <form name="form1" method="post" action="__URL__/insert" onsubmit="$(this).RSsubmit({success_alert:true});return false;" id="form1" enctype="multipart/form-data">
 
 <script type="text/javascript">
-//<![CDATA[
-function WebForm_OnSubmit() {
-CKEditor_TextBoxEncode('txtnews_Content', 0); 
-return true;
-}
 KindEditor.ready(function(K) {
 	K.create('textarea[name="content"]', {
 		allowFileManager : true,
@@ -44,7 +39,6 @@ KindEditor.ready(function(K) {
 		}
 	});
 });
-//]]>
 </script>
     <div class="main-content">
         <div class="w760">

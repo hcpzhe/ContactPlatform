@@ -1,6 +1,7 @@
 <?php
 //管理员
 class UserAction extends CommonAction {
+	// TODO 新增管理员时, 增加角色关系
 	public function _before_add() {
 		$role_A = A('Admin/Role');
 		$list = $role_A->_getRoleList();
@@ -10,6 +11,11 @@ class UserAction extends CommonAction {
 		$role_A = A('Admin/Role');
 		$list = $role_A->_getRoleList();
 		$this->assign("role_list", $list);
+		
+        $model = M('RoleUser');
+        $id = $_REQUEST ['id'];
+        $user_role = $model->where('`user_id`='.$id)->getField('role_id',true);
+		$this->assign("user_role", $user_role);
 	}
 	
     public  function  _filter(){
