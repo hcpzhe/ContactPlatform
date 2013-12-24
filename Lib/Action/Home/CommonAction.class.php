@@ -7,12 +7,12 @@ class CommonAction extends Action{
 	protected function getNav(){
 		//获取导航信息
 	    $news_category_M = M('News_category');
-    	$category_list = $news_category_M->where("is_display>0 AND is_index>0 AND status>0")->order("rank")->select();
+    	$category_list = $news_category_M->where("is_display>0 AND is_index>0 AND status>0")->order("rank asc")->select();
     	$this -> assign('category_list',$category_list); 
     	
     	//获取代表委员信息
     	$member_M = M('Member');
-    	$memer_list = $member_M->where("status=1")->limit('6')->select();
+    	$memer_list = $member_M->where("status=1 AND is_recom=1")->limit('6')->select();
 		$this->assign('member_list',$memer_list);		
 	}
 	function read() {
@@ -57,6 +57,33 @@ class CommonAction extends Action{
             //失败提示
             $this->error('新增失败!');
         }
+    }
+    protected function _upload($path) {
+		import('@.ORG.Net.UploadFile');
+		//导入上传类
+		$upload = new UploadFile();
+		//设置上传文件大小
+		$upload->maxSize			= 3292200;
+		//设置上传文件类型
+		$upload->allowExts		  = explode(',', 'jpg,gif,png,jpeg');
+		//设置附件上传目录
+		$upload->savePath		   = APP_PATH.'Public/Uploads/'.$path;
+		//设置上传文件规则
+		$upload->saveRule		   = 'uniqid';
+		//删除原图
+		$upload->thumbRemoveOrigin  = true;
+		if (!file_exists($upload->savePath)){
+			mkdir($upload->savePath,'0644',true);
+		}
+		if (!$upload->upload()) {
+			//捕获上传异常
+			$this->error($upload->getErrorMsg());
+		} else {
+			//取得成功上传的文件信息
+			$uploadList = $upload->getUploadFileInfo();
+			//return $uploadList[0]['savename'];
+			return $uploadList[0];
+		}
     }
 
 

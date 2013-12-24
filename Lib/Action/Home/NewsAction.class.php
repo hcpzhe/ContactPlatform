@@ -5,12 +5,12 @@ class  NewsAction extends CommonAction{
 	 * 显示新闻列表
 	 * 接受栏目的主键
 	 */
-	public function news_list(){
+	public function newsList(){
 		//获取导航信息
 		$this->getNav();
 		
 		$news_M = M('News');       
-        $ctg_id = $_REQUEST ['ctg_id'];
+        $ctg_id = $_REQUEST ['id'];
         import('@.ORG.Util.Page');
         $count = $news_M->where("ctg_id=%d",$ctg_id)->count();
         $p = new Page($count,15);
@@ -18,7 +18,7 @@ class  NewsAction extends CommonAction{
 	    $page = $p -> show();
 	    $this->assign('list',$list);
 	    $this->assign('page',$page);
-	    $this->display();
+	    $this->display('list_article');
 	}
 	/*
 	 * 显示新闻内容

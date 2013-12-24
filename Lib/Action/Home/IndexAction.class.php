@@ -5,20 +5,22 @@ class IndexAction extends CommonAction {
     	//取出导航条信息
     	$this->getNav();
     	
-    	//取代表委员风采
-    	
-    	
+    	$news_M = M('News');
     	//代表委员之声
-    	
-    	
-    	//检查工作动态
-    	
+    	$db_list =  $news_M->where("ctg_id=1 AND status>0")->order('create_time desc')->limit(6)->select();
+    	$this->assign('db_list',$db_list);
     	
     	//检查工作动态
+    	$jc_list =  $news_M->where("ctg_id=2 AND status>0")->order('create_time desc')->limit(6)->select();
+    	$this->assign('jc_list',$jc_list);
     	
+    	//热点案件追踪
+    	$rd_list =  $news_M->where("ctg_id=3 AND status>0")->order('create_time desc')->limit(12)->select();
+    	$this->assign('rd_list',$rd_list);
     	
     	//重要工作部署
-    	
+    	$zy_list =  $news_M->where("ctg_id=4 AND status>0")->order('create_time desc')->limit(12)->select();
+    	$this->assign('zy_list',$zy_list);
     	
     	$this->display();
     }

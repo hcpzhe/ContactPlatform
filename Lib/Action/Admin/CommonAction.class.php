@@ -245,6 +245,9 @@ class CommonAction extends Action {
 		$upload->saveRule		   = 'uniqid';
 		//删除原图
 		$upload->thumbRemoveOrigin  = true;
+		if (!file_exists($upload->savePath)){
+			mkdir($upload->savePath,'0644',true);
+		}
 		if (!$upload->upload()) {
 			//捕获上传异常
 			$this->error($upload->getErrorMsg());

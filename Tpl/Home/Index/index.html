@@ -1,35 +1,145 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
-
-		<style>
-			form {
-				margin: 0;
-			}
-			textarea {
-				display: block;
-			}
-		</style>
-		<link rel="stylesheet" href="__PUBLIC__/kindeditor-4.1.10//themes/default/default.css" />
-		<script charset="utf-8" src="__PUBLIC__/kindeditor-4.1.10/kindeditor-min.js"></script>
-		<script charset="utf-8" src="__PUBLIC__/kindeditor-4.1.10/lang/zh_CN.js"></script>
-		<script>
-			KindEditor.ready(function(K) {
-				K.create('textarea[name="content"]', {
-					autoHeightMode : true,
-					afterCreate : function() {
-						this.loadPlugin('autoheight');
-					}
-				});
-			});
-		</script>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>绕兴</title>
+<link href="__PUBLIC__/css/qglobal.css" rel="stylesheet" type="text/css" />
+<link href="__PUBLIC__/css/style.css" rel="stylesheet" type="text/css" />
+<script src="__PUBLIC__/js/swfobject_modified.js" type="text/javascript"></script>
 </head>
 <body>
-		<h3>自动调整高度</h3>
-		<form action="__URL__/">
-			<textarea name="content" style="width:800px;height:200px;"></textarea>
-		</form>
+<div id="head center">
+<div class="head center"></div>
+<div class="nav center">
+  <ul>
+    <li style=" background:none; margin-left:40px;"><a href="/">平台首页</a></li>
+    <li><a href="#">代表委员风采</a></li>
+    <!-- <foreach name="category_list" item="row"> -->
+    <li><a href="__GROUP__/News/newsList/id/{$row['id']}">{$row['name']}</a></li>
+    <!-- </foreach> -->
+     <li><a href="__GROUP__/Public/login">登录入口</a></li>
+    <li><a href="__GROUP__/Public/register" style=" background:none; margin-left:-40px;">会员注册</a></li>
+  </ul>
+</div>
+<div class="banner center"> 
+<strong>代表委员风采</strong><span><a href="#"></a></span>
+<div class="clear"></div>
+<ul>
+<!-- <foreach name="member_list" item="row"> -->
+<li><a href="#"><img src="{$row['photo']}"/><p>{$row['nickname']}</p></a></li>
+ <!-- </foreach> -->
+</ul>
+</div>
+</div>
+<div class="centents center">
+<div class="left_pic fl">
+<div class="picre">
+<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" id=scriptmain name=scriptmain codebase="http://download.macromedia.com/pub/shockwave/cabs/
+flash/swflash.cab#version=6,0,29,0" width="356" height="208">
+    <param name="movie" value="__PUBLIC__/bcastr.swf?bcastr_xml_url=__PUBLIC__/bcastr.xml">
+    <param name="quality" value="high">
+    <param name=scale value=noscale>
+    <param name="LOOP" value="false">
+    <param name="menu" value="false">
+    <param name="wmode" value="transparent">
+    <embed src="__PUBLIC__/bcastr.swf?bcastr_xml_url=__PUBLIC__/bcastr.xml" width="356" height="208" loop="false" quality="high" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" salign="T" name="scriptmain" menu="false" wmode="transparent"></embed>
+  </object>
+</div>
+<div class="clear"></div>
+<div class="pic_cent">
+<span>老城区检察院开展工作取得成功！</span>
+</div>
+</div>
+<div class="right_work fr">
+<strong>代表委员之声</strong><span><a href="__GROUP__/News/newsList/id/1"></a></span>
+<div class="clear"></div>
+<div class="work_list">
+<ul>
+<!-- <foreach name="db_list" item="row"> -->
+<li><span><a href="__GROUP__/News/show/id/{$row['id']}">{$row['title']} </a></span><strong>[{:date('Y-m-d',$row['create_time'])}]</strong></li> 
+<!-- </foreach> -->
+</ul>
+</div>
+</div>
+<div class="clear"></div>
+<div class="left_login fl">
+<div class="login_title"><span>人大代表、政协委员登录入口</span></div>
+<div class="login_centent center"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;欢迎各届代表、委员注册，并提交对检察工作、队伍建设、检察改革方面意见和建议。</span></div>
+<div class="login">
+                <div class="tb fl">
+                    <table border="0" cellpadding="0" cellspacing="0" width="200">
+                        <tbody><tr>
+                            <th scope="row">
+                                <span>用户名：</span>
+                            </th>
+                            <td>
+                                <input name="txtusername" id="txtusername" class="txt1" type="text">
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">
+                                <span>密 码：</span>
+                            </th>
+                            <td>
+                                <input name="txtpassword" id="txtpassword" class="txt1" type="password">
+                            </td>
+                        </tr>
+                      
+                    </tbody></table>
+                </div>
+                <div class="lala fr">
+                    <p>
+                        <input name="btlogin" value="" id="btlogin" class="btn1" type="submit"></p>
+                    <p style="padding-top: 10px;">
+                        <input name="Button1" value="" id="Button1" class="btn2" type="submit"></p>
+            
+</div>
+</div>
+</div>
+<div class="right_sound fr">
+<strong>检查工作动态</strong><span><a href="__GROUP__/News/newsList/id/2"></a></span>
+<div class="clear"></div>
+<div class="sound_list">
+<ul>
+<!-- <foreach name="jc_list" item="row"> -->
+<li><span><a href="__GROUP__/News/show/id/{$row['id']}">{$row['title']}     </a></span><strong>[{:date('Y-m-d',$row['create_time'])}]</strong></li> 
+<!-- </foreach> -->
+</ul>
+</div>
+</div>
+
+<div class="cases fl">
+<strong>热点案件追踪</strong><span><a href="__GROUP__/News/newsList/id/3"></a></span>
+<div class="clear"></div>
+<div class="case_img fl"><img src="__PUBLIC__/images/Case_pic.jpg" /></div>
+<div class="case_list fl">
+<ul>
+<!-- <foreach name="rd_list" item="row"> -->
+<li><span><a href="__GROUP__/News/show/id/{$row['id']}">{$row['title']}     </a></span></li> 
+<!-- </foreach> -->
+</ul>
+</div>
+</div>
+<div class="important fl">
+<strong>重要工作部署</strong><span><a href="__GROUP__/News/newsList/id/4"></a></span>
+<div class="clear"></div>
+<div class="important_img fl"><img src="__PUBLIC__/images/Case_pic.jpg" /></div>
+<div class="important_list fl">
+<ul>
+<!-- <foreach name="zy_list" item="row"> -->
+<li><span><a href="__GROUP__/News/show/id/{$row['id']}">{$row['title']}     </a></span></li> 
+<!-- </foreach> -->
+</ul>
+</div>
+</div>
+</div>
+<div class="clear"></div>
+<div class="foot center">
+  <div class="foot_b center">
+  
+    <p> 版权所有：老城区人民检察院&nbsp;&nbsp;&nbsp;技术支持：万谦网络 &nbsp;&nbsp;&nbsp;豫ICP备**********号<br/>建议使用：IE6.0以上版本 1024*768分辨率 </p>
+    
+  </div>
+</div>
 </body>
 </html>

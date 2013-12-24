@@ -1,17 +1,43 @@
 <?php
 //会员
 class MemberAction extends CommonAction {
-//	TODO 缺少重置密码
+	/*
+	 * 重置用户密码
+	 * 传递用户主键信息
+	 */
+	public function resetPwd(){
+		$member_M = M('Member');
+		if (!empty($member_M)) {
+			$pk = $member_M->getPk();
+			$id = $_REQUEST [$pk];
+			if (isset($id)) {
+				$condition = array($pk => array('eq', $id));
+				$member = $member_M->where($condition)->find();
+				$list = $member_M->where($condition)->setField('password',pwdHash($member['account']));
+				if ($list !== false) {
+					$this->success('密码已重置为用户名！',cookie('_currentUrl_'));
+				} else {
+					$this->error('密码重置失败，请重试！');
+				}
+			} else {
+				$this->error('非法操作');
+			}
+		}
+		
+	}
+	
+	
+	
 	//过滤查询字段
 	function _filter(&$map){
 		$map['status']=array('gt',0);
 		if (!empty($_POST['member_type'])){
 			switch ($_POST['member_type']){
 				case '1'://未审核 
-					$map['status']=array('eq',1);
+					$map['status']=array('eq',2);
 					break;
 				case '2': //已审核
-					$map['status']=array('eq',2);
+					$map['status']=array('eq',1);
 					break;
 				case '3': //未推荐
 					$map['is_recom']=array('eq',0);
@@ -45,7 +71,12 @@ class MemberAction extends CommonAction {
 		//保存当前数据对象
 		$new_member_id = $member_M->add();
 		if ($new_member_id !== false) { //保存成功
-		//	TODO 使用 $fileinfo = $this->_upload(ACTION_NAME.'/'.$new_member_id); 传递头像图片
+			if (!empty($_FILES)){
+				$fileinfo = $this->_upload(ACTION_NAME.'/'.$new_member_id.'/'); //传递头像图片
+				//头像URL地址
+				$photo_url =substr($fileinfo['savepath'].$fileinfo['savename'], 1);
+				$member_M->where("id=$new_member_id")->setField('photo',$photo_url);
+			}
 			$this->success('用户新增成功!',cookie('_currentUrl_'));
 		} else {
 			//失败提示
@@ -104,9 +135,27 @@ class MemberAction extends CommonAction {
 	 * 更新修改接口
 	 * 必须传递主键ID
 	 */
-  /*  public function update() {
-		
-	}*/
+    public function update() {
+        $member_M = D('Member');
+        if (false === $member_M->create()) {
+            $this->error($member_M->getError());
+        }
+        // 更新数据
+        $list = $member_M->save();
+        if (false !== $list) {
+            //成功提示
+        	if (!empty($_FILES)){
+				$fileinfo = $this->_upload(ACTION_NAME.'/'.$member_M->id.'/'); //传递头像图片
+				//头像URL地址
+				$photo_url =substr($fileinfo['savepath'].$fileinfo['savename'], 1);
+				$member_M->where("id={$member_M->id}")->setField('photo',$photo_url);
+			}
+            $this->success('编辑成功!',cookie('_currentUrl_'));
+        } else {
+            //错误提示
+            $this->error('编辑失败!');
+        }
+	}
 	/*
 	 * 通过审核
 	 * 可以批量操作，必选传递主键
@@ -120,7 +169,7 @@ class MemberAction extends CommonAction {
 				$condition = array($pk => array('in', explode(',', $id)));
 				$list = $member_M->where($condition)->setField('status', 1);
 				if ($list !== false) {
-					$this->success('批操作成功！');
+					$this->success('批操作成功！',cookie('_currentUrl_'));
 				} else {
 					$this->error('批操作失败！');
 				}
@@ -142,7 +191,7 @@ class MemberAction extends CommonAction {
 				$condition = array($pk => array('in', explode(',', $id)));
 				$list = $member_M->where($condition)->setField('status', 2);
 				if ($list !== false) {
-					$this->success('批操作成功！');
+					$this->success('批操作成功！',cookie('_currentUrl_'));
 				} else {
 					$this->error('批操作失败！');
 				}
@@ -164,7 +213,7 @@ class MemberAction extends CommonAction {
 				$condition = array($pk => array('in',explode(',',$id)));
 				$list = $member_M->where($condition)->setField('is_recom',1);
 				if ($list !== false){
-					$this -> success('批操作成功！');
+					$this -> success('批操作成功！',cookie('_currentUrl_'));
 				}else {
 					$this ->error('批操作失败！');
 				}
@@ -188,7 +237,7 @@ class MemberAction extends CommonAction {
 				$condition = array($pk => array('in',explode(',',$id)));
 				$list = $member_M->where($condition)->setField('is_recom',0);
 				if ($list !== false){
-					$this -> success('批操作成功！');
+					$this -> success('批操作成功！',cookie('_currentUrl_'));
 				}else {
 					$this ->error('批操作失败！');
 				}

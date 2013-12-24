@@ -33,48 +33,30 @@ class MemberAction extends CommonAction{
             $this->success('密码修改成功！');
          }
     }
-    public function upload() {
-        if (!empty($_FILES)) {
-            //如果有文件上传 上传附件
-            $this->_upload();
+	/**
+	 * 更新修改接口
+	 * 必须传递主键ID
+	 */
+    public function update() {
+        $member_M = D('Member');
+        if (false === $member_M->create()) {
+            $this->error($member_M->getError());
         }
-    }
-
-    // 文件上传
-    protected function _upload() {
-        import('ORG.Util.UploadFile');
-        //导入上传类
-        $upload = new UploadFile();
-        //设置上传文件大小
-        $upload->maxSize            = 3292200;
-        //设置上传文件类型
-        $upload->allowExts          = explode(',', 'jpg,gif,png,jpeg');
-        //设置附件上传目录
-        $upload->savePath           = './Uploads/';
-        //设置上传文件规则
-        $upload->saveRule           = 'uniqid';
-        //删除原图
-        $upload->thumbRemoveOrigin  = true;
-        if (!$upload->upload()) {
-            //捕获上传异常
-            $this->error($upload->getErrorMsg());
+        // 更新数据
+        $list = $member_M->save();
+        if (false !== $list) {
+            //成功提示
+        	if (!empty($_FILES)){
+				$fileinfo = $this->_upload(ACTION_NAME.'/'.$member_M->id.'/'); //传递头像图片
+				//头像URL地址
+				$photo_url =$fileinfo['savepath'].$fileinfo['savename'];
+				$member_M->where("id={$member_M->id}")->setField('photo',$photo_url);
+			}
+            $this->success('编辑成功!',cookie('_currentUrl_'));
         } else {
-            //取得成功上传的文件信息
-            $uploadList = $upload->getUploadFileInfo();
-            $_POST['photo'] = $uploadList[0]['savename'];
+            //错误提示
+            $this->error('编辑失败!');
         }
-        $member_M  = D('Member');
-        //保存当前数据对象
-        $data['photo']          = $_POST['photo'];
-        $data['id']    = $member_M->getMemberId();
-        $list   = $member_M->where("id={$data['id']}")->setField('photo',$data['photo']);
-        if ($list !== false) {
-            $this->success('上传头像成功！');
-        } else {
-            $this->error('上传头像失败!');
-        }
-    }
-    
-   
+	}
    
 }
