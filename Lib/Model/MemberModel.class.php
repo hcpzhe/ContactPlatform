@@ -39,6 +39,11 @@ class MemberModel extends CommonModel {
         }
     }
     
+    public function getMemberInfo($id=0) {
+    	$id = (int)$id;
+    	if ($id <= 0) $id = $_SESSION[C('USER_AUTH_KEY')];
+    	return $this->getById($id);
+    }
     /***登录次数是在用户登录成功后更改, 不是执行update时更改, 这里写错了!!!!!!****************************************************/
     /**
      * 计算登录次数

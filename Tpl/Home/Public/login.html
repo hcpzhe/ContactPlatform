@@ -5,13 +5,15 @@
 	<title>人大代表平、政协委员联络平台</title>
     <link type="text/css" rel="stylesheet" href="__PUBLIC__/css/base.css">
     <link type="text/css" rel="stylesheet" href="__PUBLIC__/css/global.css">
+    <script type="text/javascript" src="__PUBLIC__/js/jquery.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/js/RSsubmit.js"></script>
     <style type="text/css">
       #txtusertype td{ padding:0 10px;}
       #txtusertype td label{ margin-left:10px;}
     </style>
 </head>
 <body class="bg-blue">
-<form name="form1" method="post" action="" id="form1">
+<form name="form1" method="post" action="__ACTION__" id="form1" onsubmit="$(this).RSsubmit();return false;">
     <div class="w1003 login">
         <div class="log-box userlog">
             <div class="box">

@@ -72,7 +72,7 @@ class MemberAction extends CommonAction {
 		$new_member_id = $member_M->add();
 		if ($new_member_id !== false) { //保存成功
 			if (!empty($_FILES)){
-				$fileinfo = $this->_upload(ACTION_NAME.'/'.$new_member_id.'/'); //传递头像图片
+				$fileinfo = $this->_upload($this->getActionName().'/'.$new_member_id.'/'); //传递头像图片
 				//头像URL地址
 				$photo_url =substr($fileinfo['savepath'].$fileinfo['savename'], 1);
 				$member_M->where("id=$new_member_id")->setField('photo',$photo_url);

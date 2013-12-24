@@ -83,4 +83,17 @@ class PublicAction extends Action{
 		$this->display();
 	}
 
+	/**
+	 * 注销接口
+	 */
+	function logout() {
+        if(isset($_SESSION[C('USER_AUTH_KEY')])) {
+            unset($_SESSION[C('USER_AUTH_KEY')]);
+            unset($_SESSION);
+            session_destroy();
+            $this->success('登出成功！', __GROUP__.'/Index/');
+        }else {
+            $this->error('已经登出！', __GROUP__.'/Index/');
+        }
+	}
 }

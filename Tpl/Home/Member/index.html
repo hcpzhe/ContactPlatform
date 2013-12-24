@@ -1,0 +1,122 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>用户中心</title>
+<link type="text/css" rel="stylesheet" href="__PUBLIC__/css/base.css">
+<link type="text/css" rel="stylesheet" href="__PUBLIC__/css/global.css">
+    <script type="text/javascript" src="__PUBLIC__/js/jquery.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/js/main.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/js/RSsubmit.js"></script>
+    <script type="text/javascript">
+        function SetCwinHeight() {
+            var iframeid = document.getElementById("main"); //iframe id
+            if (document.getElementById) {
+                if (iframeid && !window.opera) {
+                    if (iframeid.contentDocument && iframeid.contentDocument.body.offsetHeight) {
+                        iframeid.height = iframeid.contentDocument.body.offsetHeight;
+                    } else if (iframeid.Document && iframeid.Document.body.scrollHeight) {
+                        iframeid.height = iframeid.Document.body.scrollHeight;
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+<div class="head2">
+    <div class="w995">
+        <h1 class="fl">
+            <img src="__PUBLIC__/images/logo2.png" width="554" height="118" alt=""></h1>
+        <div class="top-links fr">
+            
+        </div>
+        <div class="cl">
+        </div>
+    </div>
+    <div class="cl">
+</div>
+</div>
+<div class="vice-nav2">
+    <div class="w1003">
+        <p class="v1">
+            <a href="__GROUP__" target="_blank">系统首页</a>
+		    <a href="__GROUP__/Index/memberList" target="_blank">代表委员风采</a>
+		    <!-- <foreach name="category_list" item="row"> -->
+		    <a href="__GROUP__/News/newsList/id/{$row['id']}" target="_blank">{$row['name']}</a>
+		    <!-- </foreach> -->
+		</p>
+    </div>
+</div>
+<div style="width: 1003px; margin: 0 auto;">
+    <div class="w172" style="float: left; ">
+        <div class="admin2">
+            <div class="info-center2">
+                <h2>
+                    用户信息</h2>
+                <div class="bd">
+                    <div class="pic">
+                        <img src="__PUBLIC__/images/p37_43.jpg" width="37" height="43" alt=""></div>
+                    <div class="text">
+                        <p>
+                            用户：{$member['nickname']}</p>
+                        <p>
+                            用户信息</p>
+                    </div>
+                    <div class="cl">
+                    </div>
+                    <div class="mt10">
+                        <input type="button" value="切换用户" class="btn6" onclick="location.href='__GROUP__/Public/login';">
+                        <input type="button" value="退 出" class="btn6" onclick="if(confirm('您确认要退出吗？')){$(this).RSsubmit({url:'__GROUP__/Public/logout'});}return false;">
+                    </div>
+                </div>
+            </div>
+            <dl class="left-menu2">
+                <dt class="current">信息信息</dt>
+                <dd class="dn">
+                    <ul>
+                    	<!-- <foreach name="newscat_list" item="catrow"> -->
+                        <li><a href="__GROUP__/NewsCategory/inMemList/id/{$catrow['id']}" target="main">{$catrow['name']}</a></li>
+						<!-- </foreach> -->
+                    </ul>
+                </dd>
+                <dt>委员之声</dt>
+                <dd class="dn">
+                    <ul>
+                        <li><a href="#" target="main">提交建议</a></li>
+                        <li><a href="#" target="main">信息管理</a></li>
+                    </ul>
+                </dd>
+                <dt>账户管理</dt>
+                <dd class="dn">
+                    <ul>
+                        <li><a href="#" target="main">用户信息</a></li>
+                        <li><a href="#" target="main">修改密码</a></li>
+                    </ul>
+                </dd>
+            </dl>
+        </div>
+    </div>
+    <div class="w831">
+        <div class="main-content">
+            <iframe id="main" onload="Javascript:SetCwinHeight()" name="main" src="__GROUP__/Member/info" border="0" height="624" scrolling="no" width="100%"></iframe>
+        </div>
+    </div>
+</div>
+<div class="footer4">
+	<div class="w995">{$_PF['copyright']}</div>
+</div>
+</body>
+<!--
+<frameset rows="163,*,30" cols="*" frameborder="no" border="0" framespacing="0">
+  <frame src="__URL__/memberTop" name="topFrame" scrolling="no">
+  <frameset cols="27%,*" name="btFrame" frameborder="NO" border="0" framespacing="0">
+    <frame src="__URL__/memberMenu" noresize="" name="menu" scrolling="no">
+    <frame src="main7.htm" noresize="" name="main">
+  </frameset>
+  <frame src="UserFooter.htm" name="topFrame" scrolling="no">
+</frameset>
+<noframes>
+    &lt;body&gt;您的浏览器不支持框架！&lt;/body&gt;
+</noframes>
+-->
+</html>

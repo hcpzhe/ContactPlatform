@@ -1,5 +1,17 @@
 <?php
 class CommonAction extends Action{
+	
+    function _initialize() {
+		if (C('USER_AUTH_ON') && in_array(MODULE_NAME, explode(',', C('REQUIRE_AUTH_MODULE')))) {
+			if(!isset($_SESSION[C('USER_AUTH_KEY')])) {
+				$this->redirect(C('USER_AUTH_GATEWAY'));
+			}
+		}
+		
+		$set_M = D('Setting');
+		$list = $set_M->getField('set_name,set_value');
+		$this->assign('_PF',$list);
+    }
 	/*
 	 * 获取导航条信息
 	 * 和取代表委员风采信息
@@ -7,7 +19,7 @@ class CommonAction extends Action{
 	protected function getNav(){
 		//获取导航信息
 	    $news_category_M = M('News_category');
-    	$category_list = $news_category_M->where("is_display>0 AND is_index>0 AND status>0")->order("rank asc")->select();
+    	$category_list = $news_category_M->where("is_display>0 AND is_index>0 AND status>0")->order("rank asc")->limit(5)->select();
     	$this -> assign('category_list',$category_list); 
     	
     	//获取代表委员信息
