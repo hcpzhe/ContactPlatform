@@ -1,6 +1,7 @@
 <?php
 //管理员
 class UserAction extends CommonAction {
+	// TODO 新增管理员时, 增加角色关系
 	public function _before_add() {
 		$role_A = A('Admin/Role');
 		$list = $role_A->_getRoleList();
