@@ -2,15 +2,15 @@
 Navicat MySQL Data Transfer
 
 Source Server         : 127.0.0.1
-Source Server Version : 50524
-Source Host           : 127.0.0.1:3306
+Source Server Version : 50516
+Source Host           : localhost:3306
 Source Database       : ctplatform
 
 Target Server Type    : MYSQL
-Target Server Version : 50524
+Target Server Version : 50516
 File Encoding         : 65001
 
-Date: 2013-12-24 17:32:37
+Date: 2013-12-24 23:29:25
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -62,21 +62,21 @@ CREATE TABLE `pf_member` (
 -- ----------------------------
 -- Records of pf_member
 -- ----------------------------
-INSERT INTO `pf_member` VALUES ('1', 'test', '测试', '15c9dfa38cfaf2635d54b1f94ffaed6c', '1', '123456', '/Public/Uploads/insert/14/52b8fccc925f8.jpg', '123456', '15236660754', null, '1387524530', '127.0.0.1', '0', null, '1387524530', '1387524530', '1', '1');
-INSERT INTO `pf_member` VALUES ('2', 'test2', 'test2', 'b67508a1f2983c7365b37946a59ad5b1', '1', 'test2', '/Public/Uploads/insert/14/52b8fccc925f8.jpg', 'test2', '15236660754', null, '1387524634', '127.0.0.1', '0', null, '1387524634', '1387524634', '1', '1');
-INSERT INTO `pf_member` VALUES ('3', 'test3', 'test3', '5f85eb5b813593a29037e93fedc5af34', '1', 'test3', '/Public/Uploads/insert/14/52b8fccc925f8.jpg', 'test3', '15236660754', null, '1387525844', '127.0.0.1', '0', null, '1387525844', '1387525844', '1', '1');
-INSERT INTO `pf_member` VALUES ('4', 'test4', 'test4', 'e5fc178b0bc754b47e09f19c3f5eef7e', '1', 'test4', '/Public/Uploads/insert/14/52b8fccc925f8.jpg', 'test4', '15236660754', null, '1387525888', '127.0.0.1', '0', null, '1387525888', '1387525888', '1', '1');
-INSERT INTO `pf_member` VALUES ('5', 'test5', 'test5', '7a957cf67b7ce665286ab651f36f86a0', '1', 'test5', '/Public/Uploads/insert/14/52b8fccc925f8.jpg', 'test5', '15236660754', null, '1387526308', '127.0.0.1', '0', null, '1387526308', '1387526308', '1', '1');
-INSERT INTO `pf_member` VALUES ('6', 'a1111', '11111', 'b4b3aced3193c18c653bdeff2dd5c141', '1', '11111', '/Public/Uploads/insert/14/52b8fccc925f8.jpg', '11111', '11111111111', null, '1387616424', '127.0.0.1', '0', null, '1387616424', '1387616424', '1', '1');
-INSERT INTO `pf_member` VALUES ('7', 'ceshi1', 'ceshi1', '22210798bc8f23ce100a7fe0a778dd9d', '0', 'ceshi1', '/Public/Uploads/insert/14/52b8fccc925f8.jpg', 'ceshi1', '15236660754', null, '1387809403', '127.0.0.1', '0', 'ceshi1', '1387809403', '1387809403', '1', '1');
-INSERT INTO `pf_member` VALUES ('8', 'a11111', 'aaa', 'b4b3aced3193c18c653bdeff2dd5c141', '0', '131555', '/Public/Uploads/insert/14/52b8fccc925f8.jpg', 'aaaaa', '15194544953', null, '1387848744', '127.0.0.1', '0', 'aaaaaaaaaaaaaa', '1387848744', '1387848744', '1', '1');
-INSERT INTO `pf_member` VALUES ('9', 'a111111', 'aaa', 'b4b3aced3193c18c653bdeff2dd5c141', '0', '131555', '/Public/Uploads/insert/14/52b8fccc925f8.jpg', 'aaaaa', '15194544953', null, '1387848776', '127.0.0.1', '0', 'aaaaaaaaaaaaaa', '1387848776', '1387848776', '1', '1');
-INSERT INTO `pf_member` VALUES ('10', 'a2222', 'aaa', 'b4b3aced3193c18c653bdeff2dd5c141', '0', '131555', '/Public/Uploads/insert/14/52b8fccc925f8.jpg', 'aaaaa', '15194544953', null, '1387848859', '127.0.0.1', '0', 'aaaaaaaaaaaaaa', '1387848859', '1387848859', '1', '1');
-INSERT INTO `pf_member` VALUES ('11', 'aaaa', 'aaaa', 'b4b3aced3193c18c653bdeff2dd5c141', '0', 'aaa', '/Public/Uploads/insert/14/52b8fccc925f8.jpg', 'aaa', '15194544953', null, '1387849763', '127.0.0.1', '0', '', '1387849763', '1387849763', '1', '1');
-INSERT INTO `pf_member` VALUES ('12', 'bbbb', 'bbbbb', 'b4b3aced3193c18c653bdeff2dd5c141', '0', 'bbbbb', '/Public/Uploads/insert/14/52b8fccc925f8.jpg', 'bbbbb', '15194544953', null, '1387849932', '127.0.0.1', '0', '', '1387849932', '1387849932', '1', '1');
-INSERT INTO `pf_member` VALUES ('13', 'bbbbbb', 'bbbbbbb', 'b4b3aced3193c18c653bdeff2dd5c141', '0', 'bbbbbb', '/Public/Uploads/insert/14/52b8fccc925f8.jpg', 'bbbbb', '15194544953', null, '1387850302', '127.0.0.1', '0', '', '1387850302', '1387850302', '1', '1');
-INSERT INTO `pf_member` VALUES ('14', 'zhangmeiling', '张美玲', 'b4b3aced3193c18c653bdeff2dd5c141', '0', '123456', '/Public/Uploads/insert/14/52b8fccc925f8.jpg', '测试', '15194544953', null, '1387855052', '127.0.0.1', '0', '', '1387855052', '1387855052', '1', '1');
-INSERT INTO `pf_member` VALUES ('15', 'a7895', '测试', 'ff67e820ddd404fb081aa718b7a73211', '0', '546555', '/Public/Uploads/insert/15/52b8ffae07e23.jpg', '测试', '15194544953', null, '1387855790', '127.0.0.1', '0', '11111', '1387855790', '1387855790', '1', '1');
+INSERT INTO `pf_member` VALUES ('1', 'test', '测试', '15c9dfa38cfaf2635d54b1f94ffaed6c', '1', '123456', '/Public/Uploads/Member/14/52b8fccc925f8.jpg', '123456', '15236660754', null, '1387524530', '127.0.0.1', '0', null, '1387524530', '1387524530', '1', '1');
+INSERT INTO `pf_member` VALUES ('2', 'test2', 'test2', 'b67508a1f2983c7365b37946a59ad5b1', '1', 'test2', '/Public/Uploads/Member/14/52b8fccc925f8.jpg', 'test2', '15236660754', null, '1387524634', '127.0.0.1', '0', null, '1387524634', '1387524634', '1', '1');
+INSERT INTO `pf_member` VALUES ('3', 'test3', 'test3', '5f85eb5b813593a29037e93fedc5af34', '1', 'test3', '/Public/Uploads/Member/14/52b8fccc925f8.jpg', 'test3', '15236660754', null, '1387525844', '127.0.0.1', '0', null, '1387525844', '1387525844', '1', '1');
+INSERT INTO `pf_member` VALUES ('4', 'test4', 'test4', 'e5fc178b0bc754b47e09f19c3f5eef7e', '1', 'test4', '/Public/Uploads/Member/14/52b8fccc925f8.jpg', 'test4', '15236660754', null, '1387525888', '127.0.0.1', '0', null, '1387525888', '1387525888', '1', '1');
+INSERT INTO `pf_member` VALUES ('5', 'test5', 'test5', '7a957cf67b7ce665286ab651f36f86a0', '1', 'test5', '/Public/Uploads/Member/14/52b8fccc925f8.jpg', 'test5', '15236660754', null, '1387526308', '127.0.0.1', '0', null, '1387526308', '1387526308', '1', '1');
+INSERT INTO `pf_member` VALUES ('6', 'a1111', '11111', 'b4b3aced3193c18c653bdeff2dd5c141', '1', '11111', '/Public/Uploads/Member/14/52b8fccc925f8.jpg', '11111', '11111111111', null, '1387616424', '127.0.0.1', '0', null, '1387616424', '1387616424', '1', '1');
+INSERT INTO `pf_member` VALUES ('7', 'ceshi1', 'ceshi1', '22210798bc8f23ce100a7fe0a778dd9d', '0', 'ceshi1', '/Public/Uploads/Member/14/52b8fccc925f8.jpg', 'ceshi1', '15236660754', null, '1387898786', '127.0.0.1', '2', 'ceshi1', '1387809403', '1387809403', '1', '1');
+INSERT INTO `pf_member` VALUES ('8', 'a11111', 'aaa', 'b4b3aced3193c18c653bdeff2dd5c141', '0', '131555', '/Public/Uploads/Member/14/52b8fccc925f8.jpg', 'aaaaa', '15194544953', null, '1387848744', '127.0.0.1', '0', 'aaaaaaaaaaaaaa', '1387848744', '1387848744', '1', '1');
+INSERT INTO `pf_member` VALUES ('9', 'a111111', 'aaa', 'b4b3aced3193c18c653bdeff2dd5c141', '0', '131555', '/Public/Uploads/Member/14/52b8fccc925f8.jpg', 'aaaaa', '15194544953', null, '1387848776', '127.0.0.1', '0', 'aaaaaaaaaaaaaa', '1387848776', '1387848776', '1', '1');
+INSERT INTO `pf_member` VALUES ('10', 'a2222', 'aaa', 'b4b3aced3193c18c653bdeff2dd5c141', '0', '131555', '/Public/Uploads/Member/14/52b8fccc925f8.jpg', 'aaaaa', '15194544953', null, '1387848859', '127.0.0.1', '0', 'aaaaaaaaaaaaaa', '1387848859', '1387848859', '1', '1');
+INSERT INTO `pf_member` VALUES ('11', 'aaaa', 'aaaa', 'b4b3aced3193c18c653bdeff2dd5c141', '0', 'aaa', '/Public/Uploads/Member/14/52b8fccc925f8.jpg', 'aaa', '15194544953', null, '1387849763', '127.0.0.1', '0', '', '1387849763', '1387849763', '1', '1');
+INSERT INTO `pf_member` VALUES ('12', 'bbbb', 'bbbbb', 'b4b3aced3193c18c653bdeff2dd5c141', '0', 'bbbbb', '/Public/Uploads/Member/14/52b8fccc925f8.jpg', 'bbbbb', '15194544953', null, '1387849932', '127.0.0.1', '0', '', '1387849932', '1387849932', '1', '1');
+INSERT INTO `pf_member` VALUES ('13', 'bbbbbb', 'bbbbbbb', 'b4b3aced3193c18c653bdeff2dd5c141', '0', 'bbbbbb', '/Public/Uploads/Member/14/52b8fccc925f8.jpg', 'bbbbb', '15194544953', null, '1387850302', '127.0.0.1', '0', '', '1387850302', '1387850302', '1', '1');
+INSERT INTO `pf_member` VALUES ('14', 'zhangmeiling', '张美玲', 'b4b3aced3193c18c653bdeff2dd5c141', '0', '123456', '/Public/Uploads/Member/14/52b8fccc925f8.jpg', '测试', '15194544953', null, '1387855052', '127.0.0.1', '0', '', '1387855052', '1387855052', '1', '1');
+INSERT INTO `pf_member` VALUES ('15', 'a7895', '测试', 'ff67e820ddd404fb081aa718b7a73211', '0', '546555', '/Public/Uploads/Member/15/52b8ffae07e23.jpg', '测试', '15194544953', null, '1387855790', '127.0.0.1', '0', '11111', '1387855790', '1387855790', '1', '1');
 INSERT INTO `pf_member` VALUES ('16', 'a1111a', 'aaaa', 'b4b3aced3193c18c653bdeff2dd5c141', '1', '1513151', null, '11111', '15194544953', null, '1387876266', '127.0.0.1', '1', null, '1387875903', '1387875903', '1', '1');
 
 -- ----------------------------
@@ -250,7 +250,7 @@ CREATE TABLE `pf_setting` (
 -- Records of pf_setting
 -- ----------------------------
 INSERT INTO `pf_setting` VALUES ('web_name', null);
-INSERT INTO `pf_setting` VALUES ('copyright', null);
+INSERT INTO `pf_setting` VALUES ('copyright', '版权所有：洛阳市老城区人民检察院　技术支持：万谦科技');
 
 -- ----------------------------
 -- Table structure for `pf_suggest`
@@ -319,7 +319,7 @@ CREATE TABLE `pf_user` (
 -- ----------------------------
 -- Records of pf_user
 -- ----------------------------
-INSERT INTO `pf_user` VALUES ('1', 'admin', '3d06188d51e8024d76f1013b1563afcf', '超级管理员', '1387863867', '127.0.0.1', '38', null, '0', '0', '1');
+INSERT INTO `pf_user` VALUES ('1', 'admin', '3d06188d51e8024d76f1013b1563afcf', '超级管理员', '1387896044', '127.0.0.1', '39', null, '0', '0', '1');
 INSERT INTO `pf_user` VALUES ('2', 'user2', '3d06188d51e8024d76f1013b1563afcf', '2号', '1387789254', '127.0.0.1', '2', null, '0', '0', '1');
 INSERT INTO `pf_user` VALUES ('3', 'user3', '3d06188d51e8024d76f1013b1563afcf', '3号', '0', null, '0', null, '0', '0', '1');
 INSERT INTO `pf_user` VALUES ('4', 'user4', '3d06188d51e8024d76f1013b1563afcf', '4号', '0', null, '0', null, '0', '0', '1');
