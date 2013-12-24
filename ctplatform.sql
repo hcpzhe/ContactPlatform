@@ -2,15 +2,15 @@
 Navicat MySQL Data Transfer
 
 Source Server         : 127.0.0.1
-Source Server Version : 50516
-Source Host           : localhost:3306
+Source Server Version : 50524
+Source Host           : 127.0.0.1:3306
 Source Database       : ctplatform
 
 Target Server Type    : MYSQL
-Target Server Version : 50516
+Target Server Version : 50524
 File Encoding         : 65001
 
-Date: 2013-12-23 23:30:38
+Date: 2013-12-24 17:32:37
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -57,18 +57,27 @@ CREATE TABLE `pf_member` (
   `status` tinyint(1) NOT NULL COMMENT '0-删除  1-已审核  2-待审核',
   PRIMARY KEY (`id`),
   UNIQUE KEY `account` (`account`)
-) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of pf_member
 -- ----------------------------
-INSERT INTO `pf_member` VALUES ('1', 'test', '测试', '15c9dfa38cfaf2635d54b1f94ffaed6c', '1', '123456', null, '123456', '15236660754', null, '1387524530', '127.0.0.1', '0', null, '1387524530', '1387524530', '0', '0');
-INSERT INTO `pf_member` VALUES ('2', 'test2', 'test2', 'b67508a1f2983c7365b37946a59ad5b1', '1', 'test2', null, 'test2', '15236660754', null, '1387524634', '127.0.0.1', '0', null, '1387524634', '1387524634', '0', '2');
-INSERT INTO `pf_member` VALUES ('3', 'test3', 'test3', '5f85eb5b813593a29037e93fedc5af34', '1', 'test3', null, 'test3', '15236660754', null, '1387525844', '127.0.0.1', '0', null, '1387525844', '1387525844', '0', '2');
-INSERT INTO `pf_member` VALUES ('4', 'test4', 'test4', 'e5fc178b0bc754b47e09f19c3f5eef7e', '1', 'test4', null, 'test4', '15236660754', null, '1387525888', '127.0.0.1', '0', null, '1387525888', '1387525888', '0', '2');
-INSERT INTO `pf_member` VALUES ('5', 'test5', 'test5', '7a957cf67b7ce665286ab651f36f86a0', '1', 'test5', null, 'test5', '15236660754', null, '1387526308', '127.0.0.1', '0', null, '1387526308', '1387526308', '0', '2');
-INSERT INTO `pf_member` VALUES ('6', 'a1111', '11111', 'b4b3aced3193c18c653bdeff2dd5c141', '1', '11111', null, '11111', '11111111111', null, '1387616424', '127.0.0.1', '0', null, '1387616424', '1387616424', '0', '1');
-INSERT INTO `pf_member` VALUES ('7', 'ceshi1', 'ceshi1', '22210798bc8f23ce100a7fe0a778dd9d', '0', 'ceshi1', '52b84a7a8542a.jpg', 'ceshi1', '15236660754', null, '1387809403', '127.0.0.1', '0', 'ceshi1', '1387809403', '1387809403', '1', '1');
+INSERT INTO `pf_member` VALUES ('1', 'test', '测试', '15c9dfa38cfaf2635d54b1f94ffaed6c', '1', '123456', '/Public/Uploads/insert/14/52b8fccc925f8.jpg', '123456', '15236660754', null, '1387524530', '127.0.0.1', '0', null, '1387524530', '1387524530', '1', '1');
+INSERT INTO `pf_member` VALUES ('2', 'test2', 'test2', 'b67508a1f2983c7365b37946a59ad5b1', '1', 'test2', '/Public/Uploads/insert/14/52b8fccc925f8.jpg', 'test2', '15236660754', null, '1387524634', '127.0.0.1', '0', null, '1387524634', '1387524634', '1', '1');
+INSERT INTO `pf_member` VALUES ('3', 'test3', 'test3', '5f85eb5b813593a29037e93fedc5af34', '1', 'test3', '/Public/Uploads/insert/14/52b8fccc925f8.jpg', 'test3', '15236660754', null, '1387525844', '127.0.0.1', '0', null, '1387525844', '1387525844', '1', '1');
+INSERT INTO `pf_member` VALUES ('4', 'test4', 'test4', 'e5fc178b0bc754b47e09f19c3f5eef7e', '1', 'test4', '/Public/Uploads/insert/14/52b8fccc925f8.jpg', 'test4', '15236660754', null, '1387525888', '127.0.0.1', '0', null, '1387525888', '1387525888', '1', '1');
+INSERT INTO `pf_member` VALUES ('5', 'test5', 'test5', '7a957cf67b7ce665286ab651f36f86a0', '1', 'test5', '/Public/Uploads/insert/14/52b8fccc925f8.jpg', 'test5', '15236660754', null, '1387526308', '127.0.0.1', '0', null, '1387526308', '1387526308', '1', '1');
+INSERT INTO `pf_member` VALUES ('6', 'a1111', '11111', 'b4b3aced3193c18c653bdeff2dd5c141', '1', '11111', '/Public/Uploads/insert/14/52b8fccc925f8.jpg', '11111', '11111111111', null, '1387616424', '127.0.0.1', '0', null, '1387616424', '1387616424', '1', '1');
+INSERT INTO `pf_member` VALUES ('7', 'ceshi1', 'ceshi1', '22210798bc8f23ce100a7fe0a778dd9d', '0', 'ceshi1', '/Public/Uploads/insert/14/52b8fccc925f8.jpg', 'ceshi1', '15236660754', null, '1387809403', '127.0.0.1', '0', 'ceshi1', '1387809403', '1387809403', '1', '1');
+INSERT INTO `pf_member` VALUES ('8', 'a11111', 'aaa', 'b4b3aced3193c18c653bdeff2dd5c141', '0', '131555', '/Public/Uploads/insert/14/52b8fccc925f8.jpg', 'aaaaa', '15194544953', null, '1387848744', '127.0.0.1', '0', 'aaaaaaaaaaaaaa', '1387848744', '1387848744', '1', '1');
+INSERT INTO `pf_member` VALUES ('9', 'a111111', 'aaa', 'b4b3aced3193c18c653bdeff2dd5c141', '0', '131555', '/Public/Uploads/insert/14/52b8fccc925f8.jpg', 'aaaaa', '15194544953', null, '1387848776', '127.0.0.1', '0', 'aaaaaaaaaaaaaa', '1387848776', '1387848776', '1', '1');
+INSERT INTO `pf_member` VALUES ('10', 'a2222', 'aaa', 'b4b3aced3193c18c653bdeff2dd5c141', '0', '131555', '/Public/Uploads/insert/14/52b8fccc925f8.jpg', 'aaaaa', '15194544953', null, '1387848859', '127.0.0.1', '0', 'aaaaaaaaaaaaaa', '1387848859', '1387848859', '1', '1');
+INSERT INTO `pf_member` VALUES ('11', 'aaaa', 'aaaa', 'b4b3aced3193c18c653bdeff2dd5c141', '0', 'aaa', '/Public/Uploads/insert/14/52b8fccc925f8.jpg', 'aaa', '15194544953', null, '1387849763', '127.0.0.1', '0', '', '1387849763', '1387849763', '1', '1');
+INSERT INTO `pf_member` VALUES ('12', 'bbbb', 'bbbbb', 'b4b3aced3193c18c653bdeff2dd5c141', '0', 'bbbbb', '/Public/Uploads/insert/14/52b8fccc925f8.jpg', 'bbbbb', '15194544953', null, '1387849932', '127.0.0.1', '0', '', '1387849932', '1387849932', '1', '1');
+INSERT INTO `pf_member` VALUES ('13', 'bbbbbb', 'bbbbbbb', 'b4b3aced3193c18c653bdeff2dd5c141', '0', 'bbbbbb', '/Public/Uploads/insert/14/52b8fccc925f8.jpg', 'bbbbb', '15194544953', null, '1387850302', '127.0.0.1', '0', '', '1387850302', '1387850302', '1', '1');
+INSERT INTO `pf_member` VALUES ('14', 'zhangmeiling', '张美玲', 'b4b3aced3193c18c653bdeff2dd5c141', '0', '123456', '/Public/Uploads/insert/14/52b8fccc925f8.jpg', '测试', '15194544953', null, '1387855052', '127.0.0.1', '0', '', '1387855052', '1387855052', '1', '1');
+INSERT INTO `pf_member` VALUES ('15', 'a7895', '测试', 'ff67e820ddd404fb081aa718b7a73211', '0', '546555', '/Public/Uploads/insert/15/52b8ffae07e23.jpg', '测试', '15194544953', null, '1387855790', '127.0.0.1', '0', '11111', '1387855790', '1387855790', '1', '1');
+INSERT INTO `pf_member` VALUES ('16', 'a1111a', 'aaaa', 'b4b3aced3193c18c653bdeff2dd5c141', '1', '1513151', null, '11111', '15194544953', null, '1387876266', '127.0.0.1', '1', null, '1387875903', '1387875903', '1', '1');
 
 -- ----------------------------
 -- Table structure for `pf_news`
@@ -88,7 +97,7 @@ CREATE TABLE `pf_news` (
   `update_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '更新时间 unix时间戳',
   `status` tinyint(1) NOT NULL DEFAULT '0' COMMENT '0-删除 1-正常',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=23 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=25 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of pf_news
@@ -115,6 +124,8 @@ INSERT INTO `pf_news` VALUES ('19', '1', '55555', '55555555', '超级管理员',
 INSERT INTO `pf_news` VALUES ('20', '1', '123131', '651456123', '超级管理员', null, '0', '0', '0', '1387769157', '1387769157', '1');
 INSERT INTO `pf_news` VALUES ('21', '1', '22222222222', '22222222222222222', '超级管理员', null, '0', '1', '1', '1387769863', '1387769863', '1');
 INSERT INTO `pf_news` VALUES ('22', '1', '666666', '6666666666666', '超级管理员', null, '0', '0', '1', '1387770070', '1387770070', '1');
+INSERT INTO `pf_news` VALUES ('23', '3', '44444', '444444444444444444444444444444444444444444', '4444', null, '0', '0', '1', '1387858184', '1387858184', '1');
+INSERT INTO `pf_news` VALUES ('24', '4', '5555555555', '555555555555555555555555', '55555', null, '0', '0', '1', '1387858198', '1387858198', '1');
 
 -- ----------------------------
 -- Table structure for `pf_news_category`
@@ -130,15 +141,16 @@ CREATE TABLE `pf_news_category` (
   `is_index` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否首页显示 0-不显示 1-显示',
   `status` tinyint(1) NOT NULL DEFAULT '0' COMMENT '0-删除 1-正常',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of pf_news_category
 -- ----------------------------
-INSERT INTO `pf_news_category` VALUES ('1', '0', 'hhhhh', '1', '100', '0', '0', '1');
-INSERT INTO `pf_news_category` VALUES ('2', '0', 'aaaa', '1', '10', '0', '0', '1');
-INSERT INTO `pf_news_category` VALUES ('3', '0', '555', '1', '555', '1', '1', '1');
-INSERT INTO `pf_news_category` VALUES ('4', '0', '666', '1', '555', '1', '0', '0');
+INSERT INTO `pf_news_category` VALUES ('1', '0', '代表委员之声', '1', '100', '1', '1', '1');
+INSERT INTO `pf_news_category` VALUES ('2', '0', '检查工作动态', '1', '200', '1', '1', '1');
+INSERT INTO `pf_news_category` VALUES ('3', '0', '热点案件追踪', '1', '300', '1', '1', '1');
+INSERT INTO `pf_news_category` VALUES ('4', '0', '重要工作部署', '1', '400', '1', '1', '1');
+INSERT INTO `pf_news_category` VALUES ('5', '0', '建议提案办理情况', '2', '500', '1', '1', '1');
 
 -- ----------------------------
 -- Table structure for `pf_news_comment`
@@ -196,11 +208,14 @@ CREATE TABLE `pf_role` (
   PRIMARY KEY (`id`),
   KEY `pid` (`pid`),
   KEY `status` (`status`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of pf_role
 -- ----------------------------
+INSERT INTO `pf_role` VALUES ('1', '系统管理', '0', '1', null);
+INSERT INTO `pf_role` VALUES ('2', '信息管理', '0', '1', null);
+INSERT INTO `pf_role` VALUES ('3', '建议管理', '0', '1', null);
 
 -- ----------------------------
 -- Table structure for `pf_role_user`
@@ -216,6 +231,26 @@ CREATE TABLE `pf_role_user` (
 -- ----------------------------
 -- Records of pf_role_user
 -- ----------------------------
+INSERT INTO `pf_role_user` VALUES ('1', '2');
+INSERT INTO `pf_role_user` VALUES ('2', '2');
+INSERT INTO `pf_role_user` VALUES ('1', '3');
+INSERT INTO `pf_role_user` VALUES ('3', '3');
+INSERT INTO `pf_role_user` VALUES ('3', '4');
+
+-- ----------------------------
+-- Table structure for `pf_setting`
+-- ----------------------------
+DROP TABLE IF EXISTS `pf_setting`;
+CREATE TABLE `pf_setting` (
+  `set_name` varchar(255) NOT NULL,
+  `set_value` text
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of pf_setting
+-- ----------------------------
+INSERT INTO `pf_setting` VALUES ('web_name', null);
+INSERT INTO `pf_setting` VALUES ('copyright', null);
 
 -- ----------------------------
 -- Table structure for `pf_suggest`
@@ -279,10 +314,16 @@ CREATE TABLE `pf_user` (
   `update_time` varchar(20) DEFAULT '0' COMMENT 'unix时间戳',
   `status` tinyint(4) NOT NULL DEFAULT '0' COMMENT '0-删除 1-正常',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of pf_user
 -- ----------------------------
-INSERT INTO `pf_user` VALUES ('1', 'admin', '3d06188d51e8024d76f1013b1563afcf', '超级管理员', '1387789760', '127.0.0.1', '35', null, '0', '0', '1');
-INSERT INTO `pf_user` VALUES ('2', 'aaaaa', '3d06188d51e8024d76f1013b1563afcf', 'aaaaa', '1387789254', '127.0.0.1', '2', null, '0', '0', '1');
+INSERT INTO `pf_user` VALUES ('1', 'admin', '3d06188d51e8024d76f1013b1563afcf', '超级管理员', '1387863867', '127.0.0.1', '38', null, '0', '0', '1');
+INSERT INTO `pf_user` VALUES ('2', 'user2', '3d06188d51e8024d76f1013b1563afcf', '2号', '1387789254', '127.0.0.1', '2', null, '0', '0', '1');
+INSERT INTO `pf_user` VALUES ('3', 'user3', '3d06188d51e8024d76f1013b1563afcf', '3号', '0', null, '0', null, '0', '0', '1');
+INSERT INTO `pf_user` VALUES ('4', 'user4', '3d06188d51e8024d76f1013b1563afcf', '4号', '0', null, '0', null, '0', '0', '1');
+INSERT INTO `pf_user` VALUES ('8', 'user5', 'b4b3aced3193c18c653bdeff2dd5c141', null, 'time', '127.0.0.1', '0', null, '1387876751', '1387876751', '1');
+INSERT INTO `pf_user` VALUES ('7', 'user7', 'b4b3aced3193c18c653bdeff2dd5c141', null, 'time', '127.0.0.1', '0', null, '1387876702', '1387876702', '1');
+INSERT INTO `pf_user` VALUES ('9', 'user6', 'b4b3aced3193c18c653bdeff2dd5c141', null, '1387876879', '127.0.0.1', '0', null, '1387876879', '1387876879', '1');
+INSERT INTO `pf_user` VALUES ('10', 'user8', 'b4b3aced3193c18c653bdeff2dd5c141', null, '1387877657', '127.0.0.1', '0', null, '1387877657', '1387877657', '1');
