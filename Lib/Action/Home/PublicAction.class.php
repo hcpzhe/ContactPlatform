@@ -54,7 +54,7 @@ class PublicAction extends Action{
 	        }elseif ($member_info['status'] < 0){
 	            $this->error('帐号已被删除！');
 	        }else {
-	            if($member_info['password'] != md5($_POST['password'])) {
+	            if($member_info['password'] != pwdHash($_POST['password'])) {
 	                $this->error('密码错误！');
 	            }
 	            $_SESSION[C('USER_AUTH_KEY')] = $member_info['id'];
