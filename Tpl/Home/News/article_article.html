@@ -17,7 +17,7 @@
     <!-- <foreach name="category_list" item="row"> -->
     <li><a href="__GROUP__/News/newsList/id/{$row['id']}">{$row['name']}</a></li>
     <!-- </foreach> -->
-     <li><a href="__GROUP__/Public/login">登录入口</a></li>
+    <li><a href="__GROUP__/Public/login">登录入口</a></li>
     <li><a href="__GROUP__/Public/register" style=" background:none; margin-left:-40px;">会员注册</a></li>
   </ul>
 </div>
@@ -26,27 +26,45 @@
 <div class="clear"></div>
 <ul>
 <!-- <foreach name="member_list" item="row"> -->
-<li><a href="__GROUP__/Index/member/id/{$row['id']}"><img src="{$row['photo']}"/><p>{$row['nickname']}</p></a></li>
+<li><a href="__GROUP__/Index/member/id/$row['id']"><img src="{$row['photo']}"/><p>{$row['nickname']}</p></a></li>
 <!-- </foreach> -->
 </ul>
 </div>
 </div>
-<div class="list_article center">
+
+
+<div class="article_article center">
 <div class="title"><strong>{$news_category_name}</strong></div>
 <div class="clear"></div>
-<div class="content_list">
+        <div class="article-detail pd30 bor10">
+            <div class="article-header">
+                <h1>{$info['title']}</h1>
+                <p>
+                    <span>发布者：<span id="lbPulish">{$info['editor']}</span></span><span>发布时间：<span id="lbTime">{:date('Y-m-d',$info['update_time'])}</span>
+                    </span><span>阅读：<span id="lbCount">213</span></span> <span>【字体：<em title="大">大</em> <em title="中">中</em> <em title="小">小</em>】</span></p>
+            </div>
+            <div class="entry-body">
+                {$info['content']}
+            </div>
+            <div class="related">
+                <span id="nextNews">上一篇：
+                <if condition="$nextNews == false">
+                		这已经是第一条了！
+    				<else />
+    					<a href="__GROUP__/News/show/id/{$nextNews['id']}">{$nextNews['title']}</a>
+				</if>
+                </span><span id="prevNews">下一篇：
+                    <if condition="$prevNews == false">
+                		这已经是最后一条了！
+    				<else />
+    					<a href="__GROUP__/News/show/id/{$prevNews['id']}">{$prevNews['title']}</a>
+					</if>
+                </span>
+            </div>
+        </div>
+    </div>
 
-<ul>
-<!-- <foreach name="list" item="row"> -->
-<li><span><a href="__GROUP__/News/show/id/{$row['id']}">{$row['title']}     </a></span><strong>[{:date('Y-m-d',$row['update_time'])}]</strong></li> 
-<!-- </foreach> -->
-</ul>
-<div id="AspNetPager1" style="width:100%;text-align:center;font-size: 12px; height:30px; margin-top:10px;">
-{$page}
-</div>
-</div>
 
-</div>
 <div class="clear"></div>
 <div class="foot center">
   <div class="foot_b center">

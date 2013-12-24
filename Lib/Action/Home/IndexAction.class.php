@@ -25,6 +25,23 @@ class IndexAction extends CommonAction {
     	$this->display();
     }
     /*
+     * 获取用户列表
+     */
+    public function memberList(){
+    	//获取导航信息
+    	$this->getNav();
+    	$member_M = M('Member');
+    	import('@.ORG.Util.Page');
+    	$count = $member_M-> where("status>0")->count();
+    	$p = new Page($count,12);
+    	$member_list = $member_M->where("status>0")->limit($p->firstRow.','.$p->listRows)->select();
+    	$page = $p->show();//分页导航
+    	$this->assign('member_list',$member_list);
+    	$this->assign('page',$page);
+    	$this->display('list_image');
+    
+    }
+    /*
      * 获取委员详细信息，在前台展示
      * 
      * 接收参数为member表的主键
@@ -37,7 +54,7 @@ class IndexAction extends CommonAction {
     	$id = $_REQUEST[$member_M->getPk()];
     	$member_info = $member_M-> where("id=$id")->find();//获取指定委员信息
     	$this->assign('member_info',$member_info);
-    	$this -> display();
+    	$this -> display('image_article');
     
     }
     

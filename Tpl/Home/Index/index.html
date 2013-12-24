@@ -13,7 +13,7 @@
 <div class="nav center">
   <ul>
     <li style=" background:none; margin-left:40px;"><a href="/">平台首页</a></li>
-    <li><a href="#">代表委员风采</a></li>
+    <li><a href="__GROUP__/Index/memberList">代表委员风采</a></li>
     <!-- <foreach name="category_list" item="row"> -->
     <li><a href="__GROUP__/News/newsList/id/{$row['id']}">{$row['name']}</a></li>
     <!-- </foreach> -->
@@ -22,11 +22,11 @@
   </ul>
 </div>
 <div class="banner center"> 
-<strong>代表委员风采</strong><span><a href="#"></a></span>
+<strong>代表委员风采</strong><span><a href="__GROUP__/Index/memberList"></a></span>
 <div class="clear"></div>
 <ul>
 <!-- <foreach name="member_list" item="row"> -->
-<li><a href="#"><img src="{$row['photo']}"/><p>{$row['nickname']}</p></a></li>
+<li><a href="__GROUP__/Index/member/id/$row['id']"><img src="{$row['photo']}"/><p>{$row['nickname']}</p></a></li>
  <!-- </foreach> -->
 </ul>
 </div>

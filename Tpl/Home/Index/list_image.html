@@ -21,32 +21,24 @@
     <li><a href="__GROUP__/Public/register" style=" background:none; margin-left:-40px;">会员注册</a></li>
   </ul>
 </div>
-<div class="banner center"> 
-<strong>代表委员风采</strong><span><a href="__GROUP__/Index/memberList"></a></span>
+<div class="stlyes center"> 
+<div class="title"><strong>代表委员风采</strong></div>
 <div class="clear"></div>
+<div class="stlyes_pic">
 <ul>
-<!-- <foreach name="member_list" item="row"> -->
+<!-- <foreach name='member_list' item='row'> -->
 <li><a href="__GROUP__/Index/member/id/{$row['id']}"><img src="{$row['photo']}"/><p>{$row['nickname']}</p></a></li>
 <!-- </foreach> -->
 </ul>
-</div>
-</div>
-<div class="list_article center">
-<div class="title"><strong>{$news_category_name}</strong></div>
 <div class="clear"></div>
-<div class="content_list">
-
-<ul>
-<!-- <foreach name="list" item="row"> -->
-<li><span><a href="__GROUP__/News/show/id/{$row['id']}">{$row['title']}     </a></span><strong>[{:date('Y-m-d',$row['update_time'])}]</strong></li> 
-<!-- </foreach> -->
-</ul>
-<div id="AspNetPager1" style="width:100%;text-align:center;font-size: 12px; height:30px; margin-top:10px;">
+<div id="AspNetPager1" style="width:100%;text-align: center;font-size: 12px; height:30px; margin-top:20px;">
 {$page}
 </div>
 </div>
-
 </div>
+</div>
+
+
 <div class="clear"></div>
 <div class="foot center">
   <div class="foot_b center">

@@ -11,6 +11,10 @@ class  NewsAction extends CommonAction{
 		
 		$news_M = M('News');       
         $ctg_id = $_REQUEST ['id'];
+        $news_category_M = M('NewsCategory');
+       //获取栏目名称
+        $news_category_name = $news_category_M->where("id=$ctg_id")->getField('name');
+        $this->assign('news_category_name',$news_category_name);
         import('@.ORG.Util.Page');
         $count = $news_M->where("ctg_id=%d",$ctg_id)->count();
         $p = new Page($count,15);
@@ -33,6 +37,9 @@ class  NewsAction extends CommonAction{
         $id = $_REQUEST [$pk];
         //获取当前新闻信息
         $info = $news_M->where("id=%d",$id)->find();
+        
+       //获取栏目名称
+       $news_category_name =M('NewsCategory')->where("id={$info[ctg_id]}")->getField('name');
 
         //获取前一条新闻信息
        	$front = $news_M->where("ctg_id=%d AND id<%d",$info['ctg_id'],$id)->order('id desc')->limit('1')->find();
@@ -42,10 +49,11 @@ class  NewsAction extends CommonAction{
        	
 		//给模板赋值
         $this->assign('info',$info);
-        $this->assign('front',$front);
-        $this->assign('after',$after);
+        $this->assign('news_category_name',$news_category_name);
+        $this->assign('prevNews',$front);
+        $this->assign('nextNews',$after);
         
-        $this->display();
+        $this->display('article_article');
 	}
 
 
