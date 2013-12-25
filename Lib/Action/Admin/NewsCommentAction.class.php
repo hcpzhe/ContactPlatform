@@ -67,11 +67,11 @@ class NewsCommentAction extends CommonAction {
     	import("@.ORG.Util.Page");
     	$p = new Page($count,15);
     	//用户ID列表
-    	$member_id_list = $news_comment_M->where($map)->limit($p->firstRow . ',' . $p->listRows)->getField('member_id');
+    	$member_id_list = $news_comment_M->where($map)->limit($p->firstRow . ',' . $p->listRows)->getField('member_id',true);
     	//用户信息列表
-    	$member_list = $member_M->where(array('id'=>array('in',$member_id_list)))->getField('id,account,nickname'); 
+    	$member_list = $member_M->where(array('id'=>array('in',$member_id_list)))->getField('id,account'); 
     	//新闻ID列表
-    	$news_id_list = $news_comment_M->where($map)->limit($p->firstRow . ',' . $p->listRows)->getField('news_id');
+    	$news_id_list = $news_comment_M->where($map)->limit($p->firstRow . ',' . $p->listRows)->getField('news_id',true);
     	//新闻标题列表
     	$news_list = $news_M -> where(array('id'=>array('in',$news_id_list)))->getField('id,title');
 
