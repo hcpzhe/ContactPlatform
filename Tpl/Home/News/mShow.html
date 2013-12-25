@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"><title>
+	{$_PF['web_name']}
+</title><link type="text/css" rel="stylesheet" href="__PUBLIC__/css/base.css">
+<link type="text/css" rel="stylesheet" href="__PUBLIC__/css/UserMain_data/global.css"></head>
+<body>
+    <div class="w831" style="float: left;">
+        <div class="main-content">
+            <div class="w760">
+                <h3 class="common-tit">
+                    <span>当前位置：</span>新闻信息&gt;<em>{$category_name}</em></h3>
+                <div class="row-tb">
+                    <div class="article-header">
+                        <h1>{$info['title']}</h1>
+                        <p>
+                            <span class="tame">日期：{:date('Y-m-d',$row['create_time'])}</span><span>来源：{$info['editor']}</span><span>点击：34</span>
+                        </p>
+                    </div>
+                    <div class="entry-body">
+                        {$info['content']}
+                    </div>
+                    <div id="next_prov"></div>
+                    <div class="fill-remark">
+                        <div class="hd">
+                            <strong class="fl blue">网友评论：</strong><div class="cl">
+                            </div>
+                        </div>
+                        <div class="bd">
+                            <form name="form1" method="post" action="__GROUP__/NewsComment/insert" id="form1">
+<div>
+<input name="news_id" id="__VIEWSTATE" value="{$info['id']}" type="hidden">
+</div>
+
+<div>
+
+	<input name="member_id" id="__EVENTVALIDATION" value="{$_SESSION[C('USER_AUTH_KEY')]}" type="hidden">
+</div>
+                            <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                <tbody><tr>
+                                    <td align="right" width="60%">
+                                    </td>
+                                    <td>
+                                        <a href="http://sc119.800tzw.com/Users/UserComment.aspx?id=20" class="blue">已有<em class="red">0</em>条评论，共<em class="red">0</em>人参与，点击查看</a>                                        
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <input name="HiddenNid" id="HiddenNid" value="20" type="hidden">
+                                        <textarea name="content" id="comment_Content" cols="120" rows="5"></textarea><span class="red">*</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                       
+                                    </td>
+                                    <td align="left">
+                                        <input name="Button1" value="发表评论" id="Button1" class="btn2" type="submit">
+                                        
+                                    </td>
+                                </tr>
+                            </tbody></table>
+                            </form>
+                        </div>
+                        <div class="cl">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</body></html>

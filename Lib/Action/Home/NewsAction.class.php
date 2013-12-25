@@ -90,6 +90,26 @@ class  NewsAction extends CommonAction{
         
         $this->display('article_article');
 	}
+	
+	//用户中心新闻显示
+	public function mShow(){
+		$condition = array();
+		$condition['id'] = (int)$_REQUEST['id'];
+		$this->_condition($condition);
+		
+		$news_M = M('News');
+        //获取当前新闻信息
+        $info = $news_M->where($condition)->find();
+        
+       //获取栏目名称
+       $category_name =M('NewsCategory')->where("id=".$info['ctg_id'])->getField('name');
+       	
+		//给模板赋值
+        $this->assign('info',$info);
+        $this->assign('category_name',$category_name);
+        
+        $this->display();
+	}
 
 
 }

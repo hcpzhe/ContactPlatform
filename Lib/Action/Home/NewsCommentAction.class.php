@@ -1,7 +1,7 @@
 <?php
 class NewsCommentAction extends CommonAction{
 	public function insert(){
-		$news_comment_M = D('News_comment');
+		$news_comment_M = D('NewsComment');
 		if (false === $news_comment_M->create()){
 			$this->error($news_comment_M->getError());
 			
