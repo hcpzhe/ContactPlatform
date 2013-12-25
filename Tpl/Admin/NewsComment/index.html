@@ -57,7 +57,7 @@ function bathandle(inputname) {
 	return false;
 }
 </script>
-    <form name="form1" method="post" action="__URL__/insert" id="form1">
+    <form name="form1" method="post" action="__URL__/index" id="form1">
        <div class="main-content">
         <div class="w760">
             <h3 class="common-tit">
@@ -131,7 +131,7 @@ function bathandle(inputname) {
                                 </td>
                                
                                 <td>
-                                    <a href="__URL__/delete/id/{$row['id']}" onclick="if(confirm('您确认要删除吗？')){$(this).RSsubmit()};return false;">删除</a>|
+                                    <a href="__URL__/delete/id/{$row['id']}" onclick="if(confirm('您确认要删除吗？')){$(this).RSsubmit()};return false;">删除</a>
                                 </td>
                       </tr>
                       <!-- </foreach> -->
