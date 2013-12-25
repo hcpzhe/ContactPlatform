@@ -37,15 +37,18 @@ $(function($) {
 		 return false;
 	  });
 });
+
 function bathandle(inputname) {
 	if (baturl != '') {
-		if(confirm('您确认要删除吗？')){
+		if(confirm('您确认要'+$("#dolist").find("option:selected").text()+'吗？')){
 			var ids = dot = '';
 			$("input[name='"+inputname+"'][checked=true]}").each(function(){
 				ids += dot + this.value;
 				dot = ',';
 			});
 			$(this).RSsubmit({
+				success_alert : true,
+				reload : true,
 				data : {id:ids},
 				url : baturl
 			});
