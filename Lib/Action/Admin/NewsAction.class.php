@@ -138,14 +138,18 @@ class NewsAction extends CommonAction {
      */
     public function insert() {
     	$news_M = D('News');
-    	/**
-    	 * TODO 新闻增加了预览图片, 这里要做图片上传处理
-    	 */
-    	$this->upload();//上传图片处理
+    	
     	if (false !== $news_M->create()){
-    		
-    		if ($news_M->add()){
-    			//echo $news_M->getLastSql();exit();
+    		$new_news_id = $news_M->add();
+    		if ($new_news_id !== false) {
+				if (!empty($_FILES['imgupload']['name'])){
+				var_dump($_FILES);exit();
+					$fileinfo = $this->_uploadone($_FILES['imgupload'] , $this->getActionName().'/'.$new_news_id.'/'); //传递新闻预览图
+					//预览图URL地址
+					$picture_url =substr($fileinfo['savepath'].$fileinfo['savename'], 1);
+					$news_M->where("id=$new_news_id")->setField('picture',$picture_url);
+				}
+    			
     			$this->success('新闻添加成功！',__GROUP__.'/News/index');
     		}else {
     			$this->error('新闻添加失败，请重新添加！');
@@ -153,39 +157,6 @@ class NewsAction extends CommonAction {
     	}else {
 			$this->error($news_M->getError());    	
     	}
-    }
- 	public function upload() {
-        if (!empty($_FILES)) {
-            //如果有文件上传 上传附件
-            $this->_upload();
-        }
-    }
-	/*
-	 * 图片上传处理
-	 */
-    protected function _upload() {
-        import('ORG.Util.UploadFile');
-        //导入上传类
-        $upload = new UploadFile();
-        //设置上传文件大小
-        $upload->maxSize            = 3292200;
-        //设置上传文件类型
-        $upload->allowExts          = explode(',', 'jpg,gif,png,jpeg');
-        //设置附件上传目录
-        $upload->savePath           = './Uploads/';
-        //设置上传文件规则
-        $upload->saveRule           = 'uniqid';
-        //删除原图
-        $upload->thumbRemoveOrigin  = true;
-        if (!$upload->upload()) {
-            //捕获上传异常
-            $this->error($upload->getErrorMsg());
-        } else {
-            //取得成功上传的文件信息
-            $uploadList = $upload->getUploadFileInfo();
-            $_POST['picture'] = $uploadList[0]['savename'];
-        }
-        //dump($uploadList);exit();
     }
     
     /**

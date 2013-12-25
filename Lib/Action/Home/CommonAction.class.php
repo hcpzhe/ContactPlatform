@@ -70,7 +70,7 @@ class CommonAction extends Action{
             $this->error('新增失败!');
         }
     }
-    protected function _upload($path) {
+    protected function _uploadone($file , $path) {
 		import('@.ORG.Net.UploadFile');
 		//导入上传类
 		$upload = new UploadFile();
@@ -87,7 +87,7 @@ class CommonAction extends Action{
 		if (!file_exists($upload->savePath)){
 			mkdir($upload->savePath,'0644',true);
 		}
-		if (!$upload->upload()) {
+		if (!$upload->uploadOne($file)) {
 			//捕获上传异常
 			$this->error($upload->getErrorMsg());
 		} else {
