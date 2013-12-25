@@ -70,8 +70,8 @@ class MemberAction extends CommonAction{
 		$list = $member_M->save();
 		if (false !== $list) {
 			//成功提示
-			if (!empty($_FILES)){
-				$fileinfo = $this->_upload(ACTION_NAME.'/'.$member_M->id.'/'); //传递头像图片
+			if (!empty($_FILES['photo']['name'])){
+				$fileinfo = $this->_uploadone($_FILES['photo'] , $this->getActionName().'/'.$member_M->id.'/'); //传递头像图片
 				//头像URL地址
 				$photo_url =$fileinfo['savepath'].$fileinfo['savename'];
 				$member_M->where("id={$member_M->id}")->setField('photo',$photo_url);

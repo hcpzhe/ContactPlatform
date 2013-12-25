@@ -143,7 +143,6 @@ class NewsAction extends CommonAction {
     		$new_news_id = $news_M->add();
     		if ($new_news_id !== false) {
 				if (!empty($_FILES['imgupload']['name'])){
-				var_dump($_FILES);exit();
 					$fileinfo = $this->_uploadone($_FILES['imgupload'] , $this->getActionName().'/'.$new_news_id.'/'); //传递新闻预览图
 					//预览图URL地址
 					$picture_url =substr($fileinfo['savepath'].$fileinfo['savename'], 1);
@@ -181,14 +180,22 @@ class NewsAction extends CommonAction {
      * 必须传递主键ID
      */
     public function update() {
+    	$_POST['id'] = (int)$_POST['id'];
+    	if ($_POST['id'] <= 0) $this->error('参数不合法,请联系程序人员! ');
+    	
     	$news_M = D('News');
-    	$this->upload();
-   		 if (false === $news_M->create()) {
+   		if (false === $news_M->create()) {
             $this->error($news_M->getError());
         }
         // 更新数据
         $list = $news_M->save();
         if (false !== $list) {
+			if (!empty($_FILES['imgupload']['name'])){
+				$fileinfo = $this->_uploadone($_FILES['imgupload'] , $this->getActionName().'/'.$_POST['id'].'/'); //传递新闻预览图
+				//预览图URL地址
+				$picture_url =substr($fileinfo['savepath'].$fileinfo['savename'], 1);
+				$news_M->where("id=".$_POST['id'])->setField('picture',$picture_url);
+			}
             //成功提示
             $this->success('编辑成功!',__GROUP__.'/News/index');
         } else {

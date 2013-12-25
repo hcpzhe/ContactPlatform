@@ -87,14 +87,12 @@ class CommonAction extends Action{
 		if (!file_exists($upload->savePath)){
 			mkdir($upload->savePath,'0644',true);
 		}
-		if (!$upload->uploadOne($file)) {
+		$fileinfo = $upload->uploadOne($file);
+		if ($fileinfo === false) {
 			//捕获上传异常
 			$this->error($upload->getErrorMsg());
 		} else {
-			//取得成功上传的文件信息
-			$uploadList = $upload->getUploadFileInfo();
-			//return $uploadList[0]['savename'];
-			return $uploadList[0];
+			return $fileinfo[0];
 		}
     }
 
