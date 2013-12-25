@@ -51,7 +51,7 @@
                             {$row['name']}
                         </td>
                         <td>
-                            {$row['parent_id']|default="顶级分类"}
+                            {$parent_list[$row['parent_id']]|default="顶级分类"}
                         </td>
                         <td>
                             {$row['type'] == 1 ? '列表' : '单页'}

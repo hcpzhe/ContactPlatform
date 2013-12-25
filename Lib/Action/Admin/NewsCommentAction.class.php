@@ -92,7 +92,7 @@ class NewsCommentAction extends CommonAction {
     	$this->assign('page',$page); 
     	$this->assign('member_list',$member_list);
     	$this->assign('news_list',$news_list);
-    
+    	cookie('_currentUrl_', __SELF__);
     
     }
     

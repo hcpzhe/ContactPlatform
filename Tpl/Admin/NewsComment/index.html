@@ -57,7 +57,7 @@ function bathandle(inputname) {
 	return false;
 }
 </script>
-    <form name="form1" method="post" action="__URL__/insert" id="form1">
+    <form name="form1" method="post" action="__ACTION__" id="form1">
        <div class="main-content">
         <div class="w760">
             <h3 class="common-tit">
@@ -114,7 +114,7 @@ function bathandle(inputname) {
                                     {$news_list[$row['news_id']]}
                                 </td>
                                 <td>
-                                    {$member_list[$row['member_id']]}
+                                    {$member_list[$row['member_id']]['nickname']}
                                 </td>
                                 <td>
                                     {:date('Y-m-d H:i:s',$row['create_time'])}
@@ -131,7 +131,7 @@ function bathandle(inputname) {
                                 </td>
                                
                                 <td>
-                                    <a href="__URL__/delete/id/{$row['id']}" onclick="if(confirm('您确认要删除吗？')){$(this).RSsubmit()};return false;">删除</a>|
+                                    <a href="__URL__/delete/id/{$row['id']}" onclick="if(confirm('您确认要删除吗？')){$(this).RSsubmit()};return false;">删除</a>
                                 </td>
                       </tr>
                       <!-- </foreach> -->

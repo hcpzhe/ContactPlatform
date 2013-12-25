@@ -4,7 +4,16 @@ class NewsCategoryAction extends CommonAction {
 	protected function _filter(&$map){
 		$map['status']=array('gt',0);
 	}
-
+	
+	protected function userIndex($model) {
+		$map = array();
+		$ids = $model->getField('parent_id',true);
+		$map['id'] = array('in',$ids);
+		$newscat_M = D('NewsCategory');
+		$parent_list = $newscat_M->where($map)->getField('id,name');
+		$this->assign('parent_list',$parent_list);
+	}
+	
     /**
      * 新增页面
      */
