@@ -14,11 +14,12 @@
 <body>
 <script type="text/javascript">
 </script>
-    <form name="form1" method="post" action="__URL__/insert" id="form1" enctype="multipart/form-data">
+    <form name="form1" method="post" action="__URL__/update" id="form1" enctype="multipart/form-data">
+    	<input name="id"  value="{$vo['id']}"  type="hidden">
         <div class="main-content">
             <div class="w760">
                 <h3 class="common-tit">
-                    <span>当前位置：</span>系统管理 &gt; <em>用户添加</em></h3>
+                    <span>当前位置：</span>系统管理 &gt; <em>用户修改</em></h3>
                 <div class="row-tb">
                  
                     <table border="0" cellpadding="0" cellspacing="0" width="760">
@@ -27,7 +28,7 @@
                                 照片：
                             </td>
                             <td style="width: 610px; text-align: left;">                           
-                                <img id="UserImage" src="" style="width:120px;border-width:0px;"> 
+                                <img id="UserImage" src="__APP__{$vo['photo']}" style="width:120px;border-width:0px;"> 
                                 <input name="photo" id="photo" type="file">
                             </td>
                         </tr>
@@ -36,7 +37,7 @@
                                 用户名：
                             </td>
                             <td style="text-align: left;">
-                                <input name="account" id="account" class="txt2" maxlength="30" type="text">
+                                <input name="account" id="account" value="{$vo['account']}" class="txt2" maxlength="30" type="text">
                             </td>
                         </tr>
                          <tr>
@@ -45,10 +46,10 @@
                             </td>
                             <td style="text-align: left;">
                               <select name="type" id="type">
-	<option selected="selected" value="1">人大代表</option>
-	<option value="2">政协委员</option>
+							<option  {$vo['type'] == 1 ? 'selected="selected"' : ''} value="1">人大代表</option>
+							<option  {$vo['type'] == 2 ? 'selected="selected"' : ''} value="2">政协委员</option>
 
-</select>
+							</select>
                               
                             </td>
                         </tr>
@@ -57,7 +58,7 @@
                                 真实姓名：
                             </td>
                             <td style="text-align: left;">
-                              <input name="nickname" id="nickname" class="txt2" maxlength="10" type="text">
+                              <input name="nickname" id="nickname" value="{$vo['nickname']}" class="txt2" maxlength="10" type="text">
                             </td>
                         </tr>
                         <tr>
@@ -65,7 +66,7 @@
                                 代表、委员证号：
                             </td>
                             <td style="width: 610px; text-align: left;">
-                                <input name="paper_number" id="paper_number" class="txt2" maxlength="50" type="text">
+                                <input name="paper_number" id="paper_number" value="{$vo['paper_number']}" class="txt2" maxlength="50" type="text">
                             </td>
                         </tr>
                         <tr>
@@ -73,7 +74,7 @@
                                 工作单位：
                             </td>
                             <td style="width: 610px; text-align: left;">
-                                <input name="company" id="company" class="txt2" maxlength="100" type="text">
+                                <input name="company" id="company" value="{$vo['company']}" class="txt2" maxlength="100" type="text">
                             </td>
                         </tr>
                         <tr>
@@ -81,7 +82,7 @@
                                 手 机：
                             </td>
                             <td style="width: 610px; text-align: left;">
-                                <input name="mobile" id="mobile" class="txt2" maxlength="11" type="text">
+                                <input name="mobile" id="mobile" value="{$vo['mobile']}"  class="txt2" maxlength="11" type="text">
                             </td>
                         </tr>
                          <tr>
@@ -94,25 +95,17 @@
                         </tr>
                         <tr>
                             <td style="text-align: right;">
-                                请再次输入密码：
-                            </td>
-                            <td style="text-align: left;">
-                                <input name="repassword" id="repassword" class="txt2" maxlength="32" type="password">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td style="text-align: right;">
                                 用户简介：
                             </td>
                             <td style="text-align: left;">
-                                <textarea name="remark" rows="2" cols="20" id="remark" style="height: 200px; width: 600px;"></textarea>
+                                <textarea name="remark" rows="2" cols="20" id="remark" style="height: 200px; width: 600px;">{$vo['remark']} </textarea>
                             </td>
                         </tr>
                         <tr>
                             <td style="text-align: right;">
                             </td>
                             <td style="text-align: left;">
-                                <input name="Button1" value="添加" id="Button1" class="btn4" type="submit">
+                                <input name="Button1" value="修改" id="Button1" class="btn4" type="submit">
                             </td>
                         </tr>
                     </tbody></table>

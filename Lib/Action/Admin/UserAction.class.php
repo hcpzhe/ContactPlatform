@@ -1,7 +1,6 @@
 <?php
 //管理员
 class UserAction extends CommonAction {
-	// TODO 新增管理员时, 增加角色关系
 	public function _before_add() {
 		$role_A = A('Admin/Role');
 		$list = $role_A->_getRoleList();
@@ -114,9 +113,28 @@ class UserAction extends CommonAction {
 		$this->success('权限修改成功！',cookie('_currentUrl_'));    		
     	}
     }
+    /*
+     * 重置密码操作
+     * 接收主键值
+     */
+	public function resetPwd(){
+		$user_M = M('User');
+		if (!empty($user_M)){
+			$id = $_REQUEST ['id'];
+			if (isset($id)) {
+				$condition = array('id' => array('eq', $id));
+				$list = $user_M->where($condition)->setField('password',pwdHash('123456'));
+				if ($list !== false) {
+					$this->success('密码已重置为:123456',__GROUP__.'/User/index');
+				} else {
+					$this->error('密码重置失败，请重试！');
+				}
+			} else {
+				$this->error('非法操作');
+			}
+		}
+	}
 
-    
-    
     
     
     

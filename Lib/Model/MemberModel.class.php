@@ -2,7 +2,7 @@
 // 用户模型
 class MemberModel extends CommonModel {
     public $_validate	=	array(
-        array('account','/^[a-zA-Z]\w{3,15}$/i','帐号格式错误'),//字母开头 4-16位  \w等价于[A-Za-z0-9_]
+        array('account','/^[a-zA-Z]\w{3,15}$/i','帐号格式错误，必须字母开头 4-16位'),//字母开头 4-16位  \w等价于[A-Za-z0-9_]
         array('account','require','账号必须'),
         array('password','require','密码必须'),
         array('nickname','require','昵称必须'),

@@ -133,7 +133,7 @@ function bathandle(inputname) {
                          </td>
                          <td style=" width:250px; ">
                              <a onclick="if(confirm('您确认要重置密码吗？')){$(this).RSsubmit({success_alert:true})};return false;" href="__URL__/resetPwd/id/{$row['id']}">重置密码</a>|
-                                 <a href="__URL__/read/id/{$row['id']}" target="_blank">查看</a>|
+                                 <a href="__APP__/Home/Index/member/id/{$row['id']}" target="_blank">查看</a>|
                                  <a href="__URL__/read/id/{$row['id']}">修改</a>|
                                  <a href="__URL__/delete/id/{$row['id']}" onclick="if(confirm('您确认要删除吗？')){$(this).RSsubmit()};return false;">删除</a>
                          </td>

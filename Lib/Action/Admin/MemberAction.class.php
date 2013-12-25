@@ -137,7 +137,7 @@ class MemberAction extends CommonAction {
 	 */
     public function update() {
         $member_M = D('Member');
-        if (false === $member_M->create()) {
+      	if (false === $member_M->create()) {
             $this->error($member_M->getError());
         }
         // 更新数据
