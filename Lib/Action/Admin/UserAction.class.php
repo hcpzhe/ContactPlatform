@@ -79,7 +79,7 @@ class UserAction extends CommonAction {
         } else {
             //失败提示
             $this->error('新增管理员失败!');
-        }	
+        }
     }
     
     /**
@@ -95,23 +95,35 @@ class UserAction extends CommonAction {
      * 更改用户权限
      */
     public function update() {
-    	if (!empty($_REQUEST)){
-    		$user_id = $_REQUEST['id'];
-    		$role_user_M = M('RoleUser');
-    		$role_user_M->startTrans();
-    		$role_user_M->where("user_id=%d",$user_id)->delete();
-    		foreach ($_REQUEST[roles] as $role){
-    			$data['role_id'] = $role;
-    			$data['user_id'] = $user_id;
-    			$flag = $role_user_M->data($data)->add();
-    			if ($flag === false){
-    				$role_user_M->rollback();
-    				$this->error('权限修改失败！');
-    			}
-    		}
-		$role_user_M->commit();
-		$this->success('权限修改成功！',cookie('_currentUrl_'));    		
-    	}
+        $user_M = D('User');
+        if (false === $user_M->create()) {
+            $this->error($user_M->getError());
+        }
+        //开启事务
+        $user_M->startTrans();
+        //保存当前数据对象
+        if ($user_M->save() !== false) { //保存成功
+        	//增加管理权限
+        	if (!empty($_POST['roles'])){
+        		$role_user_M = D('RoleUser');
+    			$data['user_id'] = (int)$_REQUEST['id'] ;
+    			$role_user_M->where("user_id=%d",$data['user_id'])->delete();
+        		foreach ($_POST['roles'] as $role){
+        			$data['role_id'] = $role ;
+        			$flag = $role_user_M->data($data)->add();
+        			if ($flag === false){
+        				$user_M->rollback();
+        				$this->error('权限修改失败!');
+        			}
+        		}
+        	}
+        	$user_M->commit();
+            $this->success('管理员更新成功!',cookie('_currentUrl_'));
+        } else {
+            //失败提示
+            $this->error('管理员更新失败!');
+        }
+    	
     }
     /*
      * 重置密码操作

@@ -25,7 +25,10 @@
                              <input name="checkbox" id="checkbox" title="全选" onclick="blcheck(this)" type="checkbox">
                         </th>
                         <th scope="col">
-                            管理员名称
+                            帐号
+                        </th>
+                        <th scope="col">
+                            姓名
                         </th>
                         <th scope="col">
                             管理员角色
@@ -44,6 +47,9 @@
                         </td>
                         <td>
                             {$row['account']}
+                        </td>
+                        <td>
+                            {$row['nickname']}
                         </td>
                         <td>
                              {:implode(',',$user_role_list[$row['id']])}

@@ -2,15 +2,15 @@
 Navicat MySQL Data Transfer
 
 Source Server         : 127.0.0.1
-Source Server Version : 50524
-Source Host           : 127.0.0.1:3306
+Source Server Version : 50516
+Source Host           : localhost:3306
 Source Database       : ctplatform
 
 Target Server Type    : MYSQL
-Target Server Version : 50524
+Target Server Version : 50516
 File Encoding         : 65001
 
-Date: 2013-12-25 17:45:01
+Date: 2013-12-25 22:08:54
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -31,15 +31,15 @@ CREATE TABLE `pf_access` (
 -- ----------------------------
 -- Records of pf_access
 -- ----------------------------
-INSERT INTO `pf_access` VALUES ('1', '3', '1', null);
+INSERT INTO `pf_access` VALUES ('1', '2', '1', null);
 INSERT INTO `pf_access` VALUES ('1', '5', '2', null);
 INSERT INTO `pf_access` VALUES ('1', '4', '2', null);
 INSERT INTO `pf_access` VALUES ('1', '6', '2', null);
-INSERT INTO `pf_access` VALUES ('2', '3', '1', null);
+INSERT INTO `pf_access` VALUES ('2', '2', '1', null);
 INSERT INTO `pf_access` VALUES ('2', '9', '2', null);
 INSERT INTO `pf_access` VALUES ('2', '10', '2', null);
 INSERT INTO `pf_access` VALUES ('2', '11', '2', null);
-INSERT INTO `pf_access` VALUES ('3', '3', '1', null);
+INSERT INTO `pf_access` VALUES ('3', '2', '1', null);
 INSERT INTO `pf_access` VALUES ('3', '7', '2', null);
 INSERT INTO `pf_access` VALUES ('3', '8', '2', null);
 INSERT INTO `pf_access` VALUES ('1', '12', '2', null);
@@ -51,6 +51,66 @@ INSERT INTO `pf_access` VALUES ('2', '14', '3', null);
 INSERT INTO `pf_access` VALUES ('2', '13', '3', null);
 INSERT INTO `pf_access` VALUES ('3', '13', '3', null);
 INSERT INTO `pf_access` VALUES ('3', '14', '3', null);
+INSERT INTO `pf_access` VALUES ('1', '3', '2', null);
+INSERT INTO `pf_access` VALUES ('2', '3', '2', null);
+INSERT INTO `pf_access` VALUES ('3', '3', '2', null);
+INSERT INTO `pf_access` VALUES ('1', '16', '3', null);
+INSERT INTO `pf_access` VALUES ('1', '17', '3', null);
+INSERT INTO `pf_access` VALUES ('1', '18', '3', null);
+INSERT INTO `pf_access` VALUES ('1', '19', '3', null);
+INSERT INTO `pf_access` VALUES ('1', '20', '3', null);
+INSERT INTO `pf_access` VALUES ('1', '21', '3', null);
+INSERT INTO `pf_access` VALUES ('1', '22', '3', null);
+INSERT INTO `pf_access` VALUES ('1', '23', '3', null);
+INSERT INTO `pf_access` VALUES ('1', '24', '3', null);
+INSERT INTO `pf_access` VALUES ('1', '25', '3', null);
+INSERT INTO `pf_access` VALUES ('1', '26', '3', null);
+INSERT INTO `pf_access` VALUES ('1', '27', '3', null);
+INSERT INTO `pf_access` VALUES ('1', '28', '3', null);
+INSERT INTO `pf_access` VALUES ('1', '29', '3', null);
+INSERT INTO `pf_access` VALUES ('1', '30', '3', null);
+INSERT INTO `pf_access` VALUES ('1', '31', '3', null);
+INSERT INTO `pf_access` VALUES ('1', '32', '3', null);
+INSERT INTO `pf_access` VALUES ('1', '33', '3', null);
+INSERT INTO `pf_access` VALUES ('1', '34', '3', null);
+INSERT INTO `pf_access` VALUES ('2', '16', '3', null);
+INSERT INTO `pf_access` VALUES ('2', '17', '3', null);
+INSERT INTO `pf_access` VALUES ('2', '18', '3', null);
+INSERT INTO `pf_access` VALUES ('2', '19', '3', null);
+INSERT INTO `pf_access` VALUES ('2', '20', '3', null);
+INSERT INTO `pf_access` VALUES ('2', '21', '3', null);
+INSERT INTO `pf_access` VALUES ('2', '22', '3', null);
+INSERT INTO `pf_access` VALUES ('2', '23', '3', null);
+INSERT INTO `pf_access` VALUES ('2', '24', '3', null);
+INSERT INTO `pf_access` VALUES ('2', '25', '3', null);
+INSERT INTO `pf_access` VALUES ('2', '26', '3', null);
+INSERT INTO `pf_access` VALUES ('2', '27', '3', null);
+INSERT INTO `pf_access` VALUES ('2', '28', '3', null);
+INSERT INTO `pf_access` VALUES ('2', '29', '3', null);
+INSERT INTO `pf_access` VALUES ('2', '30', '3', null);
+INSERT INTO `pf_access` VALUES ('2', '31', '3', null);
+INSERT INTO `pf_access` VALUES ('2', '32', '3', null);
+INSERT INTO `pf_access` VALUES ('2', '33', '3', null);
+INSERT INTO `pf_access` VALUES ('2', '34', '3', null);
+INSERT INTO `pf_access` VALUES ('3', '16', '3', null);
+INSERT INTO `pf_access` VALUES ('3', '17', '3', null);
+INSERT INTO `pf_access` VALUES ('3', '18', '3', null);
+INSERT INTO `pf_access` VALUES ('3', '19', '3', null);
+INSERT INTO `pf_access` VALUES ('3', '20', '3', null);
+INSERT INTO `pf_access` VALUES ('3', '21', '3', null);
+INSERT INTO `pf_access` VALUES ('3', '22', '3', null);
+INSERT INTO `pf_access` VALUES ('3', '23', '3', null);
+INSERT INTO `pf_access` VALUES ('3', '24', '3', null);
+INSERT INTO `pf_access` VALUES ('3', '25', '3', null);
+INSERT INTO `pf_access` VALUES ('3', '26', '3', null);
+INSERT INTO `pf_access` VALUES ('3', '27', '3', null);
+INSERT INTO `pf_access` VALUES ('3', '28', '3', null);
+INSERT INTO `pf_access` VALUES ('3', '29', '3', null);
+INSERT INTO `pf_access` VALUES ('3', '30', '3', null);
+INSERT INTO `pf_access` VALUES ('3', '31', '3', null);
+INSERT INTO `pf_access` VALUES ('3', '32', '3', null);
+INSERT INTO `pf_access` VALUES ('3', '33', '3', null);
+INSERT INTO `pf_access` VALUES ('3', '34', '3', null);
 
 -- ----------------------------
 -- Table structure for `pf_member`
@@ -232,23 +292,43 @@ CREATE TABLE `pf_node` (
   KEY `pid` (`pid`),
   KEY `status` (`status`),
   KEY `name` (`name`)
-) ENGINE=MyISAM AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=35 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of pf_node
 -- ----------------------------
-INSERT INTO `pf_node` VALUES ('4', 'Member', '会员模块', '1', null, null, '3', '1');
-INSERT INTO `pf_node` VALUES ('3', 'Admin', '管理员', '1', null, null, '1', '1');
-INSERT INTO `pf_node` VALUES ('5', 'User', '管理员模块', '1', null, null, '3', '1');
-INSERT INTO `pf_node` VALUES ('6', 'Setting', '网站设置模块', '1', null, null, '3', '2');
-INSERT INTO `pf_node` VALUES ('7', 'Suggest', '建议模块', '1', null, null, '3', '2');
-INSERT INTO `pf_node` VALUES ('8', 'Sugreply', '建议回复模块', '1', null, null, '3', '2');
-INSERT INTO `pf_node` VALUES ('9', 'News', '新闻模块', '1', null, null, '3', '2');
-INSERT INTO `pf_node` VALUES ('10', 'NewsCategory', '新闻分类模块', '1', null, null, '3', '2');
-INSERT INTO `pf_node` VALUES ('11', 'NewsComment', '新闻评论模块', '1', null, null, '3', '2');
-INSERT INTO `pf_node` VALUES ('12', 'Index', '管理首页模块', '1', null, null, '3', '2');
-INSERT INTO `pf_node` VALUES ('13', 'index', '管理首页', '1', null, null, '12', '3');
-INSERT INTO `pf_node` VALUES ('14', 'info', '管理首页信息展示', '1', null, null, '12', '3');
+INSERT INTO `pf_node` VALUES ('4', 'Member', '会员模块', '1', null, null, '2', '2');
+INSERT INTO `pf_node` VALUES ('2', 'Admin', '管理员', '1', null, null, '0', '1');
+INSERT INTO `pf_node` VALUES ('5', 'User', '管理员模块', '1', null, null, '2', '2');
+INSERT INTO `pf_node` VALUES ('6', 'Setting', '网站设置模块', '1', null, null, '2', '2');
+INSERT INTO `pf_node` VALUES ('7', 'Suggest', '建议模块', '1', null, null, '2', '2');
+INSERT INTO `pf_node` VALUES ('8', 'Sugreply', '建议回复模块', '1', null, null, '2', '2');
+INSERT INTO `pf_node` VALUES ('9', 'News', '新闻模块', '1', null, null, '2', '2');
+INSERT INTO `pf_node` VALUES ('10', 'NewsCategory', '新闻分类模块', '1', null, null, '2', '2');
+INSERT INTO `pf_node` VALUES ('11', 'NewsComment', '新闻评论模块', '1', null, null, '2', '2');
+INSERT INTO `pf_node` VALUES ('12', 'Index', '管理首页模块', '1', null, null, '2', '2');
+INSERT INTO `pf_node` VALUES ('13', 'index', '列表首页', '1', null, null, '3', '3');
+INSERT INTO `pf_node` VALUES ('14', 'info', '信息展示', '1', null, null, '3', '3');
+INSERT INTO `pf_node` VALUES ('16', 'add', '添加页', '1', null, null, '3', '3');
+INSERT INTO `pf_node` VALUES ('17', 'insert', '添加', '1', null, null, '3', '3');
+INSERT INTO `pf_node` VALUES ('18', 'read', '编辑页', '1', null, null, '3', '3');
+INSERT INTO `pf_node` VALUES ('19', 'update', '更新', '1', null, null, '3', '3');
+INSERT INTO `pf_node` VALUES ('20', 'delete', '删除', '1', null, null, '3', '3');
+INSERT INTO `pf_node` VALUES ('21', 'resetPwd', '密码重置', '1', null, null, '3', '3');
+INSERT INTO `pf_node` VALUES ('22', 'toStatus1', '通过审核', '1', null, null, '3', '3');
+INSERT INTO `pf_node` VALUES ('23', 'toStatus2', '撤销审核', '1', null, null, '3', '3');
+INSERT INTO `pf_node` VALUES ('24', 'toRecom1', '首页推荐', '1', null, null, '3', '3');
+INSERT INTO `pf_node` VALUES ('25', 'toRecom0', '撤销推荐', '1', null, null, '3', '3');
+INSERT INTO `pf_node` VALUES ('3', 'Public', '公共模块', '1', null, null, '2', '2');
+INSERT INTO `pf_node` VALUES ('26', 'on_pic', '图片', '1', null, null, '3', '3');
+INSERT INTO `pf_node` VALUES ('27', 'off_pic', '取消图片', '1', null, null, '3', '3');
+INSERT INTO `pf_node` VALUES ('28', 'on_display', '显示', '1', null, null, '3', '3');
+INSERT INTO `pf_node` VALUES ('29', 'off_display', '取消显示', '1', null, null, '3', '3');
+INSERT INTO `pf_node` VALUES ('30', 'on_recom', '推荐', '1', null, null, '3', '3');
+INSERT INTO `pf_node` VALUES ('31', 'off_recom', '取消推荐', '1', null, null, '3', '3');
+INSERT INTO `pf_node` VALUES ('32', 'daicl', '待处理列表', '1', null, null, '3', '3');
+INSERT INTO `pf_node` VALUES ('33', 'yicl', '已处理列表', '1', null, null, '3', '3');
+INSERT INTO `pf_node` VALUES ('34', 'setField', '更新字段', '1', null, null, '3', '3');
 
 -- ----------------------------
 -- Table structure for `pf_role`
@@ -290,17 +370,20 @@ INSERT INTO `pf_role_user` VALUES ('1', '2');
 INSERT INTO `pf_role_user` VALUES ('2', '2');
 INSERT INTO `pf_role_user` VALUES ('1', '3');
 INSERT INTO `pf_role_user` VALUES ('3', '3');
-INSERT INTO `pf_role_user` VALUES ('3', '4');
 INSERT INTO `pf_role_user` VALUES ('1', '14');
 INSERT INTO `pf_role_user` VALUES ('2', '14');
 INSERT INTO `pf_role_user` VALUES ('3', '14');
 INSERT INTO `pf_role_user` VALUES ('1', '15');
 INSERT INTO `pf_role_user` VALUES ('2', '15');
-INSERT INTO `pf_role_user` VALUES ('2', '16');
 INSERT INTO `pf_role_user` VALUES ('1', '17');
 INSERT INTO `pf_role_user` VALUES ('2', '17');
 INSERT INTO `pf_role_user` VALUES ('3', '17');
 INSERT INTO `pf_role_user` VALUES ('3', '18');
+INSERT INTO `pf_role_user` VALUES ('1', '16');
+INSERT INTO `pf_role_user` VALUES ('2', '16');
+INSERT INTO `pf_role_user` VALUES ('3', '16');
+INSERT INTO `pf_role_user` VALUES ('2', '4');
+INSERT INTO `pf_role_user` VALUES ('3', '4');
 
 -- ----------------------------
 -- Table structure for `pf_setting`
@@ -390,15 +473,15 @@ CREATE TABLE `pf_user` (
 -- ----------------------------
 -- Records of pf_user
 -- ----------------------------
-INSERT INTO `pf_user` VALUES ('1', 'admin', '3d06188d51e8024d76f1013b1563afcf', '超级管理员', '1387963290', '127.0.0.1', '50', null, '0', '0', '1');
+INSERT INTO `pf_user` VALUES ('1', 'admin', '3d06188d51e8024d76f1013b1563afcf', '超级管理员', '1387979370', '127.0.0.1', '55', null, '0', '0', '1');
 INSERT INTO `pf_user` VALUES ('2', 'user2', '3d06188d51e8024d76f1013b1563afcf', '2号', '1387789254', '127.0.0.1', '2', null, '0', '0', '1');
 INSERT INTO `pf_user` VALUES ('3', 'user3', '3d06188d51e8024d76f1013b1563afcf', '3号', '0', null, '0', null, '0', '0', '1');
-INSERT INTO `pf_user` VALUES ('4', 'user4', '3d06188d51e8024d76f1013b1563afcf', '4号', '0', null, '0', null, '0', '0', '1');
+INSERT INTO `pf_user` VALUES ('4', 'user4', '15c9dfa38cfaf2635d54b1f94ffaed6c', '4434544656', '1387980302', '127.0.0.1', '1', null, '0', '1387980252', '1');
 INSERT INTO `pf_user` VALUES ('7', 'user7', 'b4b3aced3193c18c653bdeff2dd5c141', null, 'time', '127.0.0.1', '0', null, '1387876702', '1387876702', '1');
 INSERT INTO `pf_user` VALUES ('8', 'user5', 'b4b3aced3193c18c653bdeff2dd5c141', null, 'time', '127.0.0.1', '0', null, '1387876751', '1387876751', '1');
 INSERT INTO `pf_user` VALUES ('9', 'user6', 'b4b3aced3193c18c653bdeff2dd5c141', null, '1387876879', '127.0.0.1', '0', null, '1387876879', '1387876879', '1');
 INSERT INTO `pf_user` VALUES ('10', 'user8', '564736165e3715871289f3132886a6bd', null, '1387877657', '127.0.0.1', '0', null, '1387877657', '1387940353', '1');
 INSERT INTO `pf_user` VALUES ('15', 'user9', '564736165e3715871289f3132886a6bd', null, '0', '127.0.0.1', '0', null, '1387940319', '1387940375', '1');
-INSERT INTO `pf_user` VALUES ('16', 'user10', 'b4b3aced3193c18c653bdeff2dd5c141', null, '0', '127.0.0.1', '0', null, '1387949776', '1387949776', '1');
+INSERT INTO `pf_user` VALUES ('16', 'user10', '15c9dfa38cfaf2635d54b1f94ffaed6c', null, '1387978601', '127.0.0.1', '11', null, '1387949776', '1387949776', '1');
 INSERT INTO `pf_user` VALUES ('17', 'user11', 'b4b3aced3193c18c653bdeff2dd5c141', null, '0', '127.0.0.1', '0', null, '1387949797', '1387949797', '1');
 INSERT INTO `pf_user` VALUES ('18', 'user12', '15c9dfa38cfaf2635d54b1f94ffaed6c', null, '1387960313', '127.0.0.1', '11', null, '1387949909', '1387949909', '0');

@@ -87,8 +87,7 @@
                     </div>
                 </div>
                 <dl class="left-menu2">
-                  <!-- <if condition="!$Think['session'][$Think.config.ADMIN_AUTH_KEY]"> -->
-                    <!-- <if condition="in_array('3',$role_arr)"> -->
+                    <!-- <if condition="in_array('3',$role_arr) || !is_array($role_arr)"> -->
                     <dt>建议管理</dt>
                     <dd class="dn">
                         <ul>
@@ -98,7 +97,7 @@
                         </ul>
                     </dd>
                     <!-- </if> -->
-                    <!-- <if condition="in_array('2',$role_arr)"> -->
+                    <!-- <if condition="in_array('2',$role_arr) || !is_array($role_arr)"> -->
                     <dt>信息管理</dt>
                     <dd class="dn">
                         <ul>
@@ -110,7 +109,7 @@
                         </ul>
                     </dd>
                     <!-- </if> -->
-                    <!-- <if condition="in_array('1',$role_arr)"> -->
+                    <!-- <if condition="in_array('1',$role_arr) || !is_array($role_arr)"> -->
                     <dt>系统管理</dt>
                     <dd class="dn">
                         <ul>

@@ -12,19 +12,28 @@
 </title></head>
 <body>
     <form name="form1" method="post" action="__URL__/update" id="form1" onsubmit="$(this).RSsubmit({success_alert:true});return false;">
-    <div class="main-content">
+    <input name="id" value="{$vo['id']}" type="hidden" />
+	<div class="main-content">
         <div class="w760">
             <h3 class="common-tit">
                 <span>当前位置：</span>系统管理 &gt; <em>管理员添加</em></h3>
             <div class="col-tb">
                 <table border="0" cellpadding="0" cellspacing="0" width="100%">
-                    <tbody><tr>
+                    <tbody>
+                    <tr>
                         <th scope="row" width="19%">
                             <span class="red">*</span>用户名：
                         </th>
                         <td width="81%">
-                        	<input name="id" value="{$vo['id']}" type="hidden" />
                             <input name="account" value="{$vo['account']}" disabled="disabled" maxlength="20" id="txtadmin_Manage" class="txt-w326" type="text">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row" width="19%">
+                            <span class="red">*</span>姓名：
+                        </th>
+                        <td width="81%">
+                            <input name="nickname" value="{$vo['nickname']}" maxlength="20" id="txtadmin_Manage" class="txt-w326" type="text">
                         </td>
                     </tr>
                     <tr>
