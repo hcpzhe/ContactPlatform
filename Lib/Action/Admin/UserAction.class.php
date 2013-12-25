@@ -44,7 +44,7 @@ class UserAction extends CommonAction {
    		foreach ($role_user_list as $val){
    			$user_role_list[$val['user_id']][$val['role_id']]=$role_list[$val['role_id']];
    		}
-   		$this->assign('return',$user_role_list);
+   		$this->assign('user_role_list',$user_role_list);
     }
     /**
      * 新增接口
@@ -125,7 +125,7 @@ class UserAction extends CommonAction {
 				$condition = array('id' => array('eq', $id));
 				$list = $user_M->where($condition)->setField('password',pwdHash('123456'));
 				if ($list !== false) {
-					$this->success('密码已重置为:123456',__GROUP__.'/User/index');
+					$this->success('密码已重置为:123456',__URL__.'/index');
 				} else {
 					$this->error('密码重置失败，请重试！');
 				}

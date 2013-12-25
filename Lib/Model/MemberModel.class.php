@@ -7,13 +7,15 @@ class MemberModel extends CommonModel {
         array('password','require','密码必须'),
         array('nickname','require','昵称必须'),
         array('repassword','require','确认密码必须'),
-        array('repassword','password','确认密码不一致',self::EXISTS_VALIDATE,'confirm'),
+        array('repassword','password','确认密码不一致',self::VALUE_VALIDATE,'confirm'),
         array('account','','帐号已经存在',self::EXISTS_VALIDATE,'unique'),
-        array('email','email','邮箱格式不正确'),
+        array('email','email','邮箱格式不正确',self::VALUE_VALIDATE),
         array('paper_number','require','委员证号必填'),
         array('company','require','工作单位必填'),
         array('mobile','require','手机号必填'),
         array('mobile','/^1\d{10}$/','手机号格式不正确'),
+        array('is_recom',array(0,1),'用户推荐状态不正确',self::VALUE_VALIDATE,'in'),
+        array('status',array(0,1,2),'用户状态不正确',self::VALUE_VALIDATE,'in'),
 
         );
 

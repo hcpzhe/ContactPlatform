@@ -52,8 +52,8 @@
                             {:date('Y-m-d H:i:s',$row['create_time'])}
                         </td>
                         <td>
-                         <a href="__URL__/delete/id/{$row['id']}" onclick="if(confirm('您确认要删除吗？')){$(this).RSsubmit()};return false;">删除</a>|
-                         <a href="__URL__/resetPwd/id/{$row['id']}" onclick="if(confirm('您确认要重置密码吗？')){$(this).RSsubmit()};return false;">重置密码</a>|
+                         <a href="__URL__/delete/id/{$row['id']}" onclick="if(confirm('您确认要删除吗？')){$(this).RSsubmit(success_alert:true)};return false;">删除</a>|
+                         <a href="__URL__/resetPwd/id/{$row['id']}" onclick="if(confirm('您确认要重置密码吗？')){$(this).RSsubmit({success_alert:true})};return false;">重置密码</a>|
                          <a href="__URL__/read/id/{$row['id']}">修改权限</a>
                         </td>
                     </tr>

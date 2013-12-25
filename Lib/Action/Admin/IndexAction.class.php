@@ -3,6 +3,13 @@
 class IndexAction extends CommonAction {
 	
 	public function index() {
+		//不为超管时, 获取当前用户的角色
+		$role_arr = array();
+		if(empty($_SESSION[C('ADMIN_AUTH_KEY')])) {
+			$role_user_M = D('RoleUser');
+			$role_arr = $role_user_M->where("`user_id`=".$_SESSION[C('USER_AUTH_KEY')])->getField('role_id',true);
+		}
+		$this->assign('role_arr',$role_arr);
 		$this->display();
 	}
 	

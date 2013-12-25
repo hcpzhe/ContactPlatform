@@ -7,7 +7,7 @@ class CommonAction extends Action {
         // 用户权限检查
         if (C('USER_AUTH_ON') && !in_array(MODULE_NAME, explode(',', C('NOT_AUTH_MODULE')))) {
             import('ORG.Util.RBAC');
-            if (!RBAC::AccessDecision()) {
+            if (!RBAC::AccessDecision(GROUP_NAME)) {
                 //检查认证识别号
                 if (!$_SESSION [C('USER_AUTH_KEY')]) {
                     //跳转到认证网关
@@ -264,4 +264,30 @@ class CommonAction extends Action {
 		}
     }
     
+    public function setField(){
+    	//$_REQUEST[''];
+        $name = $this->getActionName();
+        $model = D($name);
+        $allfields = $model->getDbFields();
+        if (in_array($_REQUEST['field'], $allfields)) {
+            $pk = $model->getPk();
+            $id = $_REQUEST [$pk];
+            if (isset($id)) {
+            	$dataArr = array(
+            		$pk => (int)$id,
+            		$_REQUEST['field'] => $_REQUEST['value']
+            	);
+            	$model->create($dataArr);
+                $list = $model->save();
+                if ($list !== false) {
+                    $this->success('更新成功！',__URL__/*cookie('_currentUrl_')*/);
+                } else {
+                    $this->error('更新失败！');
+                }
+            } else {
+                $this->error('非法操作');
+            }
+        }
+        $this->error('非法操作');
+    }
 }
