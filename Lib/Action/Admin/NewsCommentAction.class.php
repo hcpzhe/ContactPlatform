@@ -3,10 +3,11 @@
 //若为匿名评论, 则所属用户ID member_id 为0
 class NewsCommentAction extends CommonAction {
     //过滤查询字段
-    // TODO 缺少所属文章分类检索 ctg_id  , 评论状态检索 status
  	public function _filter(&$map){
+ 		$news_M = M('News');
+ 		$news_id_list =array();
         if(!empty($_POST['txtsearch'])) {
-        $map['title'] = array('like',"%".$_POST['txtsearch']."%");
+        	$news_id_list = $news_M->where(array('title'=>array('like',"%".$_POST['txtsearch']."%")))->getField('id',true);
         }
         //审核条件
         $map['status'] = array('gt',0);
@@ -23,10 +24,13 @@ class NewsCommentAction extends CommonAction {
         }
         //所属栏目的评论条件生成
         if (!empty($_POST['ctg_id'])){
-        	$news_M = M('News');
-        	$news_id_list = $news_M -> where('ctg_id=%d',$_POST['ctg_id'])->getField('id');
-        	$map['news_id']=array('in',$news_id_list);
+        	$temp_array = $news_M -> where('ctg_id=%d',$_POST['ctg_id'])->getField('id',true);
+        	$news_id_list = array_merge($news_id_list,$temp_array);
         }
+ 		 if (!empty($news_id_list)) {
+        	$map['news_id']=array('in',array_unique($news_id_list));
+        }
+       
     }
     /**
      * 新增接口
@@ -67,11 +71,11 @@ class NewsCommentAction extends CommonAction {
     	import("@.ORG.Util.Page");
     	$p = new Page($count,15);
     	//用户ID列表
-    	$member_id_list = $news_comment_M->where($map)->limit($p->firstRow . ',' . $p->listRows)->getField('member_id');
+    	$member_id_list = $news_comment_M->where($map)->limit($p->firstRow . ',' . $p->listRows)->getField('member_id',true);
     	//用户信息列表
-    	$member_list = $member_M->where(array('id'=>array('in',$member_id_list)))->getField('id,account,nickname'); 
+    	$member_list = $member_M->where(array('id'=>array('in',$member_id_list)))->getField('id,account'); 
     	//新闻ID列表
-    	$news_id_list = $news_comment_M->where($map)->limit($p->firstRow . ',' . $p->listRows)->getField('news_id');
+    	$news_id_list = $news_comment_M->where($map)->limit($p->firstRow . ',' . $p->listRows)->getField('news_id',true);
     	//新闻标题列表
     	$news_list = $news_M -> where(array('id'=>array('in',$news_id_list)))->getField('id,title');
 
@@ -163,7 +167,7 @@ class NewsCommentAction extends CommonAction {
                 $condition = array($pk => array('in', explode(',', $id)));
                 $list = $news_comment_M->where($condition)->setField('status', 1);
                 if ($list !== false) {
-                    $this->success('批操作成功！',cookie('_currentUrl_'));
+                    $this->success('批操作成功！',__GROUP__.'/NewsComment/index');
                 } else {
                     $this->error('批操作失败！');
                 }
@@ -185,7 +189,7 @@ class NewsCommentAction extends CommonAction {
                 $condition = array($pk => array('in', explode(',', $id)));
                 $list = $news_comment_M->where($condition)->setField('status', 2);
                 if ($list !== false) {
-                    $this->success('批操作成功！',cookie('_currentUrl_'));
+                    $this->success('批操作成功！',__GROUP__.'/NewsComment/index');
                 } else {
                     $this->error('批操作失败！');
                 }

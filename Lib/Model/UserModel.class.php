@@ -12,7 +12,7 @@ class UserModel extends CommonModel{
 		array('email','email','邮件格式不正确'),
 	);
 	protected $_auto = array(
-		array('last_login_time','time',''),
+		array('password','pwdHash',Model:: MODEL_BOTH,'function'),
 		array('last_login_ip','get_client_ip',Model:: MODEL_BOTH,'function'),
 		array('login_count','0',Model:: MODEL_INSERT),
 		array('create_time','time',Model:: MODEL_INSERT,'function'),
