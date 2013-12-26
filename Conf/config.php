@@ -6,10 +6,14 @@ return array(
 //    'SHOW_PAGE_TRACE'           =>  1,//显示调试信息
     
     'DB_TYPE'                   =>  'mysql',
-    'DB_HOST'                   =>  '192.168.1.9',
-    'DB_NAME'                   =>  'ctplatform',
-    'DB_USER'                   =>  'ctpf',
-    'DB_PWD'                    =>  'ctpf',
+//    'DB_HOST'                   =>  '192.168.1.9',
+//    'DB_NAME'                   =>  'ctplatform',
+//    'DB_USER'                   =>  'ctpf',
+//    'DB_PWD'                    =>  'ctpf',
+    'DB_HOST'                   =>  '118.192.42.26',
+    'DB_NAME'                   =>  'platform',
+    'DB_USER'                   =>  'platform',
+    'DB_PWD'                    =>  'cDZkBTNjJTM2ETN',
     'DB_PORT'                   =>  '3306',
     'DB_PREFIX'                 =>  'pf_',
 /* RBAC 在每个单独分组中设置
