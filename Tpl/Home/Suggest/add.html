@@ -3,14 +3,17 @@
 <meta http-equiv="content-type" content="text/html; charset=UTF-8"><title>
 	{$_PF['web_name']}
 </title><link type="text/css" rel="stylesheet" href="__PUBLIC__/css/base.css">
-<link type="text/css" rel="stylesheet" href="__PUBLIC__/css/global.css"></head>
+<link type="text/css" rel="stylesheet" href="__PUBLIC__/css/global.css">
+<script type="text/javascript" src="__PUBLIC__/js/jquery.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/RSsubmit.js"></script>
+</head>
 <body>
         <div class="main-content">
             <div class="w760">
                 <h3 class="common-tit">
                     <span>当前位置：</span>委员之声&gt;<em>提交建议</em></h3>
                 <div class="row-tb">
-                    <form name="form1" method="post" action="__GROUP__/Suggest/insert" id="form1">
+                    <form name="form1" method="post" action="__GROUP__/Suggest/insert" onsubmit="$(this).RSsubmit({success_alert:true,reload:true});return false;" id="form1">
                     <table border="0" cellpadding="0" cellspacing="0" width="760">
                         <tbody><tr>
                             <td style="text-align: right;">

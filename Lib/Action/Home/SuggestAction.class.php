@@ -75,7 +75,21 @@ class SuggestAction extends CommonAction{
         $this->assign('user_list',$user_list);
         $this->display();
 	}
-
+	function insert() {
+        $name = $this->getActionName();
+        $model = D($name);
+        if (false === $model->create()) {
+            $this->error($model->getError());
+        }
+        //保存当前数据对象
+        $list = $model->add();
+        if ($list !== false) { //保存成功
+            $this->success('新增成功!',__GROUP__.'/Suggest/index');
+        } else {
+            //失败提示
+            $this->error('新增失败!');
+        }
+    }
 
 
 }

@@ -77,9 +77,11 @@ class  NewsAction extends CommonAction{
 		
        $condition['ctg_id'] = $info['ctg_id'];
         //获取前一条新闻信息
+       $condition['id'] = array('lt',$info['id']);
        	$front = $news_M->where($condition)->order('id desc')->limit('1')->find();
 
        	//获取后一条新闻信息
+       $condition['id'] = array('gt',$info['id']);
 		$after = $news_M->where($condition)->order('id desc')->limit('1')->find();
        	
 		//给模板赋值
