@@ -102,7 +102,7 @@ font-size: 14px;}
 /* 子页样式 */		
 .list_article{ width:993px; height:640px; margin-top:10px;}
 .title{ width:993px; height:29px; background:url(../images/siger.jpg) 0 0 no-repeat;}
-.title strong{display:block; width:110px; height:24px; float:left; margin-left:30px; margin-top:16px; color:#1043a3; font-size:15px;}
+.title strong{display:block; width:110px; height:24px; float:left; margin: 10px 0 6px 30px; color:#1043a3; font-size:15px;  line-height:24px; overflow: hidden;}
 .content_list{ width:989px; height:600px; border:2px solid #1043a3;}
 .content_list ul{ list-style:disc; width:950px; margin-left:45px; margin-top:30px}
 .content_list ul li{display:block; width:850px; height:35px;border-bottom:1px dashed #CCCCCC; line-height:35px; font-size:15px;  list-style:disc;}
