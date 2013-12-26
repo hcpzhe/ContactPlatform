@@ -76,7 +76,7 @@ function batdelte(inputname) {
                      {:date('Y-m-d H:i:s',$row['create_time'])}
                          </td>
                          <td>
-                     {$row['status']}
+                     {$row['status']==1?'已回复':'未回复'}
                          </td>
                          <td>
                              <a href="__GROUP__/Suggest/delete/id/{$row['id']}" onclick="if(confirm('您确认要删除吗？')){$(this).RSsubmit()};return false;">删除</a>|
