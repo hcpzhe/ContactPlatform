@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>
+	{$_PF['web_name']}
+</title>
+<link type="text/css" rel="stylesheet" href="__PUBLIC__/css/base.css">
+<link type="text/css" rel="stylesheet" href="__PUBLIC__/css/global.css"></head>
+<body>
+        <div class="main-content">
+            <div class="w760">
+                <h3 class="common-tit">
+                    <span>当前位置：</span>账户管理&gt;<em>用户信息</em></h3>
+                <div class="row-tb">
+                    <form name="form1" method="post" action="__URL__/update" onsubmit="javascript:return WebForm_OnSubmit();" id="form1" enctype="multipart/form-data">
+<div>
+<input name="id" id="id" value="{$member['id']}" type="hidden">
+</div>
+<script type="text/javascript">
+//<![CDATA[
+function WebForm_OnSubmit() {
+CKEditor_TextBoxEncode('txtUser_Content', 0); 
+return true;
+}
+//]]>
+</script>
+                    <table border="0" cellpadding="0" cellspacing="0" width="760">
+                        <tbody><tr>
+                            <td style="text-align: right;">
+                                照片：
+                            </td>
+                            <td style="width: 610px; text-align: left;">
+                          	    <img id="UserImage" src="__APP__{$member['photo']}" style="width:120px;border-width:0px;">                           
+                                <input name="photo" id="photo" type="file">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: right;">
+                                代表、委员证号：
+                            </td>
+                            <td style="width: 610px; text-align: left;">
+                                <input name="paper_number" id="cardNum" class="txt2" maxlength="50" value="{$member['paper_number']}" type="text">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: right;">
+                                工作单位：
+                            </td>
+                            <td style="width: 610px; text-align: left;">
+                                <input name="company" id="workAddress" class="txt2" maxlength="100" value="{$member['company']}" type="text">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: right;">
+                                手 机：
+                            </td>
+                            <td style="width: 610px; text-align: left;">
+                                <input name="mobile" id="mobile" class="txt2" maxlength="11" value="{$member['mobile']}" type="text">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: right;">
+                                简  介：
+                            </td>
+                            <td style="width: 610px; text-align: left;">
+                                <textarea name="remark" rows="2" cols="20" id="txtUser_Content" style="height: 300px; width: 600px;">{$member['remark']}</textarea>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: right;">
+                            </td>
+                            <td style="text-align: left;">
+                                <input name="Button1" value="确认" id="Button1" class="btn4" type="submit">
+                            </td>
+                        </tr>
+                    </tbody></table>
+                    
+
+
+</form>
+                </div>
+            </div>
+        </div>
+</body></html>
