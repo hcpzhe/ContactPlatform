@@ -3,9 +3,12 @@
 <head>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <title>
-	宜阳检察院
+	{$_PF['web_name']}
 </title><link type="text/css" rel="stylesheet" href="__PUBLIC__/css/base.css">
-<link type="text/css" rel="stylesheet" href="__PUBLIC__/css/global.css"></head>
+<link type="text/css" rel="stylesheet" href="__PUBLIC__/css/global.css">
+<script type="text/javascript" src="__PUBLIC__/js/jquery.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/RSsubmit.js"></script>
+</head>
 <body class="bg-blue">
     <div class="w1003 reg">
         <div class="head1">
@@ -15,7 +18,7 @@
                 <h2 class="tit">
                     <strong>填写资料，注册会员</strong></h2>
                 <div class="tb">
-                    <form name="form1" method="post" action="__URL__/reg" id="form1">
+                    <form name="form1" method="post" action="__URL__/reg" onsubmit="$(this).RSsubmit({success_alert:true,reload:true});return false;" id="form1">
                     <table border="0" cellpadding="0" cellspacing="0" width="100%">
                         <tbody><tr>
                             <th scope="row">
