@@ -29,7 +29,7 @@
 .work_list{ width:560px; height:190px; margin-left:25px; overflow:hidden;}
 .work_list ul{list-style:disc;}
 .work_list ul li{display:block; width:560px; height:24px;border-bottom:1px dashed #CCCCCC; line-height:11px;}
-.work_list ul li span{ display:block; width:315px; height:19px; float:left; overflow:hidden;}
+.work_list ul li span{ display:block; width:315px; height:19px; line-height:19px; float:left; overflow:hidden;}
 .work_list ul li span a{ display:block; width:315px; height:19px; color:#000;}
 .work_list ul li span a:hover{ color:#F00;}
 .work_list ul li strong{ display:block; float:right; width:90px; height:19px; color:#000;  font-weight:200; margin-top:5px; font-size:12px;}
@@ -63,7 +63,7 @@ font-size: 14px;}
 .sound_list{ width:560px; height:190px; margin-left:25px; overflow:hidden;}
 .sound_list ul{list-style:disc;}
 .sound_list ul li{display:block; width:560px; height:24px;border-bottom:1px dashed #CCCCCC; line-height:11px;}
-.sound_list ul li span{ display:block; width:315px; height:19px; float:left; overflow:hidden;}
+.sound_list ul li span{ display:block; width:315px; height:19px; line-height:19px; float:left; overflow:hidden;}
 .sound_list ul li span a{ display:block; width:315px; height:19px; color:#000;}
 .sound_list ul li span a:hover{ color:#F00;}
 .sound_list ul li strong{ display:block; float:right; width:90px; height:19px; color:#000;  font-weight:200; margin-top:5px; font-size:12px;}
@@ -77,7 +77,7 @@ font-size: 14px;}
 .case_list{ width:700px; height:165px; margin-left:35px; overflow:hidden;}
 .case_list ul{list-style:disc; width:700px; height:165px; }
 .case_list ul li{display:block; width:350px; height:28px; line-height:20px; float:left; font-size:14px; }
-.case_list ul li span{ display:block; width:315px; height:19px; float:left; overflow:hidden;}
+.case_list ul li span{ display:block; width:315px; height:19px; line-height:19px; float:left; overflow:hidden;}
 .case_list ul li span a{ display:block; width:315px; height:19px; color:#000;}
 .case_list ul li span a:hover{ color:#F00;}
 
@@ -89,7 +89,7 @@ font-size: 14px;}
 .important_list{ width:700px; height:165px; margin-left:35px; overflow:hidden;}
 .important_list ul{list-style:disc; width:700px; height:165px; }
 .important_list ul li{display:block; width:350px; height:28px; line-height:20px; float:left; font-size:14px; }
-.important_list ul li span{ display:block; width:315px; height:19px; float:left; overflow:hidden;}
+.important_list ul li span{ display:block; width:315px; height:19px; line-height:19px; float:left; overflow:hidden;}
 .important_list ul li span a{ display:block; width:315px; height:19px; color:#000;}
 .important_list ul li span a:hover{ color:#F00;}
 
