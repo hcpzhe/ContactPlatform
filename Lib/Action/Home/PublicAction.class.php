@@ -1,6 +1,12 @@
 <?php
 class PublicAction extends Action{
 
+    function _initialize() {
+		$set_M = D('Setting');
+		$list = $set_M->getField('set_name,set_value');
+		$this->assign('_PF',$list);
+    }
+    
 	public function _empty() {
 		$this->redirect('Index/index');
 	}

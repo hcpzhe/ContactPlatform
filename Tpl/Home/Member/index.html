@@ -1,6 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <title>用户中心</title>
 <link type="text/css" rel="stylesheet" href="__PUBLIC__/css/base.css">
 <link type="text/css" rel="stylesheet" href="__PUBLIC__/css/global.css">
@@ -20,6 +21,18 @@
                 }
             }
         }
+        function reinitIframe() {
+            var iframe = document.getElementById("main");
+            try {
+                var bHeight = iframe.contentWindow.document.body.scrollHeight;
+                var dHeight = iframe.contentWindow.document.documentElement.scrollHeight;
+                var height = Math.max(bHeight, dHeight);
+                if (iframe.height != height) {
+                    iframe.height = height;
+                }
+            } catch (ex) { }
+        }
+        window.setInterval("reinitIframe()", 100);
     </script>
 </head>
 <body>
@@ -47,8 +60,8 @@
 		</p>
     </div>
 </div>
-<div style="width: 1003px; margin: 0 auto;">
-    <div class="w172" style="float: left; ">
+<div class="w1003" style="background: url(__PUBLIC__/images/w172_bg.png) repeat-y;">
+    <div class="w172">
         <div class="admin2">
             <div class="info-center2">
                 <h2>
@@ -101,22 +114,10 @@
             <iframe id="main" onload="Javascript:SetCwinHeight()" name="main" src="__GROUP__/Member/info" border="0" height="624" scrolling="no" width="100%"></iframe>
         </div>
     </div>
+    <div class="cl"></div>
 </div>
 <div class="footer4">
 	<div class="w995">{$_PF['copyright']}</div>
 </div>
 </body>
-<!--
-<frameset rows="163,*,30" cols="*" frameborder="no" border="0" framespacing="0">
-  <frame src="__URL__/memberTop" name="topFrame" scrolling="no">
-  <frameset cols="27%,*" name="btFrame" frameborder="NO" border="0" framespacing="0">
-    <frame src="__URL__/memberMenu" noresize="" name="menu" scrolling="no">
-    <frame src="main7.htm" noresize="" name="main">
-  </frameset>
-  <frame src="UserFooter.htm" name="topFrame" scrolling="no">
-</frameset>
-<noframes>
-    &lt;body&gt;您的浏览器不支持框架！&lt;/body&gt;
-</noframes>
--->
 </html>
