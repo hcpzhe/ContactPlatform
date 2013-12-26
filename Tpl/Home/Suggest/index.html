@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>{$_PF['web_name']}</title>
+<link type="text/css" rel="stylesheet" href="__PUBLIC__/css/base.css">
+<link type="text/css" rel="stylesheet" href="__PUBLIC__/css/UserMain_data/global.css">
+</head>
+<body>
+        <div class="main-content">
+            <div class="w760">
+                <h3 class="common-tit">
+                    <span>当前位置：</span>委员之声&gt;<em>信息管理</em></h3>
+                <div class="row-tb">
+                    <form name="form1" method="post" action="__URL__/index" id="form1">
+                    <div class="tb2 bor mt10">
+                        <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                          <tbody>
+                            <tr>
+                                <th scope="col" width="50">
+                                    编号
+                                </th>
+                                <th scope="col">
+                                    标题
+                                </th>
+                                <th scope="col" width="130">
+                                    提交时间
+                                </th>
+                                <th scope="col" width="12%">
+                                    操作
+                                </th>
+                            </tr>
+                          <!-- <foreach name="suggest_list" item="row"> -->
+                            <tr>
+                                <td  width="50">
+                                    {$row['id']}
+                                </td>
+                                <td scope="col">
+                                    <a href="__URL__/read/id/{$row['id']}" target="_blank" title="111">{$row['title']}</a>
+                                </td>
+                                <td  width="130">
+                            		{:date('Y-m-d',$row['create_time'])}
+                                </td>
+                                <td  width="12%">
+                                     <a href="__URL__/read/id/{$row['id']}" target="_blank">查看回复信息</a>
+                                </td>
+                            </tr>
+                          <!-- </foreach> -->  
+                        </tbody>
+                        </table>
+                        <div class="paging" style="padding: 15px 0 25px 15px;">
+                            
+<!-- AspNetPager V7.0.2 for VS2005 & VS2008  Copyright:2003-2007 Webdiyer (www.webdiyer.com) -->
+<div id="AspNetPager1" style="width:750px;text-align:center;font-size: 12px">
+<!-- <if condition="$page"> -->
+{$page}
+<!-- <else/> -->
+<div style="float:left;width:40%;FONT-SIZE: 12px">
+	一共有<b><font color='red'>0</font></b>条记录 当前页<font color='red'><b>1/1</b></font>   次序 1-0
+</div><div align="center" style="width:60%;float:left;">
+	<a disabled="disabled" style="margin-right:5px;">首页</a><a disabled="disabled" style="margin-right:5px;">上一页</a><span style="margin-right:5px;font-weight:Bold;color:red;">1</span><a disabled="disabled" style="margin-right:5px;">下一页</a><a disabled="disabled" style="margin-right:5px;">尾页</a>
+<!-- </if> -->
+</div>
+<!-- AspNetPager V7.0.2 for VS2005 & VS2008 End -->
+
+
+                        </div>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+</body></html>

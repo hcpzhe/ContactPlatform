@@ -1,0 +1,115 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>{$_PF['web_name']}</title>
+<link type="text/css" rel="stylesheet" href="__PUBLIC__/css/base.css">
+<link type="text/css" rel="stylesheet" href="__PUBLIC__/css/UserMain_data/global.css">
+</head>
+<body>
+    <div class="main-right">
+        <div class="bread-nav">
+        </div>
+        <div class="pd15">
+            <div class="tb1">
+                <div class="col-tb">
+                    <div class="row-tb">
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                            <tr>
+                                <th scope="row">
+                                    &nbsp;
+                                </th>
+                                <td>
+                                    <input name="" onclick="javascript:window.opener=null;window.close();" type="button"
+                                        class="btn4" value="关闭" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row" style="width: 200px;">
+                                    信息标题：
+                                </th>
+                                <td style=" text-align:left;">
+                                   {$vo['title']}
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">
+                                    希望回复方式：
+                                </th>
+                                <td style=" text-align:left;">
+                                    {$vo['reply_type']}
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">
+                                    信息内容：
+                                </th>
+                                <td style=" text-align:left;">
+                                   {$vo['content']}
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">
+                                    其它说明：
+                                </th>
+                                <td style=" text-align:left;">
+                                    {$vo['remark']}
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="col-tb">
+                    <div class="row-tb">
+                        <table id="newslist" width="100%" border="0" cellspacing="0" cellpadding="0">
+                            <tr align="center">
+                                <th scope="col" style="width: 60px; text-align: center;">
+                                    回复人
+                                </th>
+                                <th scope="col" style="width: 123px; text-align: center;">
+                                    回复时间
+                                </th>
+                                <th scope="col" style="text-align: center;">
+                                    回复内容
+                                </th>
+                            </tr>
+                            <!-- <foreach name="sugreply_list" item="row"> -->
+                            <tr align="center">
+                                <td style="width: 60px; text-align: center;">
+                                    	{$user_list[$row['user_id']]}
+                                </td>
+                                <td  style="width: 123px; text-align: center;">
+                                    	{:date('Y-m-d H:i:s',$row['reply_time'])}
+                                </td>
+                                <td  style="text-align: center;">
+                                    	{$row['reply_content']}
+                                </td>
+                            </tr>
+                            <!-- </foreach> -->
+                        </table>
+                    </div>
+                </div>
+                <div class="paging3">
+                    <form name="form1" method="post" action="ShowSug.aspx?Sid=14" id="form1">
+
+                    
+<!-- AspNetPager V7.0.2 for VS2005 & VS2008  Copyright:2003-2007 Webdiyer (www.webdiyer.com) -->
+<div id="AspNetPager1" style="width:100%;text-align:center;font-size: 12px">
+<!-- <if condition="$page"> -->
+{$page}
+<!-- <else/> -->
+<div style="float:left;width:40%;FONT-SIZE: 12px">
+	一共有<b><font color='red'>0</font></b>条记录 当前页<font color='red'><b>1/1</b></font>   次序 1-0
+</div><div align="center" style="width:60%;float:left;">
+	<a disabled="disabled" style="margin-right:5px;">首页</a><a disabled="disabled" style="margin-right:5px;">上一页</a><span style="margin-right:5px;font-weight:Bold;color:red;">1</span><a disabled="disabled" style="margin-right:5px;">下一页</a><a disabled="disabled" style="margin-right:5px;">尾页</a>
+<!-- </if> -->
+</div>
+<!-- AspNetPager V7.0.2 for VS2005 & VS2008 End -->
+                    <div class="cl">
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
