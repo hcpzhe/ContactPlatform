@@ -1,16 +1,16 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : 127.0.0.1
-Source Server Version : 50524
-Source Host           : 127.0.0.1:3306
-Source Database       : ctplatform
+Source Server         : platform.free.wqit.net
+Source Server Version : 50051
+Source Host           : 118.192.42.26:3306
+Source Database       : platform
 
 Target Server Type    : MYSQL
-Target Server Version : 50524
+Target Server Version : 50051
 File Encoding         : 65001
 
-Date: 2013-12-26 14:05:20
+Date: 2013-12-26 17:41:24
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -23,7 +23,7 @@ CREATE TABLE `pf_access` (
   `role_id` smallint(6) unsigned NOT NULL,
   `node_id` smallint(6) unsigned NOT NULL,
   `level` tinyint(1) NOT NULL,
-  `module` varchar(50) DEFAULT NULL,
+  `module` varchar(50) default NULL,
   KEY `groupId` (`role_id`),
   KEY `nodeId` (`node_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
@@ -117,27 +117,27 @@ INSERT INTO `pf_access` VALUES ('3', '34', '3', null);
 -- ----------------------------
 DROP TABLE IF EXISTS `pf_member`;
 CREATE TABLE `pf_member` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int(10) unsigned NOT NULL auto_increment,
   `account` varchar(64) NOT NULL COMMENT '用户名',
   `nickname` varchar(50) NOT NULL COMMENT '真实姓名',
   `password` char(32) NOT NULL,
-  `type` tinyint(1) NOT NULL DEFAULT '1' COMMENT '类别 1-人大代表 2-政协委员',
+  `type` tinyint(1) NOT NULL default '1' COMMENT '类别 1-人大代表 2-政协委员',
   `paper_number` varchar(255) NOT NULL COMMENT '委员证号',
-  `photo` varchar(255) DEFAULT NULL COMMENT '头像URL',
+  `photo` varchar(255) default NULL COMMENT '头像URL',
   `company` varchar(255) NOT NULL COMMENT '工作单位',
   `mobile` varchar(11) NOT NULL COMMENT '手机',
-  `email` varchar(255) DEFAULT NULL,
-  `last_login_time` varchar(20) DEFAULT '0' COMMENT 'unix时间戳',
-  `last_login_ip` varchar(40) DEFAULT NULL,
-  `login_count` mediumint(8) unsigned DEFAULT '0',
-  `remark` varchar(255) DEFAULT NULL,
+  `email` varchar(255) default NULL,
+  `last_login_time` varchar(20) default '0' COMMENT 'unix时间戳',
+  `last_login_ip` varchar(40) default NULL,
+  `login_count` mediumint(8) unsigned default '0',
+  `remark` varchar(255) default NULL,
   `create_time` int(11) unsigned NOT NULL,
   `update_time` int(11) unsigned NOT NULL,
-  `is_recom` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否推荐  0-不推荐  1-推荐',
+  `is_recom` tinyint(1) NOT NULL default '0' COMMENT '是否推荐  0-不推荐  1-推荐',
   `status` tinyint(1) NOT NULL COMMENT '0-删除  1-已审核  2-待审核',
-  PRIMARY KEY (`id`),
+  PRIMARY KEY  (`id`),
   UNIQUE KEY `account` (`account`)
-) ENGINE=MyISAM AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=24 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of pf_member
@@ -147,36 +147,43 @@ INSERT INTO `pf_member` VALUES ('2', 'test2', 'test2', 'b67508a1f2983c7365b37946
 INSERT INTO `pf_member` VALUES ('3', 'test3', 'test3', '5f85eb5b813593a29037e93fedc5af34', '1', 'test3', '/Public/Uploads/Member/14/52b8fccc925f8.jpg', 'test3', '15236660754', null, '1387525844', '127.0.0.1', '0', null, '1387525844', '1387525844', '1', '1');
 INSERT INTO `pf_member` VALUES ('4', 'test4', 'test4', 'e5fc178b0bc754b47e09f19c3f5eef7e', '1', 'test4', '/Public/Uploads/Member/14/52b8fccc925f8.jpg', 'test4', '15236660754', null, '1387525888', '127.0.0.1', '0', null, '1387525888', '1387525888', '1', '1');
 INSERT INTO `pf_member` VALUES ('5', 'test5', 'test5', '7a957cf67b7ce665286ab651f36f86a0', '1', 'test5', '/Public/Uploads/Member/14/52b8fccc925f8.jpg', 'test5', '15236660754', null, '1387526308', '127.0.0.1', '0', null, '1387526308', '1387526308', '1', '1');
-INSERT INTO `pf_member` VALUES ('6', 'a1111', '11111', 'b4b3aced3193c18c653bdeff2dd5c141', '1', '11111', '/Public/Uploads/Member/6/52bba7ba2d079.png', '11111', '11111111111', null, '1388029882', '127.0.0.1', '4', '222222222222222222222', '1387616424', '1388029882', '1', '1');
-INSERT INTO `pf_member` VALUES ('7', 'ceshi1', 'ceshi1', '22210798bc8f23ce100a7fe0a778dd9d', '2', 'ceshi1', '/Public/Uploads/Member/14/52b8fccc925f8.jpg', 'ceshi1', '15236660754', null, '1387898786', '127.0.0.1', '2', 'ceshi1', '1387809403', '1387809403', '1', '1');
+INSERT INTO `pf_member` VALUES ('6', 'a1111', '11111', 'b4b3aced3193c18c653bdeff2dd5c141', '1', '11111', '/Public/Uploads/Member/6/52bba7ba2d079.png', '11111', '11111111111', null, '1388048300', '127.0.0.1', '6', '222222222222222222222', '1387616424', '1388029882', '1', '1');
+INSERT INTO `pf_member` VALUES ('7', 'ceshi1', 'ceshi1', '22210798bc8f23ce100a7fe0a778dd9d', '2', 'ceshi1', '/Public/Uploads/Member/14/52b8fccc925f8.jpg', 'ceshi1', '15236660754', null, '1388041087', '123.7.52.55', '4', 'ceshi1', '1387809403', '1387809403', '1', '1');
 INSERT INTO `pf_member` VALUES ('8', 'a11111', 'aaa', 'b4b3aced3193c18c653bdeff2dd5c141', '2', '131555', '/Public/Uploads/Member/14/52b8fccc925f8.jpg', 'aaaaa', '15194544953', null, '1387848744', '127.0.0.1', '0', 'aaaaaaaaaaaaaa', '1387848744', '1387848744', '1', '1');
 INSERT INTO `pf_member` VALUES ('9', 'a111111', 'aaa', 'b4b3aced3193c18c653bdeff2dd5c141', '2', '131555', '/Public/Uploads/Member/14/52b8fccc925f8.jpg', 'aaaaa', '15194544953', null, '1387848776', '127.0.0.1', '0', 'aaaaaaaaaaaaaa', '1387848776', '1387848776', '1', '1');
 INSERT INTO `pf_member` VALUES ('10', 'a2222', 'aaa', 'd0a61972692ff53c844fbdd3d44c7a33', '2', '131555', '/Public/Uploads/Member/14/52b8fccc925f8.jpg', 'aaaaa', '15194544953', null, '1387956799', '127.0.0.1', '0', 'aaaaaaaaaaaaaa', '1387848859', '1387956799', '1', '1');
 INSERT INTO `pf_member` VALUES ('11', 'aaaa', 'aaaa', 'b4b3aced3193c18c653bdeff2dd5c141', '2', 'aaa', '/Public/Uploads/Member/14/52b8fccc925f8.jpg', 'aaa', '15194544953', null, '1387936855', '127.0.0.1', '1', '', '1387849763', '1387849763', '1', '1');
 INSERT INTO `pf_member` VALUES ('12', 'bbbb', 'bbbbb', 'b4b3aced3193c18c653bdeff2dd5c141', '2', 'bbbbb', '/Public/Uploads/Member/14/52b8fccc925f8.jpg', 'bbbbb', '15194544953', null, '1387849932', '127.0.0.1', '0', '', '1387849932', '1387849932', '1', '1');
 INSERT INTO `pf_member` VALUES ('13', 'bbbbbb', 'bbbbbbb', 'b4b3aced3193c18c653bdeff2dd5c141', '2', 'bbbbbb', '/Public/Uploads/Member/14/52b8fccc925f8.jpg', 'bbbbb', '15194544953', null, '1387850302', '127.0.0.1', '0', '', '1387850302', '1387850302', '1', '1');
-INSERT INTO `pf_member` VALUES ('14', 'zhangmeiling', '张美玲', '8a80b94381564e3131d48977715fadd5', '2', '123456', '/Public/Uploads/Member/14/52b8fccc925f8.jpg', '测试', '15194544953', null, '1388020319', '127.0.0.1', '4', '', '1387855052', '1387956726', '1', '1');
+INSERT INTO `pf_member` VALUES ('14', 'zhangmeiling', '张美玲', '8a80b94381564e3131d48977715fadd5', '2', '123456', '/Public/Uploads/Member/14/52b8fccc925f8.jpg', '测试', '15194544953', null, '1388042838', '123.7.52.55', '6', '', '1387855052', '1387956726', '1', '1');
 INSERT INTO `pf_member` VALUES ('15', 'a7895', '测试', 'ff67e820ddd404fb081aa718b7a73211', '2', '546555', '/Public/Uploads/Member/15/52b8ffae07e23.jpg', '测试', '15194544953', null, '1387855790', '127.0.0.1', '0', '11111', '1387855790', '1387855790', '1', '0');
 INSERT INTO `pf_member` VALUES ('16', 'a1111a', 'aaaa', 'bc591d797604e1e36a00cfcb1dc7a79e', '1', '1513151', null, '11111', '15194544953', null, '1387876266', '127.0.0.1', '1', null, '1387875903', '1387875903', '1', '0');
+INSERT INTO `pf_member` VALUES ('17', 'ab111', '1111', 'b4b3aced3193c18c653bdeff2dd5c141', '1', '111111', null, '11111', '15194544953', null, '1388041127', '127.0.0.1', '0', null, '1388041127', '1388041127', '0', '2');
+INSERT INTO `pf_member` VALUES ('18', 'dgdgdv', '董根', '15c9dfa38cfaf2635d54b1f94ffaed6c', '1', '123456789', '/Public/Uploads/Member/18/52bbda7d3f01a.jpg', '洛阳上升沿', '12345678977', null, '1388043688', '222.88.77.122', '2', '', '1388041879', '1388042884', '0', '1');
+INSERT INTO `pf_member` VALUES ('19', 'ab222', 'aaaaa', 'b4b3aced3193c18c653bdeff2dd5c141', '1', '111111', '/Public/Uploads/Public/19/52bbecc70d7e3.png', '22222', '12222222222', 'kkk@kk.com', '1388047559', '127.0.0.1', '0', 'aa', '1388047559', '1388047559', '0', '2');
+INSERT INTO `pf_member` VALUES ('20', 'aaaaan', 'aaaaa', 'b4b3aced3193c18c653bdeff2dd5c141', '1', 'aaaaaa', '/Public/Uploads/Public/20/52bbed2417657.jpg', 'aaa', '15555555555', 'll@klkk.com', '1388047652', '127.0.0.1', '0', '', '1388047652', '1388047652', '0', '2');
+INSERT INTO `pf_member` VALUES ('21', 'l11111111', '1111111111', 'b4b3aced3193c18c653bdeff2dd5c141', '1', '1111111111111', null, '111111', '12222222222', '', '1388047896', '127.0.0.1', '0', '', '1388047896', '1388047896', '0', '2');
+INSERT INTO `pf_member` VALUES ('22', 'l111111112', '1111111111', 'b4b3aced3193c18c653bdeff2dd5c141', '1', '1111111111111', '/Public/Uploads/Public/22/52bbee72d2054.png', '111111', '12222222222', '', '1388047986', '127.0.0.1', '0', '', '1388047986', '1388047986', '0', '2');
+INSERT INTO `pf_member` VALUES ('23', 'l1111111122', '1111111111', 'b4b3aced3193c18c653bdeff2dd5c141', '1', '1111111111111', '/Public/Uploads/Member/23/52bbef160502f.png', '111111', '12222222222', '', '1388048150', '127.0.0.1', '0', '', '1388048150', '1388048150', '0', '2');
 
 -- ----------------------------
 -- Table structure for `pf_news`
 -- ----------------------------
 DROP TABLE IF EXISTS `pf_news`;
 CREATE TABLE `pf_news` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int(10) unsigned NOT NULL auto_increment,
   `ctg_id` int(10) unsigned NOT NULL COMMENT '所属分类ID',
   `title` varchar(255) NOT NULL COMMENT '新闻标题',
   `content` text COMMENT '新闻内容',
-  `editor` varchar(255) DEFAULT NULL COMMENT '信息编辑人',
-  `picture` varchar(255) DEFAULT NULL COMMENT '图片路径',
-  `is_pic` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否图片 0-否 1-是',
-  `is_recom` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否推荐 0-不推荐 1-推荐',
-  `is_display` tinyint(1) NOT NULL DEFAULT '0' COMMENT '0-不显示 1-显示',
-  `create_time` varchar(20) NOT NULL DEFAULT '0' COMMENT '发布时间 unix时间戳',
-  `update_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '更新时间 unix时间戳',
-  `status` tinyint(1) NOT NULL DEFAULT '0' COMMENT '0-删除 1-正常',
-  PRIMARY KEY (`id`)
+  `editor` varchar(255) default NULL COMMENT '信息编辑人',
+  `picture` varchar(255) default NULL COMMENT '图片路径',
+  `is_pic` tinyint(1) NOT NULL default '0' COMMENT '是否图片 0-否 1-是',
+  `is_recom` tinyint(1) NOT NULL default '0' COMMENT '是否推荐 0-不推荐 1-推荐',
+  `is_display` tinyint(1) NOT NULL default '0' COMMENT '0-不显示 1-显示',
+  `create_time` varchar(20) NOT NULL default '0' COMMENT '发布时间 unix时间戳',
+  `update_time` int(10) unsigned NOT NULL default '0' COMMENT '更新时间 unix时间戳',
+  `status` tinyint(1) NOT NULL default '0' COMMENT '0-删除 1-正常',
+  PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=84 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -239,15 +246,15 @@ INSERT INTO `pf_news` VALUES ('83', '3', '公民道德歌', '<p class=\"MsoNorma
 -- ----------------------------
 DROP TABLE IF EXISTS `pf_news_category`;
 CREATE TABLE `pf_news_category` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `parent_id` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '所属分类ID',
-  `name` varchar(255) NOT NULL DEFAULT '' COMMENT '分类名称',
-  `type` tinyint(1) NOT NULL DEFAULT '1' COMMENT '栏目类型 1-列表 2-单页',
-  `rank` smallint(6) NOT NULL DEFAULT '100' COMMENT '排序',
-  `is_display` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否显示 0-不显示 1-显示',
-  `is_index` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否首页显示 0-不显示 1-显示',
-  `status` tinyint(1) NOT NULL DEFAULT '0' COMMENT '0-删除 1-正常',
-  PRIMARY KEY (`id`)
+  `id` int(10) unsigned NOT NULL auto_increment,
+  `parent_id` int(10) unsigned NOT NULL default '0' COMMENT '所属分类ID',
+  `name` varchar(255) NOT NULL default '' COMMENT '分类名称',
+  `type` tinyint(1) NOT NULL default '1' COMMENT '栏目类型 1-列表 2-单页',
+  `rank` smallint(6) NOT NULL default '100' COMMENT '排序',
+  `is_display` tinyint(1) NOT NULL default '0' COMMENT '是否显示 0-不显示 1-显示',
+  `is_index` tinyint(1) NOT NULL default '0' COMMENT '是否首页显示 0-不显示 1-显示',
+  `status` tinyint(1) NOT NULL default '0' COMMENT '0-删除 1-正常',
+  PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -264,14 +271,14 @@ INSERT INTO `pf_news_category` VALUES ('5', '0', '建议提案办理情况', '2'
 -- ----------------------------
 DROP TABLE IF EXISTS `pf_news_comment`;
 CREATE TABLE `pf_news_comment` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int(10) unsigned NOT NULL auto_increment,
   `news_id` int(10) unsigned NOT NULL COMMENT '所属新闻ID',
   `member_id` int(10) unsigned NOT NULL COMMENT '评论用户ID',
   `title` varchar(255) NOT NULL COMMENT '评论标题',
   `content` text COMMENT '评论内容',
-  `create_time` varchar(255) NOT NULL DEFAULT '0' COMMENT '评论时间',
-  `status` tinyint(4) NOT NULL DEFAULT '0' COMMENT '0-删除 1-已审核 2-未审核',
-  PRIMARY KEY (`id`)
+  `create_time` varchar(255) NOT NULL default '0' COMMENT '评论时间',
+  `status` tinyint(4) NOT NULL default '0' COMMENT '0-删除 1-已审核 2-未审核',
+  PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -290,22 +297,22 @@ INSERT INTO `pf_news_comment` VALUES ('10', '32', '6', '', '11111', '1387961412'
 INSERT INTO `pf_news_comment` VALUES ('11', '24', '6', '', '1111', '1387961867', '2');
 INSERT INTO `pf_news_comment` VALUES ('12', '24', '6', '', '111', '1387963229', '2');
 INSERT INTO `pf_news_comment` VALUES ('13', '24', '6', '', '111111111', '1387963866', '2');
-INSERT INTO `pf_news_comment` VALUES ('14', '24', '6', '', '111111111111111111111', '1387963871', '2');
+INSERT INTO `pf_news_comment` VALUES ('14', '24', '6', '', '111111111111111111111', '1387963871', '1');
 
 -- ----------------------------
 -- Table structure for `pf_node`
 -- ----------------------------
 DROP TABLE IF EXISTS `pf_node`;
 CREATE TABLE `pf_node` (
-  `id` smallint(6) unsigned NOT NULL AUTO_INCREMENT,
+  `id` smallint(6) unsigned NOT NULL auto_increment,
   `name` varchar(20) NOT NULL,
-  `title` varchar(50) DEFAULT NULL,
-  `status` tinyint(1) DEFAULT '0',
-  `remark` varchar(255) DEFAULT NULL,
-  `sort` smallint(6) unsigned DEFAULT NULL,
+  `title` varchar(50) default NULL,
+  `status` tinyint(1) default '0',
+  `remark` varchar(255) default NULL,
+  `sort` smallint(6) unsigned default NULL,
   `pid` smallint(6) unsigned NOT NULL,
   `level` tinyint(1) unsigned NOT NULL,
-  PRIMARY KEY (`id`),
+  PRIMARY KEY  (`id`),
   KEY `level` (`level`),
   KEY `pid` (`pid`),
   KEY `status` (`status`),
@@ -353,12 +360,12 @@ INSERT INTO `pf_node` VALUES ('34', 'setField', '更新字段', '1', null, null,
 -- ----------------------------
 DROP TABLE IF EXISTS `pf_role`;
 CREATE TABLE `pf_role` (
-  `id` smallint(6) unsigned NOT NULL AUTO_INCREMENT,
+  `id` smallint(6) unsigned NOT NULL auto_increment,
   `name` varchar(20) NOT NULL,
-  `pid` smallint(6) DEFAULT NULL,
-  `status` tinyint(1) unsigned DEFAULT NULL,
-  `remark` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`id`),
+  `pid` smallint(6) default NULL,
+  `status` tinyint(1) unsigned default NULL,
+  `remark` varchar(255) default NULL,
+  PRIMARY KEY  (`id`),
   KEY `pid` (`pid`),
   KEY `status` (`status`)
 ) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
@@ -375,8 +382,8 @@ INSERT INTO `pf_role` VALUES ('3', '建议管理', '0', '1', null);
 -- ----------------------------
 DROP TABLE IF EXISTS `pf_role_user`;
 CREATE TABLE `pf_role_user` (
-  `role_id` mediumint(9) unsigned DEFAULT NULL,
-  `user_id` char(32) DEFAULT NULL,
+  `role_id` mediumint(9) unsigned default NULL,
+  `user_id` char(32) default NULL,
   KEY `group_id` (`role_id`),
   KEY `user_id` (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -423,45 +430,46 @@ INSERT INTO `pf_setting` VALUES ('copyright', '版权所有：洛阳市老城区
 -- ----------------------------
 DROP TABLE IF EXISTS `pf_suggest`;
 CREATE TABLE `pf_suggest` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int(10) unsigned NOT NULL auto_increment,
   `member_id` int(10) unsigned NOT NULL COMMENT '提交建议的用户ID',
-  `user_id` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '处理建议的管理员ID',
+  `user_id` int(10) unsigned NOT NULL default '0' COMMENT '处理建议的管理员ID',
   `title` varchar(255) NOT NULL COMMENT '建议标题',
-  `reply_type` tinyint(1) NOT NULL DEFAULT '0' COMMENT '希望回复方式  1-短信 2-邮件 3-电话 4-信函',
+  `reply_type` tinyint(1) NOT NULL default '0' COMMENT '希望回复方式  1-短信 2-邮件 3-电话 4-信函',
   `content` text COMMENT '信息内容',
-  `remark` varchar(255) DEFAULT NULL COMMENT '其他说明',
-  `create_time` varchar(20) NOT NULL DEFAULT '0' COMMENT '建议提交时间 unix时间戳',
-  `status` tinyint(1) unsigned NOT NULL DEFAULT '0' COMMENT '信息状态 0-删除 1-已处理 2-待处理',
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+  `remark` varchar(255) default NULL COMMENT '其他说明',
+  `create_time` varchar(20) NOT NULL default '0' COMMENT '建议提交时间 unix时间戳',
+  `status` tinyint(1) unsigned NOT NULL default '0' COMMENT '信息状态 0-删除 1-已处理 2-待处理',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of pf_suggest
 -- ----------------------------
 INSERT INTO `pf_suggest` VALUES ('1', '1', '1', 'biaoti', '0', 'neirong', null, '0', '1');
 INSERT INTO `pf_suggest` VALUES ('2', '1', '1', 'ceshi', '0', 'neirong2', null, '0', '1');
-INSERT INTO `pf_suggest` VALUES ('3', '6', '0', '1111', '1', '11111', '1111', '1387963254', '2');
-INSERT INTO `pf_suggest` VALUES ('4', '6', '0', '2222222', '1', '22222222222', '22222222', '1387963453', '2');
+INSERT INTO `pf_suggest` VALUES ('3', '6', '1', '1111', '4', '11111', '1111', '1387963254', '1');
+INSERT INTO `pf_suggest` VALUES ('4', '6', '0', '2222222', '3', '22222222222', '22222222', '1387963453', '2');
 INSERT INTO `pf_suggest` VALUES ('5', '6', '0', '222222222', '1', '22222222222\r\n\r\n', '111', '1387963470', '2');
 INSERT INTO `pf_suggest` VALUES ('6', '6', '0', '444', '1', '4444', '444', '1387963595', '2');
 INSERT INTO `pf_suggest` VALUES ('7', '6', '0', '1111', '1', '11111111', '1111111', '1387963837', '2');
 INSERT INTO `pf_suggest` VALUES ('8', '6', '0', '111', '1', '1111', '111', '1387964493', '2');
 INSERT INTO `pf_suggest` VALUES ('9', '6', '0', '88888', '2', '8888', '8888', '1388027003', '2');
 INSERT INTO `pf_suggest` VALUES ('10', '6', '1', '555555', '1', '55555555555', '5555555555555', '1388027098', '1');
+INSERT INTO `pf_suggest` VALUES ('11', '18', '0', '一定要搞好自己的工作', '1', '向中华人民共和国敬礼', '没了', '1388043314', '2');
 
 -- ----------------------------
 -- Table structure for `pf_sugreply`
 -- ----------------------------
 DROP TABLE IF EXISTS `pf_sugreply`;
 CREATE TABLE `pf_sugreply` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int(10) unsigned NOT NULL auto_increment,
   `sug_id` int(10) unsigned NOT NULL COMMENT '所属建议ID',
   `user_id` int(10) unsigned NOT NULL COMMENT '回复人ID',
-  `reply_time` varchar(255) NOT NULL DEFAULT '0' COMMENT '回复时间',
-  `reply_content` varchar(255) DEFAULT NULL COMMENT '回复内容',
-  `status` tinyint(1) NOT NULL DEFAULT '0' COMMENT '0-删除 1-正常',
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=24 DEFAULT CHARSET=utf8;
+  `reply_time` varchar(255) NOT NULL default '0' COMMENT '回复时间',
+  `reply_content` text COMMENT '回复内容',
+  `status` tinyint(1) NOT NULL default '0' COMMENT '0-删除 1-正常',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=25 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of pf_sugreply
@@ -489,30 +497,31 @@ INSERT INTO `pf_sugreply` VALUES ('20', '10', '1', '1388028497', '555555', '1');
 INSERT INTO `pf_sugreply` VALUES ('21', '10', '1', '1388028506', '5555555555555', '1');
 INSERT INTO `pf_sugreply` VALUES ('22', '10', '1', '1388028510', '7777777777777', '1');
 INSERT INTO `pf_sugreply` VALUES ('23', '10', '1', '1388028519', '55555555555555', '1');
+INSERT INTO `pf_sugreply` VALUES ('24', '3', '1', '1388041217', '1111111111', '1');
 
 -- ----------------------------
 -- Table structure for `pf_user`
 -- ----------------------------
 DROP TABLE IF EXISTS `pf_user`;
 CREATE TABLE `pf_user` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int(10) unsigned NOT NULL auto_increment,
   `account` varchar(64) NOT NULL COMMENT '帐号',
   `password` char(32) NOT NULL COMMENT '密码',
-  `nickname` varchar(50) DEFAULT NULL COMMENT '昵称,姓名',
-  `last_login_time` varchar(20) DEFAULT '0' COMMENT 'unix时间戳',
-  `last_login_ip` varchar(40) DEFAULT NULL,
-  `login_count` mediumint(9) unsigned DEFAULT '0',
-  `email` varchar(255) DEFAULT NULL,
-  `create_time` varchar(20) DEFAULT '0' COMMENT 'unix时间戳',
-  `update_time` varchar(20) DEFAULT '0' COMMENT 'unix时间戳',
-  `status` tinyint(4) NOT NULL DEFAULT '0' COMMENT '0-删除 1-正常',
-  PRIMARY KEY (`id`)
+  `nickname` varchar(50) default NULL COMMENT '昵称,姓名',
+  `last_login_time` varchar(20) default '0' COMMENT 'unix时间戳',
+  `last_login_ip` varchar(40) default NULL,
+  `login_count` mediumint(9) unsigned default '0',
+  `email` varchar(255) default NULL,
+  `create_time` varchar(20) default '0' COMMENT 'unix时间戳',
+  `update_time` varchar(20) default '0' COMMENT 'unix时间戳',
+  `status` tinyint(4) NOT NULL default '0' COMMENT '0-删除 1-正常',
+  PRIMARY KEY  (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of pf_user
 -- ----------------------------
-INSERT INTO `pf_user` VALUES ('1', 'admin', '3d06188d51e8024d76f1013b1563afcf', '超级管理员', '1388027342', '127.0.0.1', '60', null, '0', '0', '1');
+INSERT INTO `pf_user` VALUES ('1', 'admin', '3d06188d51e8024d76f1013b1563afcf', '超级管理员', '1388042182', '123.7.52.55', '63', null, '0', '0', '1');
 INSERT INTO `pf_user` VALUES ('2', 'user2', '3d06188d51e8024d76f1013b1563afcf', '2号', '1387789254', '127.0.0.1', '2', null, '0', '0', '1');
 INSERT INTO `pf_user` VALUES ('3', 'user3', '3d06188d51e8024d76f1013b1563afcf', '3号', '0', null, '0', null, '0', '0', '1');
 INSERT INTO `pf_user` VALUES ('4', 'user4', '15c9dfa38cfaf2635d54b1f94ffaed6c', '4434544656', '1387980302', '127.0.0.1', '1', null, '0', '1387980252', '1');
