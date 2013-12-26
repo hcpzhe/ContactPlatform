@@ -1,0 +1,68 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"><title>
+	{$_PF['web_name']}
+</title><link type="text/css" rel="stylesheet" href="__PUBLIC__/css/base.css">
+<link type="text/css" rel="stylesheet" href="__PUBLIC__/css/global.css">
+<script type="text/javascript" src="__PUBLIC__/js/jquery.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/RSsubmit.js"></script>
+</head>
+<body>
+        <div class="main-content">
+            <div class="w760">
+                <h3 class="common-tit">
+                    <span>当前位置：</span>委员之声&gt;<em>修改建议</em></h3>
+                <div class="row-tb">
+                    <form name="form1" method="post" action="__GROUP__/Suggest/update" onsubmit="$(this).RSsubmit({success_alert:true,reload:true});return false;" id="form1">
+                    <table border="0" cellpadding="0" cellspacing="0" width="760">
+                        <tbody><tr>
+                            <td style="text-align: right;">
+                                <span class="red">*</span>信息标题：
+                            </td>
+                            <td style="width: 610px; text-align: left;">
+                                <input name="title" id="sug_title" class="txt2" value="{$vo['title']}" type="text">
+                                <input name="id"  value="{$vo['id']}" type="hidden">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: right;">
+                                <span class="red">*</span>希望回复方式：
+                            </td>
+                            <td style="width: 610px; text-align: left;">
+                                <input id="Radio1" name="reply_type" value="1" {$vo['reply_type']==1?'checked="checked"':''} type="radio">短信&nbsp;&nbsp;
+                                <input id="Radio2" name="reply_type" value="2" {$vo['reply_type']==2?'checked="checked"':''} type="radio">邮件&nbsp;&nbsp;
+                                <input id="Radio3" name="reply_type" value="3" {$vo['reply_type']==3?'checked="checked"':''} type="radio">电话&nbsp;&nbsp;
+                                <input id="Radio4" name="reply_type" value="4" {$vo['reply_type']==4?'checked="checked"':''} type="radio">信函                               
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: right;">
+                                <span class="red">*</span>信息内容：
+                            </td>
+                            <td style="width: 610px; text-align: left;">
+                                <textarea name="content" id="sug_Content" style="width: 532px; height: 218px; border: solid 1px #97bfd5">{$vo['content']}</textarea>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: right;">
+                                其它说明：
+                            </td>
+                            <td style="width: 610px; text-align: left;">
+                                <input name="remark" id="sug_OtherExplain" class="txt2" value="{$vo['remark']}" type="text">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: right;">
+                            </td>
+                            <td style="text-align: left;">
+                                <input name="Button1" value="确定提交" id="Button1" class="btn4" type="submit">
+                            </td>
+                        </tr>
+                    </tbody></table>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
+</body></html>

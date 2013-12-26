@@ -27,6 +27,13 @@ class PublicAction extends Action{
 			//添加用户
 			$status=$member_M->add();
 			if ($status!==false){
+			//成功提示
+				if (!empty($_FILES['photo']['name'])){
+				$fileinfo = $this->_uploadone($_FILES['photo'] , $member_M->getModelName().'/'.$status.'/'); //传递头像图片
+				//头像URL地址
+				$photo_url =substr($fileinfo['savepath'].$fileinfo['savename'],1);
+				$member_M->where("id=%d",$status)->setField('photo',$photo_url);
+				}
 				$this->success('注册成功！管理员会尽快为您审核！' , __GROUP__.'/Index/index');
 			}else {
 				$this->error('注册失败！');
@@ -35,6 +42,31 @@ class PublicAction extends Action{
 			$this->error($member_M->getError());		
 		}
 	}
+    protected function _uploadone($file , $path) {
+		import('@.ORG.Net.UploadFile');
+		//导入上传类
+		$upload = new UploadFile();
+		//设置上传文件大小
+		$upload->maxSize			= 3292200;
+		//设置上传文件类型
+		$upload->allowExts		  = explode(',', 'jpg,gif,png,jpeg');
+		//设置附件上传目录
+		$upload->savePath		   = APP_PATH.'Public/Uploads/'.$path;
+		//设置上传文件规则
+		$upload->saveRule		   = 'uniqid';
+		//删除原图
+		$upload->thumbRemoveOrigin  = true;
+		if (!file_exists($upload->savePath)){
+			mkdir($upload->savePath,'0644',true);
+		}
+		$fileinfo = $upload->uploadOne($file);
+		if ($fileinfo === false) {
+			//捕获上传异常
+			$this->error($upload->getErrorMsg());
+		} else {
+			return $fileinfo[0];
+		}
+    }
 	
 	/*
 	 *用户个人中心登录 验证

@@ -6,8 +6,6 @@
 	{$_PF['web_name']}
 </title><link type="text/css" rel="stylesheet" href="__PUBLIC__/css/base.css">
 <link type="text/css" rel="stylesheet" href="__PUBLIC__/css/global.css">
-<script type="text/javascript" src="__PUBLIC__/js/jquery.js"></script>
-<script type="text/javascript" src="__PUBLIC__/js/RSsubmit.js"></script>
 </head>
 <body class="bg-blue">
     <div class="w1003 reg">
@@ -18,7 +16,7 @@
                 <h2 class="tit">
                     <strong>填写资料，注册会员</strong></h2>
                 <div class="tb">
-                    <form name="form1" method="post" action="__URL__/reg" onsubmit="$(this).RSsubmit({success_alert:true,reload:true});return false;" id="form1">
+                    <form name="form1" method="post" action="__URL__/reg"  id="form1" enctype="multipart/form-data">
                     <table border="0" cellpadding="0" cellspacing="0" width="100%">
                         <tbody><tr>
                             <th scope="row">
@@ -49,6 +47,14 @@
                         </tr>
                         <tr>
                             <th scope="row">
+                                	头像：
+                            </th>
+                            <td>
+                                <input name="photo" class="txt1"  type="file">
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">
                                 <span>*</span>代表、委员证号：
                             </th>
                             <td>
@@ -71,7 +77,22 @@
                                 <input name="mobile" class="txt1" maxlength="11" type="text">
                             </td>
                         </tr>
-                        
+                         <tr>
+                            <th scope="row">
+                                <span>*</span>EMAIL：
+                            </th>
+                            <td>
+                                <input name="email" class="txt1"  type="text">
+                            </td>
+                        </tr>
+                         <tr>
+                            <th scope="row">
+                                	简介：
+                            </th>
+                            <td>
+                                <input name="remark" class="txt1"  type="text">
+                            </td>
+                        </tr>
                         <tr>
                             <th scope="row">
                                 <span>*</span>密 码：

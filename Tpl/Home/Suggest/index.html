@@ -26,7 +26,7 @@
                                 <th scope="col" width="130">
                                     提交时间
                                 </th>
-                                <th scope="col" width="12%">
+                                <th scope="col" width="25%">
                                     操作
                                 </th>
                             </tr>
@@ -36,12 +36,13 @@
                                     {$row['id']}
                                 </td>
                                 <td scope="col">
-                                    <a href="__URL__/read/id/{$row['id']}" target="_blank" title="111">{$row['title']}</a>
+                                    <a href="__URL__/read/id/{$row['id']}" target="_blank" title="{$row['title']}">{$row['title']}</a>
                                 </td>
                                 <td  width="130">
                             		{:date('Y-m-d',$row['create_time'])}
                                 </td>
-                                <td  width="12%">
+                                <td  width="25%">
+                                	 <a href="__URL__/edit/id/{$row['id']}">修改建议</a> | 
                                      <a href="__URL__/read/id/{$row['id']}" target="_blank">查看回复信息</a>
                                 </td>
                             </tr>
