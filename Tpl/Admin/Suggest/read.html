@@ -8,7 +8,7 @@
     <script type="text/javascript" src="__PUBLIC__/js/main.js"></script>
     <script type="text/javascript" src="__PUBLIC__/js/RSsubmit.js"></script>
     
-	<link rel="stylesheet" href="__PUBLIC__/kindeditor-4.1.10//themes/default/default.css" />
+	<link rel="stylesheet" href="__PUBLIC__/kindeditor-4.1.10/themes/default/default.css" />
 	<script charset="utf-8" src="__PUBLIC__/kindeditor-4.1.10/kindeditor-min.js"></script>
 	<script charset="utf-8" src="__PUBLIC__/kindeditor-4.1.10/lang/zh_CN.js"></script>
     <style type="text/css">
@@ -23,7 +23,7 @@
 <body>
 <script type="text/javascript">
 KindEditor.ready(function(K) {
-	K.create('textarea[name="reply_content"]', {
+	var myeditor = K.create('textarea[name="reply_content"]', {
 		allowFileManager : true,
 		autoHeightMode : true,
 		afterCreate : function() {
@@ -36,9 +36,14 @@ KindEditor.ready(function(K) {
 			$("#images").append(selectoption);
 		}
 	});
+	K('#form1').bind('submit', function() {
+		myeditor.sync();
+		$(this).RSsubmit({success_alert:true,reload:true});
+		return false;
+	});
 });
 </script>
-    <form name="form1" method="post" action="__GROUP__/Sugreply/save" id="form1" onsubmit="$(this).RSsubmit({success_alert:true});return false;">
+    <form name="form1" method="post" action="__GROUP__/Sugreply/save" id="form1" onsubmit="return false;">
     <div class="main-content">
         <div class="w760">
             <h3 class="common-tit">
