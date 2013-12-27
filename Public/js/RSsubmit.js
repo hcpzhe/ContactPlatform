@@ -1,5 +1,5 @@
 /**
- * RSsubmit v1.1
+ * RSsubmit v1.2
  * Dependencies jQuery
  * Copyright RockSnap
  */
@@ -51,7 +51,7 @@
 				}
 				
 				if (dd.url) window.location.href = dd.url;
-				else if (myset.reload) window.location.reload();
+				else if (myset.reload && dd.status == 1) window.location.reload();
 			}
 		});
 	};
