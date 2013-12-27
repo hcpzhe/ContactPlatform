@@ -1,22 +1,23 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <title>
 	{$_PF['web_name']}
-</title><link type="text/css" rel="stylesheet" href="__PUBLIC__/css/base.css">
+</title>
+<link type="text/css" rel="stylesheet" href="__PUBLIC__/css/base.css">
 <link type="text/css" rel="stylesheet" href="__PUBLIC__/css/global.css">
 </head>
 <body class="bg-blue">
     <div class="w1003 reg">
         <div class="head1">
             <img src="__PUBLIC__/images/logo1.png" alt="" height="110" width="489"></div>
+            <div class="reg-img"></div>
         <div class="reg-box">
             <div class="box">
                 <h2 class="tit">
                     <strong>填写资料，注册会员</strong></h2>
                 <div class="tb">
-                    <form name="form1" method="post" action="__URL__/reg"  id="form1" enctype="multipart/form-data">
+                    <form name="form1" method="post" action="__URL__/reg" id="form1" enctype="multipart/form-data">
                     <table border="0" cellpadding="0" cellspacing="0" width="100%">
                         <tbody><tr>
                             <th scope="row">
@@ -43,6 +44,22 @@
                             </th>
                             <td>
                                 <input name="nickname" class="txt1" maxlength="10" type="text">
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">
+                                <span>*</span>密 码：
+                            </th>
+                            <td>
+                                <input name="password" class="txt1" maxlength="32" type="password">
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">
+                                <span>*</span>请再次输入密码：
+                            </th>
+                            <td>
+                                <input name="repassword" class="txt1" maxlength="32" type="password">
                             </td>
                         </tr>
                         <tr>
@@ -79,7 +96,7 @@
                         </tr>
                          <tr>
                             <th scope="row">
-                                <span>*</span>EMAIL：
+                                EMAIL：
                             </th>
                             <td>
                                 <input name="email" class="txt1"  type="text">
@@ -90,23 +107,7 @@
                                 	简介：
                             </th>
                             <td>
-                                <input name="remark" class="txt1"  type="text">
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">
-                                <span>*</span>密 码：
-                            </th>
-                            <td>
-                                <input name="password" class="txt1" maxlength="32" type="password">
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">
-                                <span>*</span>请再次输入密码：
-                            </th>
-                            <td>
-                                <input name="repassword" class="txt1" maxlength="32" type="password">
+                                <textarea name="remark" rows="2" cols="20" id="remark" style="height: 150px; width: 260px;"></textarea>
                             </td>
                         </tr>
                         <tr>
@@ -122,9 +123,11 @@
                     </form>
                 </div>
             </div>
-            <div class="footer1 tc">{$_PF['copyright']}
+             
+            <div class="footer1 tc">
+                {$_PF['copyright']}
             </div>
-        </div>
+       </div>
     </div>
 
 
