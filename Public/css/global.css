@@ -23,12 +23,13 @@ html,body{height: 100%; margin:0; padding:0;}
 .reg-box .tb{padding-top:15px;}
 .reg-box .box{ width:660px; height:auto !important; overflow:auto; margin:0 auto;}
 .reg-box .box h2{ height:30px; line-height:30px; font-family:"微软雅黑"; font-size:18px; padding-left:38px; margin-top:20px;}
-.reg-box .box h2 strong{padding-left:56px;  background:url(../images/icon1.png) left center no-repeat; color:#1743a9; font-weight:400; display:inline-block;}
+.reg-box .box h2 strong{padding-left:56px;  /*background:url(../images/icon1.png) left center no-repeat;*/ color:#1743a9; font-weight:400; display:inline-block;}
 
 .reg-box th{ text-align:right; padding:8px 5px; font-weight:normal; font-size:14px;}
 .reg-box td{ padding:8px 5px; text-align:left; font-size:14px;}
 
-.footer1{ font-family:"微软雅黑"; color:#000; line-height:26px; background:url(../images/reg_bg3.jpg); width:1003px; height:267px;}
+.footer1{ font-family:"微软雅黑"; color:#fff; line-height:26px;}
+/*.footer1{ font-family:"微软雅黑"; color:#000; line-height:26px; background:url(../images/reg_bg3.jpg); width:1003px; height:267px;}*/
 .footer1 a{color:#fff!important;}
 .footer1 span{ display:block; padding-top:75px;}
 
