@@ -56,10 +56,11 @@ KindEditor.ready(function(K) {
                                 <span class="red">*</span>希望回复方式：
                             </td>
                             <td style="width: 610px; text-align: left;">
-                                <input id="Radio1" name="reply_type" value="1" {$vo['reply_type']==1?'checked="checked"':''} type="radio">短信&nbsp;&nbsp;
-                                <input id="Radio2" name="reply_type" value="2" {$vo['reply_type']==2?'checked="checked"':''} type="radio">邮件&nbsp;&nbsp;
-                                <input id="Radio3" name="reply_type" value="3" {$vo['reply_type']==3?'checked="checked"':''} type="radio">电话&nbsp;&nbsp;
-                                <input id="Radio4" name="reply_type" value="4" {$vo['reply_type']==4?'checked="checked"':''} type="radio">信函                               
+                             	<input id="Radio1" name="reply_type[]" value="0" {:in_array(0,$vo['reply_type'])?'checked="checked"':''} type="checkbox">回复&nbsp;&nbsp;
+                                <input id="Radio1" name="reply_type[]" value="1" {:in_array(1,$vo['reply_type'])?'checked="checked"':''} type="checkbox">短信&nbsp;&nbsp;
+                                <input id="Radio2" name="reply_type[]" value="2" {:in_array(2,$vo['reply_type'])?'checked="checked"':''} type="checkbox">邮件&nbsp;&nbsp;
+                                <input id="Radio3" name="reply_type[]" value="3" {:in_array(3,$vo['reply_type'])?'checked="checked"':''} type="checkbox">电话&nbsp;&nbsp;
+                                <input id="Radio4" name="reply_type[]" value="4" {:in_array(4,$vo['reply_type'])?'checked="checked"':''} type="checkbox">信函                               
                             </td>
                         </tr>
                         <tr>

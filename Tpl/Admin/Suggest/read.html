@@ -80,7 +80,9 @@ KindEditor.ready(function(K) {
                             建议属性：
                         </th>
                         <td>
-                            <span disabled="disabled"><input id="CkImg" name="CkImg" checked="checked" disabled="disabled" type="checkbox"><label for="CkImg">{$reply_type[$vo['reply_type']]}</label></span>&nbsp;&nbsp;&nbsp;
+                        <!-- <foreach name="vo['reply_type']" item="row"> -->
+                             <span disabled="disabled"><input id="CkImg" name="CkImg" checked="checked" disabled="disabled" type="checkbox"><label for="CkImg">{$reply_type[$row[0]]}</label></span>&nbsp;&nbsp;
+                        <!-- </foreach> -->
                         </td>
                     </tr>
                     <tr>

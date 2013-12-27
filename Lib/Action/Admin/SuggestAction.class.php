@@ -53,8 +53,8 @@ class SuggestAction extends CommonAction {
         $vo = $suggest_M->getById($id);
         $member_M = M('Member');
         $member_info = $member_M->getById($vo['member_id']);
-
-        
+        //处理回复方式字段
+        $vo['reply_type']=explode(',',  $vo['reply_type']);
         $this->assign('vo', $vo);//建议信息
         $this->assign('member_info',$member_info);//建议用户信息
         if($vo['status']==1){
