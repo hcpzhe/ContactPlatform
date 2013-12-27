@@ -29,7 +29,7 @@ class PublicAction extends Action{
 			if ($status!==false){
 			//成功提示
 				if (!empty($_FILES['photo']['name'])){
-				$fileinfo = $this->_uploadone($_FILES['photo'] , $member_M->getModelName().'/'.$status.'/'); //传递头像图片
+				$fileinfo = $this->_uploadone($_FILES['photo'] , 'Member/'.$status.'/'); //传递头像图片
 				//头像URL地址
 				$photo_url =substr($fileinfo['savepath'].$fileinfo['savename'],1);
 				$member_M->where("id=%d",$status)->setField('photo',$photo_url);
