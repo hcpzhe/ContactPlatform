@@ -9,6 +9,7 @@ class MemberModel extends CommonModel {
         array('repassword','require','确认密码必须'),
         array('repassword','password','确认密码不一致',self::VALUE_VALIDATE,'confirm'),
         array('account','','帐号已经存在',self::EXISTS_VALIDATE,'unique'),
+        array('email','require','邮箱必填'),
         array('email','email','邮箱格式不正确',self::VALUE_VALIDATE),
         array('paper_number','require','委员证号必填'),
         array('company','require','工作单位必填'),
@@ -28,6 +29,7 @@ class MemberModel extends CommonModel {
         array('update_time','time',self::MODEL_BOTH,'function'),
         array('status','2',self::MODEL_INSERT),
         array('is_recom','0',self::MODEL_INSERT),
+        array('security_code','getSecurity',self::MODEL_INSERT,'callback'),
         );
 
 	/**
@@ -39,6 +41,16 @@ class MemberModel extends CommonModel {
         }else{
             return false;
         }
+    }
+    /*
+     * 注册时生成邮箱验证的验证码
+     */
+    protected function getSecurity(){
+    	if (isset($_POST['account'])){
+				return md5($_POST['account'].time());    	
+    	}else {
+    		return false;
+    	}
     }
     
     public function getMemberInfo($id=0) {

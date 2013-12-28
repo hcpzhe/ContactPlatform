@@ -34,7 +34,10 @@ class PublicAction extends Action{
 				$photo_url =substr($fileinfo['savepath'].$fileinfo['savename'],1);
 				$member_M->where("id=%d",$status)->setField('photo',$photo_url);
 				}
-				$this->success('注册成功！管理员会尽快为您审核！' , __GROUP__.'/Index/index');
+				//发送邮箱激活邮箱
+				$member = $member_M->getById($status);
+				$this->sendMail($member);
+				$this->success('注册成功！管理员会尽快为您审核！你可以先登录注册填写的邮箱进行邮箱验证！' , __GROUP__.'/Index/index');
 			}else {
 				$this->error('注册失败！');
 			}
@@ -81,14 +84,14 @@ class PublicAction extends Action{
 	        }
 			$map = array();
 			$map['account'] = $_POST['account'];
-			$map['status']=array('eq',1);
+			$map['status']=array('gt',0);
 			 import ( 'ORG.Util.RBAC' );
 	        $member_info = RBAC::authenticate($map);
 	        //使用用户名、密码和状态的方式进行认证
 	        if(false === $member_info) {
 	            $this->error('帐号不存！');
 	        }elseif ($member_info['status'] == '2'){
-	            $this->error('帐号已禁用！');
+	            $this->error('帐号未通过审核！');
 	        }elseif ($member_info['status'] < 0){
 	            $this->error('帐号已被删除！');
 	        }else {
@@ -133,5 +136,42 @@ class PublicAction extends Action{
         }else {
             $this->error('已经登出！', __GROUP__.'/Index/');
         }
+	}
+	/*
+	 * 发送email
+	 * 接受注册用户的信息
+	 */
+	protected function sendMail($member){
+	   import('@.ORG.Net.Email');//导入本类
+	   $data['mailto'] 	= 	$member['email']; //收件人
+	   $data['subject'] =	'洛阳市老城区人民检察院账户邮箱验证';    //邮件标题
+	   //生成邮件内容
+	   $data['body'] 	=	'<font face="楷体_gb18030" size="6"><span style="line-height: 48px; ">洛阳市老城区人民检察院欢迎你!</span></font><div><font face="楷体_gb18030" size="6"><span style="line-height: 48px;">请点击下面链接，进行账户邮箱验证</span></font></div><div><font face="楷体_gb18030" size="6" color="#0000ff"><a href="';
+	   $url='http://'.$_SERVER['SERVER_NAME'].__APP__.'/Public/yzEmail/id/'.$member['id'].'/account/'.$member['account'].'/code/'.$member['security_code'];
+	   $data['body'].=$url;
+	   $data['body'].='" target="_blank"><span style="line-height: 48px;">点这里邮件验证</span></a></font></div><div>如果未跳转请复制下面地址到浏览器地址栏进行邮箱验证</div><div>'.$url.'</div>';
+	   $mail = new Email();
+	   $mail->send($data);
+	}
+	/*
+	 * 验证邮箱
+	 * 接受用户id 用户账号 邮箱验证值
+	 * 
+	 */
+	public  function yzEmail(){
+		$member = array();
+		$member['id'] = $_REQUEST['id'];
+		$member['account'] = $_REQUEST['account'];
+		$member['security_code'] = $_REQUEST['code'];
+		$member_M = M('Member');
+		//查询用户信息
+		$member_info = $member_M->where($member)->find();
+		
+		$flag = $member_M->where($member)->setField('security_code','');
+		if ($flag){
+			$this->success('邮箱已激活，今后建议回复，会发送到验证的邮箱',__GROUP__.'/Index/index');
+		}else {
+			$this->error('邮箱验证失败，你的验证地址可能有误！',__GROUP__.'/Index/index');
+		}
 	}
 }
