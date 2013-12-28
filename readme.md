@@ -1,5 +1,5 @@
 #Contact Platform
 
-@version		1.130
+@version		2.02
 
 @copyright		RockSnap
