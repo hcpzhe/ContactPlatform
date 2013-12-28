@@ -162,16 +162,24 @@ class PublicAction extends Action{
 		$member = array();
 		$member['id'] = $_REQUEST['id'];
 		$member['account'] = $_REQUEST['account'];
-		$member['security_code'] = $_REQUEST['code'];
+		//$member['security_code'] = $_REQUEST['code'];
 		$member_M = M('Member');
 		//查询用户信息
 		$member_info = $member_M->where($member)->find();
-		
-		$flag = $member_M->where($member)->setField('security_code','');
-		if ($flag){
-			$this->success('邮箱已激活，今后建议回复，会发送到验证的邮箱',__GROUP__.'/Index/index');
+		if (empty($member_info['security_code'])){
+			$this->error('你的邮箱已经验证，无需重复验证',__GROUP__.'/Index/index');
 		}else {
-			$this->error('邮箱验证失败，你的验证地址可能有误！',__GROUP__.'/Index/index');
+			
+			if ($member_info['security_code']== $_REQUEST['code']){
+				$flag = $member_M->where($member)->setField('security_code','');
+				if ($flag){
+					$this->success('邮箱已激活，今后你的建议回复，会发送到验证的邮箱',__GROUP__.'/Index/index');
+				}else {
+					$this->error('邮箱验证失败，请重试！',__GROUP__.'/Index/index');
+				}
+			}else {
+					$this->error('邮箱验证失败，你的验证地址可能有误！',__GROUP__.'/Index/index');
+			}
 		}
 	}
 }
