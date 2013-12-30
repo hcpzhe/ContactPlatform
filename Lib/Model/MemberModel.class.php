@@ -5,15 +5,16 @@ class MemberModel extends CommonModel {
         array('account','/^[a-zA-Z]\w{3,15}$/i','帐号格式错误，必须字母开头 4-16位'),//字母开头 4-16位  \w等价于[A-Za-z0-9_]
         array('account','require','账号必须'),
         array('password','require','密码必须'),
-        array('nickname','require','昵称必须'),
+//        array('nickname','require','真实姓名必须'),
         array('repassword','require','确认密码必须'),
         array('repassword','password','确认密码不一致',self::VALUE_VALIDATE,'confirm'),
         array('account','','帐号已经存在',self::EXISTS_VALIDATE,'unique'),
         array('email','email','邮箱格式不正确',self::VALUE_VALIDATE),
         array('paper_number','require','委员证号必填'),
-        array('company','require','工作单位必填'),
+//        array('company','require','工作单位必填'),
         array('mobile','require','手机号必填'),
         array('mobile','/^1\d{10}$/','手机号格式不正确'),
+        array('type',array(1,2),'用户类别不正确',self::MUST_VALIDATE,'in'),
         array('is_recom',array(0,1),'用户推荐状态不正确',self::VALUE_VALIDATE,'in'),
         array('status',array(0,1,2),'用户状态不正确',self::VALUE_VALIDATE,'in'),
 

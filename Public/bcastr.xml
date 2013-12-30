@@ -1,14 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <bcaster autoPlayTime="3">
-<item item_url="/Public/images/1.jpg" itemtitle="">
+<item item_url="./Public/images/1.jpg" itemtitle="">
 </item>
-<item item_url="/Public/images/2.jpg"itemtitle="">
+<item item_url="./Public/images/2.jpg" itemtitle="">
 </item>
-<item item_url="/Public/images/3.jpg" itemtitle="">
+<item item_url="./Public/images/3.jpg" itemtitle="">
 </item>
-<item item_url="/Public/images/4.jpg" itemtitle="">
+<item item_url="./Public/images/4.jpg" itemtitle="">
 </item>
-<item item_url="/Public/images/5.jpg" itemtitle="">
+<item item_url="./Public/images/5.jpg" itemtitle="">
 </item>
 </bcaster>
         

@@ -120,7 +120,7 @@ class NewsAction extends CommonAction {
     	$page = $p->show();
     	$this->assign('list',$list);
     	$this->assign('page',$page); 
-    
+    	cookie('_currentUrl_', __SELF__);
     }
     
     /**
@@ -197,7 +197,7 @@ class NewsAction extends CommonAction {
 				$news_M->where("id=".$_POST['id'])->setField('picture',$picture_url);
 			}
             //成功提示
-            $this->success('编辑成功!',__GROUP__.'/News/index');
+            $this->success('编辑成功!',cookie('_currentUrl_'));
         } else {
             //错误提示
             $this->error('编辑失败!');
