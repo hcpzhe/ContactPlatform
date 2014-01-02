@@ -33,7 +33,16 @@
 <div class="stlyes_pic">
 <ul>
 <!-- <foreach name='member_list' item='row'> -->
-<li><a href="__GROUP__/Index/member/id/{$row['id']}"><img src="__APP__{$row['photo']}" height="136" width="120"/><p>{$row['nickname']}</p></a></li>
+<li>
+	<a href="__GROUP__/Index/member/id/{$row['id']}">
+		<!-- <if condition="$row['photo']"> -->
+		<img src="__APP__{$row['photo']}" height="136" width="120" />
+		<!-- <else /> -->
+		<img src="__PUBLIC__/images/member_photo_none.jpg" height="136" width="120" />
+		<!-- </if> -->
+		<p>{$row['nickname']}</p>
+	</a>
+</li>
 <!-- </foreach> -->
 </ul>
 <div class="clear"></div>

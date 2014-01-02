@@ -5,7 +5,7 @@ class MemberModel extends CommonModel {
         array('account','/^[a-zA-Z]\w{3,15}$/i','帐号格式错误，必须字母开头 4-16位'),//字母开头 4-16位  \w等价于[A-Za-z0-9_]
         array('account','require','账号必须'),
         array('password','require','密码必须'),
-//        array('nickname','require','真实姓名必须'),
+        array('nickname','require','真实姓名必须'),
         array('repassword','require','确认密码必须'),
         array('repassword','password','确认密码不一致',self::VALUE_VALIDATE,'confirm'),
         array('account','','帐号已经存在',self::EXISTS_VALIDATE,'unique'),

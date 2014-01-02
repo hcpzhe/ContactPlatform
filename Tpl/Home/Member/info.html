@@ -22,10 +22,38 @@
                         </tr>
                         <tr>
                             <td style="text-align: right;">
+                                类别：
+                            </td>
+                            <td style="width: 610px; text-align: left;">
+								<!-- <if condition="$member['type'] eq 2"> -->
+								政协委员
+								<!-- <else /> -->
+								人大代表
+								<!-- </if> -->
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: right;">
                                 代表、委员证号：
                             </td>
                             <td style="width: 610px; text-align: left;">
                             {$member['paper_number']}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: right;">
+                                手 机：
+                            </td>
+                            <td style="width: 610px; text-align: left;">
+                            {$member['mobile']}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: right;">
+                                真实姓名：
+                            </td>
+                            <td style="width: 610px; text-align: left;">
+                            {$member['nickname']}
                             </td>
                         </tr>
                         <tr>
@@ -38,10 +66,18 @@
                         </tr>
                         <tr>
                             <td style="text-align: right;">
-                                手 机：
+                               电子邮箱：
                             </td>
                             <td style="width: 610px; text-align: left;">
-                            {$member['mobile']}
+                            {$member['email']}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: right;">
+           	 简介：
+                            </td>
+                            <td style="width: 610px; text-align: left;">
+                            {$member['remark']}
                             </td>
                         </tr>
                         <tr>

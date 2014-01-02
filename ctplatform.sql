@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50051
 File Encoding         : 65001
 
-Date: 2013-12-30 17:19:32
+Date: 2014-01-02 11:48:41
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -124,7 +124,7 @@ CREATE TABLE `pf_member` (
   `type` tinyint(1) NOT NULL default '1' COMMENT '类别 1-人大代表 2-政协委员',
   `paper_number` varchar(255) NOT NULL COMMENT '委员证号',
   `photo` varchar(255) default NULL COMMENT '头像URL',
-  `company` varchar(255) NOT NULL COMMENT '工作单位',
+  `company` varchar(255) default NULL COMMENT '工作单位',
   `mobile` varchar(11) NOT NULL COMMENT '手机',
   `email` varchar(255) default NULL,
   `last_login_time` varchar(20) default '0' COMMENT 'unix时间戳',
@@ -156,7 +156,7 @@ INSERT INTO `pf_member` VALUES ('10', 'a2222', 'aaa', 'd0a61972692ff53c844fbdd3d
 INSERT INTO `pf_member` VALUES ('11', 'aaaa', 'aaaa', 'b4b3aced3193c18c653bdeff2dd5c141', '2', 'aaa', '/Public/Uploads/Member/14/52b8fccc925f8.jpg', 'aaa', '15194544953', null, '1387936855', '127.0.0.1', '1', '', '1387849763', '1387849763', '1', '1', null);
 INSERT INTO `pf_member` VALUES ('12', 'bbbb', 'bbbbb', 'b4b3aced3193c18c653bdeff2dd5c141', '2', 'bbbbb', '/Public/Uploads/Member/14/52b8fccc925f8.jpg', 'bbbbb', '15194544953', null, '1387849932', '127.0.0.1', '0', '', '1387849932', '1387849932', '1', '1', null);
 INSERT INTO `pf_member` VALUES ('13', 'bbbbbb', 'bbbbbbb', 'b4b3aced3193c18c653bdeff2dd5c141', '2', 'bbbbbb', '/Public/Uploads/Member/14/52b8fccc925f8.jpg', 'bbbbb', '15194544953', null, '1387850302', '127.0.0.1', '0', '', '1387850302', '1387850302', '1', '1', null);
-INSERT INTO `pf_member` VALUES ('14', 'zhangmeiling', '张美玲', '8a80b94381564e3131d48977715fadd5', '2', '123456', '/Public/Uploads/Member/14/52b8fccc925f8.jpg', '测试', '15194544953', null, '1388284709', '223.72.182.74', '10', '', '1387855052', '1387956726', '1', '1', null);
+INSERT INTO `pf_member` VALUES ('14', 'zhangmeiling', '张美玲', '8a80b94381564e3131d48977715fadd5', '2', '123456', '/Public/Uploads/Member/14/52b8fccc925f8.jpg', '测试', '15194544953', null, '1388631238', '127.0.0.1', '13', '', '1387855052', '1387956726', '1', '1', null);
 INSERT INTO `pf_member` VALUES ('15', 'a7895', '测试', 'ff67e820ddd404fb081aa718b7a73211', '2', '546555', '/Public/Uploads/Member/15/52b8ffae07e23.jpg', '测试', '15194544953', null, '1387855790', '127.0.0.1', '0', '11111', '1387855790', '1387855790', '1', '0', null);
 INSERT INTO `pf_member` VALUES ('16', 'a1111a', 'aaaa', 'bc591d797604e1e36a00cfcb1dc7a79e', '1', '1513151', null, '11111', '15194544953', null, '1387876266', '127.0.0.1', '1', null, '1387875903', '1387875903', '1', '0', null);
 INSERT INTO `pf_member` VALUES ('17', 'ab111', '1111', 'b4b3aced3193c18c653bdeff2dd5c141', '1', '111111', null, '11111', '15194544953', null, '1388041127', '127.0.0.1', '0', null, '1388041127', '1388041127', '0', '2', null);
@@ -428,7 +428,7 @@ CREATE TABLE `pf_setting` (
 -- Records of pf_setting
 -- ----------------------------
 INSERT INTO `pf_setting` VALUES ('web_name', '洛阳市老城区人民检察院');
-INSERT INTO `pf_setting` VALUES ('copyright', '版权所有：洛阳市老城区人民检察院　技术支持：万谦科技');
+INSERT INTO `pf_setting` VALUES ('copyright', '版权所有：洛阳市老城区人民检察院　技术支持：洛阳上升沿电子科技有线公司&nbsp;&nbsp; 联系电话：63939058&nbsp;&nbsp; 15637983888&nbsp;&nbsp;&nbsp; 联系人：陈建峰');
 
 -- ----------------------------
 -- Table structure for `pf_suggest`
@@ -553,7 +553,7 @@ CREATE TABLE `pf_user` (
 -- ----------------------------
 -- Records of pf_user
 -- ----------------------------
-INSERT INTO `pf_user` VALUES ('1', 'admin', '3d06188d51e8024d76f1013b1563afcf', '超级管理员', '1388393880', '127.0.0.1', '70', null, '0', '0', '1');
+INSERT INTO `pf_user` VALUES ('1', 'admin', '3d06188d51e8024d76f1013b1563afcf', '超级管理员', '1388632344', '127.0.0.1', '73', null, '0', '0', '1');
 INSERT INTO `pf_user` VALUES ('2', 'user2', '3d06188d51e8024d76f1013b1563afcf', '2号', '1387789254', '127.0.0.1', '2', null, '0', '0', '1');
 INSERT INTO `pf_user` VALUES ('3', 'user3', '3d06188d51e8024d76f1013b1563afcf', '3号', '0', null, '0', null, '0', '0', '1');
 INSERT INTO `pf_user` VALUES ('4', 'user4', '15c9dfa38cfaf2635d54b1f94ffaed6c', '4434544656', '1387980302', '127.0.0.1', '1', null, '0', '1387980252', '1');

@@ -22,7 +22,8 @@
                 <div class="row-tb">
                  
                     <table border="0" cellpadding="0" cellspacing="0" width="760">
-                        <tbody><tr>
+                        <tbody>
+                        <tr>
                             <td style="text-align: right;">
                                 照片：
                             </td>
@@ -33,7 +34,18 @@
                         </tr>
                          <tr>
                             <td style="text-align: right;">
-                                用户名：
+                                *类 别：
+                            </td>
+                            <td style="text-align: left;">
+                              <select name="type" id="type">
+								<option selected="selected" value="1">人大代表</option>
+								<option value="2">政协委员</option>
+							  </select>
+                            </td>
+                        </tr>
+                         <tr>
+                            <td style="text-align: right;">
+                                *用户名：
                             </td>
                             <td style="text-align: left;">
                                 <input name="account" id="account" class="txt2" maxlength="30" type="text">
@@ -41,31 +53,42 @@
                         </tr>
                          <tr>
                             <td style="text-align: right;">
-                                类 别：
+                                *密 码：
                             </td>
                             <td style="text-align: left;">
-                              <select name="type" id="type">
-	<option selected="selected" value="1">人大代表</option>
-	<option value="2">政协委员</option>
-
-</select>
-                              
+                                <input name="password" id="password" class="txt2" maxlength="32" type="password">
                             </td>
                         </tr>
                         <tr>
                             <td style="text-align: right;">
-                                真实姓名：
+                                *请再次输入密码：
                             </td>
                             <td style="text-align: left;">
-                              <input name="nickname" id="nickname" class="txt2" maxlength="10" type="text">
+                                <input name="repassword" id="repassword" class="txt2" maxlength="32" type="password">
                             </td>
                         </tr>
                         <tr>
                             <td style="text-align: right;">
-                                代表、委员证号：
+                                *代表、委员证号：
                             </td>
                             <td style="width: 610px; text-align: left;">
                                 <input name="paper_number" id="paper_number" class="txt2" maxlength="50" type="text">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: right;">
+                                *手 机：
+                            </td>
+                            <td style="width: 610px; text-align: left;">
+                                <input name="mobile" id="mobile" class="txt2" maxlength="11" type="text">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: right;">
+                                *真实姓名：
+                            </td>
+                            <td style="text-align: left;">
+                              <input name="nickname" id="nickname" class="txt2" maxlength="10" type="text">
                             </td>
                         </tr>
                         <tr>
@@ -78,26 +101,10 @@
                         </tr>
                         <tr>
                             <td style="text-align: right;">
-                                手 机：
+                                电子邮箱：
                             </td>
                             <td style="width: 610px; text-align: left;">
-                                <input name="mobile" id="mobile" class="txt2" maxlength="11" type="text">
-                            </td>
-                        </tr>
-                         <tr>
-                            <td style="text-align: right;">
-                                密 码：
-                            </td>
-                            <td style="text-align: left;">
-                                <input name="password" id="password" class="txt2" maxlength="32" type="password">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td style="text-align: right;">
-                                请再次输入密码：
-                            </td>
-                            <td style="text-align: left;">
-                                <input name="repassword" id="repassword" class="txt2" maxlength="32" type="password">
+                                <input name="email" class="txt2" maxlength="100" type="text">
                             </td>
                         </tr>
                         <tr>

@@ -26,8 +26,26 @@
                                 照片：
                             </td>
                             <td style="width: 610px; text-align: left;">
-                          	    <img id="UserImage" src="__APP__{$member['photo']}" style="width:120px;border-width:0px;">                           
-                                <input name="photo" id="photo" type="file"> <span style="color:red;">建议大小：120&times;136像素</span>
+	                        	<!-- <if condition="$member['photo']"> -->
+	                        	<img id="UserImage" src="__APP__{$member['photo']}" style="width:120px;border-width:0px;" />
+	                        	<!-- </if> -->                      
+                                <input name="photo" type="file" /> <span style="color:red;">建议大小：120&times;136像素</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: right;">
+                                类别：
+                            </td>
+                            <td style="width: 610px; text-align: left;">
+								<select name="type">
+									<!-- <if condition="$member['type'] eq 2"> -->
+									<option value="1" title="人大代表">人大代表</option>
+									<option value="2" selected="selected" title="政协委员">政协委员</option>
+									<!-- <else /> -->
+									<option value="1" selected="selected" title="人大代表">人大代表</option>
+									<option value="2" title="政协委员">政协委员</option>
+									<!-- </if> -->
+								</select>
                             </td>
                         </tr>
                         <tr>
@@ -35,15 +53,7 @@
                                 代表、委员证号：
                             </td>
                             <td style="width: 610px; text-align: left;">
-                                <input name="paper_number" id="cardNum" class="txt2" maxlength="50" value="{$member['paper_number']}" type="text">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td style="text-align: right;">
-                                工作单位：
-                            </td>
-                            <td style="width: 610px; text-align: left;">
-                                <input name="company" id="workAddress" class="txt2" maxlength="100" value="{$member['company']}" type="text">
+                                <input name="paper_number" class="txt2" maxlength="50" value="{$member['paper_number']}" type="text" />
                             </td>
                         </tr>
                         <tr>
@@ -51,7 +61,31 @@
                                 手 机：
                             </td>
                             <td style="width: 610px; text-align: left;">
-                                <input name="mobile" id="mobile" class="txt2" maxlength="11" value="{$member['mobile']}" type="text">
+                                <input name="mobile" class="txt2" maxlength="11" value="{$member['mobile']}" type="text" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: right;">
+                                真实姓名：
+                            </td>
+                            <td style="width: 610px; text-align: left;">
+                                <input name="nickname" class="txt2" value="{$member['nickname']}" type="text" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: right;">
+                                工作单位：
+                            </td>
+                            <td style="width: 610px; text-align: left;">
+                                <input name="company" class="txt2" maxlength="100" value="{$member['company']}" type="text" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: right;">
+                               电子邮箱：
+                            </td>
+                            <td style="width: 610px; text-align: left;">
+                                <input name="email" class="txt2" maxlength="100" value="{$member['email']}" type="text" />
                             </td>
                         </tr>
                         <tr>
@@ -66,7 +100,7 @@
                             <td style="text-align: right;">
                             </td>
                             <td style="text-align: left;">
-                                <input name="Button1" value="确认" id="Button1" class="btn4" type="submit">
+                                <input name="Button1" value="确认" id="Button1" class="btn4" type="submit" />
                             </td>
                         </tr>
                     </tbody></table>

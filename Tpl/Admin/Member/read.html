@@ -27,22 +27,16 @@
                             <td style="text-align: right;">
                                 照片：
                             </td>
-                            <td style="width: 610px; text-align: left;">                           
-                                <img id="UserImage" src="__APP__{$vo['photo']}" style="width:120px;border-width:0px;"> 
+                            <td style="width: 610px; text-align: left;">
+	                        	<!-- <if condition="$vo['photo']"> -->
+	                        	<img id="UserImage" src="__APP__{$vo['photo']}" style="width:120px;border-width:0px;" />
+	                        	<!-- </if> -->
                                 <input name="photo" id="photo" type="file">
                             </td>
                         </tr>
                          <tr>
                             <td style="text-align: right;">
-                                用户名：
-                            </td>
-                            <td style="text-align: left;">
-                                <input name="account" id="account" value="{$vo['account']}" class="txt2" maxlength="30" type="text">
-                            </td>
-                        </tr>
-                         <tr>
-                            <td style="text-align: right;">
-                                类 别：
+                                *类 别：
                             </td>
                             <td style="text-align: left;">
                               <select name="type" id="type">
@@ -53,20 +47,36 @@
                               
                             </td>
                         </tr>
-                        <tr>
+                         <tr>
                             <td style="text-align: right;">
-                                真实姓名：
+                               *用户名：
                             </td>
                             <td style="text-align: left;">
-                              <input name="nickname" id="nickname" value="{$vo['nickname']}" class="txt2" maxlength="10" type="text">
+                                <input name="account" id="account" value="{$vo['account']}" class="txt2" maxlength="30" type="text">
                             </td>
                         </tr>
                         <tr>
                             <td style="text-align: right;">
-                                代表、委员证号：
+                                *代表、委员证号：
                             </td>
                             <td style="width: 610px; text-align: left;">
                                 <input name="paper_number" id="paper_number" value="{$vo['paper_number']}" class="txt2" maxlength="50" type="text">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: right;">
+                                *手 机：
+                            </td>
+                            <td style="width: 610px; text-align: left;">
+                                <input name="mobile" id="mobile" value="{$vo['mobile']}"  class="txt2" maxlength="11" type="text">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: right;">
+                                *真实姓名：
+                            </td>
+                            <td style="text-align: left;">
+                              <input name="nickname" id="nickname" value="{$vo['nickname']}" class="txt2" maxlength="10" type="text">
                             </td>
                         </tr>
                         <tr>
@@ -79,18 +89,10 @@
                         </tr>
                         <tr>
                             <td style="text-align: right;">
-                                手 机：
+                                电子邮箱：
                             </td>
                             <td style="width: 610px; text-align: left;">
-                                <input name="mobile" id="mobile" value="{$vo['mobile']}"  class="txt2" maxlength="11" type="text">
-                            </td>
-                        </tr>
-                         <tr>
-                            <td style="text-align: right;">
-                                密 码：
-                            </td>
-                            <td style="text-align: left;">
-                                <input name="password" id="password" class="txt2" maxlength="32" type="password">
+                                <input name="email" value="{$vo['email']}" class="txt2" maxlength="100" type="text">
                             </td>
                         </tr>
                         <tr>
