@@ -124,22 +124,25 @@ class Page {
         }
         // << < > >>
         if($nowCoolPage == 1){
-            $theFirst   =   '<a disabled="disabled" style="margin-right:5px;">'.$this->config['first'].'</a>';
+            //$theFirst   =   '<a disabled="disabled" style="margin-right:5px;">'.$this->config['first'].'</a>';
             $prePage    =   '';
         }else{
             $preRow     =   $this->nowPage-$this->rollPage;
             $prePage    =   "<a href='".str_replace('__PAGE__',$preRow,$url)."' >上".$this->rollPage."页</a>";
-            $theFirst   =   "<a href='".str_replace('__PAGE__',1,$url)."' style='margin-right:5px;'>".$this->config['first']."</a>";
+            //$theFirst   =   "<a href='".str_replace('__PAGE__',1,$url)."' style='margin-right:5px;'>".$this->config['first']."</a>";
         }
+        $theFirst   =   "<a href='".str_replace('__PAGE__',1,$url)."' style='margin-right:5px;'>".$this->config['first']."</a>";
+        
         if($nowCoolPage == $this->coolPages){
             $nextPage   =   '';
-            $theEnd     =   '<a disabled="disabled" style="margin-right:5px;">'.$this->config['last'].'</a>';
+            //$theEnd     =   '<a disabled="disabled" style="margin-right:5px;">'.$this->config['last'].'</a>';
         }else{
             $nextRow    =   $this->nowPage+$this->rollPage;
-            $theEndRow  =   $this->totalPages;
             $nextPage   =   "<a href='".str_replace('__PAGE__',$nextRow,$url)."' >下".$this->rollPage."页</a>";
-            $theEnd     =   "<a href='".str_replace('__PAGE__',$theEndRow,$url)."' style='margin-right:5px;'>".$this->config['last']."</a>";
+            //$theEnd     =   "<a href='".str_replace('__PAGE__',$theEndRow,$url)."' style='margin-right:5px;'>".$this->config['last']."</a>";
         }
+        $theEnd     =   "<a href='".str_replace('__PAGE__',$this->totalPages,$url)."' style='margin-right:5px;'>".$this->config['last']."</a>";
+        
         // 1 2 3 4 5
         $linkPage = "";
         for($i=1;$i<=$this->rollPage;$i++){

@@ -22,6 +22,7 @@ class UserAction extends CommonAction {
     		$map['account'] = array('like',"%".$_POST['txtsearch']."%");
     	}
     	$map['status']=array('gt',0);
+    	$map['account']=array('not in',C('ADMIN_AUTHS'));
     }
     
     /**

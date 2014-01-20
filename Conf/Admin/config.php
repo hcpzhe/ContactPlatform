@@ -6,6 +6,7 @@ return array(
 	'USER_AUTH_KEY'			=>'cpAdmin',	// 用户认证SESSION标记
 	'USER_PW_PREFIX'		=>'aedb80', //用户密码前缀
     'ADMIN_AUTH_KEY'		=>'administrator',
+	'ADMIN_AUTHS'			=>array('admin','administrator'),//超管用户名
 	'USER_AUTH_MODEL'		=>'User',	// 默认验证数据表模型
 	'AUTH_PWD_ENCODER'		=>'md5',	// 用户认证密码加密方式
 

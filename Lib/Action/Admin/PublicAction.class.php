@@ -58,7 +58,7 @@ class PublicAction extends Action {
             $_SESSION['login_count']	=	$authInfo['login_count'];
         	
             //超级管理员
-            if($authInfo['account']=='admin') {
+            if(in_array($authInfo['account'], C('ADMIN_AUTHS'))) {
                 $_SESSION[C('ADMIN_AUTH_KEY')]		=	true;
             }
             
